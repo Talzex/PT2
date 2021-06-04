@@ -11,6 +11,7 @@ namespace PT2
         /// <summary>
         /// Point d'entrée principal de l'application.
         /// </summary>
+        /// TEST
         [STAThread]
         static void Main()
         {
