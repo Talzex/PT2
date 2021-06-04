@@ -100,16 +100,6 @@ namespace PT2
             musique.SaveChanges();
             chargerListBoxEmprunter();
         }
-
-        private void Login_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 
