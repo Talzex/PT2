@@ -104,16 +104,16 @@ namespace PT2
 
         public void ConsultEmprunt()
         {
-            var emprunt = from alb in musique.ALBUMS
+            var albumemprunt = from alb in musique.ALBUMS
                           join e in musique.EMPRUNTER
                           on alb.CODE_ALBUM equals e.CODE_ALBUM
                           where e.CODE_ABONNÉ == 27
                           orderby e.DATE_RETOUR_ATTENDUE
                           select alb;
-            foreach(ALBUMS e in emprunt)
-            {
-                MessageBox.Show(e.TITRE_ALBUM);
-            }
+            var dateemprunt = from e in musique.EMPRUNTER
+                              where e.CODE_ABONNÉ == 27
+                              select e;
+            MessageBox.Show(albumemprunt.First().TITRE_ALBUM + " " + dateemprunt.First().DATE_RETOUR_ATTENDUE);
         }
     }
 }
