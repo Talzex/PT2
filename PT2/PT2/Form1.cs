@@ -20,16 +20,6 @@ namespace PT2
             ConsultEmprunt();
         }
 
-        private void Login_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         public void ConsultEmprunt()
         {
             var albumemprunt = from alb in musique.ALBUMS
