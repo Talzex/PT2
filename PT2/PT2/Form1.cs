@@ -20,6 +20,7 @@ namespace PT2
             musique = new MusiquePT2_MEntities();
             chargerListBoxAbonnees();
             chargerListBoxEmprunter();
+            ConsultEmprunt();
         }
 
         private void chargerListBoxAbonnees()
@@ -99,6 +100,20 @@ namespace PT2
             musique.EMPRUNTER.Add(emprunt);
             musique.SaveChanges();
             chargerListBoxEmprunter();
+        }
+
+        public void ConsultEmprunt()
+        {
+            var albumemprunt = from alb in musique.ALBUMS
+                          join e in musique.EMPRUNTER
+                          on alb.CODE_ALBUM equals e.CODE_ALBUM
+                          where e.CODE_ABONNÉ == 27
+                          orderby e.DATE_RETOUR_ATTENDUE
+                          select alb;
+            var dateemprunt = from e in musique.EMPRUNTER
+                              where e.CODE_ABONNÉ == 27
+                              select e;
+            MessageBox.Show(albumemprunt.First().TITRE_ALBUM + " " + dateemprunt.First().DATE_RETOUR_ATTENDUE);
         }
     }
 }
