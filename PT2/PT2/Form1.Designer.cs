@@ -46,7 +46,7 @@ namespace PT2
             // 
             // listEdition
             // 
-            this.listEdition.ForeColor = System.Drawing.SystemColors.MenuBar;
+            this.listEdition.ForeColor = System.Drawing.SystemColors.InfoText;
             this.listEdition.FormattingEnabled = true;
             this.listEdition.Location = new System.Drawing.Point(183, 26);
             this.listEdition.Margin = new System.Windows.Forms.Padding(2);
