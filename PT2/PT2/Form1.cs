@@ -49,6 +49,16 @@ namespace PT2
             }
         }
 
+        private void chargerListBoxPurge()
+        {
+            var purge = (from p in musique.ABONNÉS
+                         select p.NOM_ABONNÉ).ToList();
+            listPurge.Items.Clear();
+            foreach (String p in purge)
+            {
+                listPurge.Items.Add(p);
+            }
+        }
         private void ajouter_Click(object sender, EventArgs e)
         {
             ABONNÉS a = new ABONNÉS();
@@ -207,6 +217,23 @@ namespace PT2
         private bool Prolonge(EMPRUNTER j)
         {
             return j.DATE_EMPRUNT.Month + 1 == j.DATE_RETOUR_ATTENDUE.Month;
+        }
+
+        private void Purgeur_Click(object sender, EventArgs e)
+        {
+            var abo = from a in musique.ABONNÉS
+                      join emp in musique.EMPRUNTER
+                      on a.CODE_ABONNÉ equals emp.CODE_ABONNÉ
+                      where 2023 / DateTime.Now.Year / -emp.DATE_EMPRUNT.Year >= 1
+                      select a;
+            foreach (ABONNÉS a in abo)
+            {
+                //musique.ABONNÉS.Remove(a);
+                chargerListBoxPurge();
+
+            }
+            //musique.SaveChanges();
+            //chargerListBoxAbonnees();
         }
     }
 }
