@@ -224,7 +224,7 @@ namespace PT2
             var abo = from a in musique.ABONNÉS
                       join emp in musique.EMPRUNTER
                       on a.CODE_ABONNÉ equals emp.CODE_ABONNÉ
-                      where 2023 / DateTime.Now.Year / -emp.DATE_EMPRUNT.Year >= 1
+                      where 2023 /* DateTime.Now.Year */ -emp.DATE_EMPRUNT.Year >= 1
                       select a;
             foreach (ABONNÉS a in abo)
             {
