@@ -29,36 +29,41 @@ namespace PT2
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.supp = new System.Windows.Forms.Button();
             this.ajouter = new System.Windows.Forms.Button();
             this.emprunt = new System.Windows.Forms.Button();
             this.retourne = new System.Windows.Forms.Button();
+            this.ConsulE = new System.Windows.Forms.Button();
+            this.Prolongation = new System.Windows.Forms.Button();
+            this.ConsulEmpProlongé = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 12);
+            this.listBox1.Location = new System.Drawing.Point(9, 10);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(375, 95);
+            this.listBox1.Size = new System.Drawing.Size(409, 69);
             this.listBox1.TabIndex = 0;
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(12, 168);
+            this.listBox2.Location = new System.Drawing.Point(9, 92);
+            this.listBox2.Margin = new System.Windows.Forms.Padding(2);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(375, 95);
+            this.listBox2.Size = new System.Drawing.Size(409, 69);
             this.listBox2.TabIndex = 1;
             // 
             // supp
             // 
-            this.supp.Location = new System.Drawing.Point(393, 12);
+            this.supp.Location = new System.Drawing.Point(422, 5);
+            this.supp.Margin = new System.Windows.Forms.Padding(2);
             this.supp.Name = "supp";
-            this.supp.Size = new System.Drawing.Size(75, 23);
+            this.supp.Size = new System.Drawing.Size(70, 24);
             this.supp.TabIndex = 2;
             this.supp.Text = "Supprimer";
             this.supp.UseVisualStyleBackColor = true;
@@ -66,9 +71,10 @@ namespace PT2
             // 
             // ajouter
             // 
-            this.ajouter.Location = new System.Drawing.Point(393, 84);
+            this.ajouter.Location = new System.Drawing.Point(422, 33);
+            this.ajouter.Margin = new System.Windows.Forms.Padding(2);
             this.ajouter.Name = "ajouter";
-            this.ajouter.Size = new System.Drawing.Size(75, 23);
+            this.ajouter.Size = new System.Drawing.Size(70, 23);
             this.ajouter.TabIndex = 3;
             this.ajouter.Text = "Ajouter Abonné";
             this.ajouter.UseVisualStyleBackColor = true;
@@ -76,9 +82,10 @@ namespace PT2
             // 
             // emprunt
             // 
-            this.emprunt.Location = new System.Drawing.Point(12, 269);
+            this.emprunt.Location = new System.Drawing.Point(422, 86);
+            this.emprunt.Margin = new System.Windows.Forms.Padding(2);
             this.emprunt.Name = "emprunt";
-            this.emprunt.Size = new System.Drawing.Size(75, 23);
+            this.emprunt.Size = new System.Drawing.Size(66, 19);
             this.emprunt.TabIndex = 4;
             this.emprunt.Text = "Emprunter";
             this.emprunt.UseVisualStyleBackColor = true;
@@ -86,25 +93,63 @@ namespace PT2
             // 
             // retourne
             // 
-            this.retourne.Location = new System.Drawing.Point(119, 269);
+            this.retourne.Location = new System.Drawing.Point(422, 109);
+            this.retourne.Margin = new System.Windows.Forms.Padding(2);
             this.retourne.Name = "retourne";
-            this.retourne.Size = new System.Drawing.Size(75, 23);
+            this.retourne.Size = new System.Drawing.Size(64, 19);
             this.retourne.TabIndex = 5;
             this.retourne.Text = "Retourner";
             this.retourne.UseVisualStyleBackColor = true;
             this.retourne.Click += new System.EventHandler(this.retourne_Click);
             // 
+            // ConsulE
+            // 
+            this.ConsulE.Location = new System.Drawing.Point(422, 132);
+            this.ConsulE.Margin = new System.Windows.Forms.Padding(2);
+            this.ConsulE.Name = "ConsulE";
+            this.ConsulE.Size = new System.Drawing.Size(115, 23);
+            this.ConsulE.TabIndex = 6;
+            this.ConsulE.Text = "Consulter Emprunt";
+            this.ConsulE.UseVisualStyleBackColor = true;
+            this.ConsulE.Click += new System.EventHandler(this.ConsulE_Click);
+            // 
+            // Prolongation
+            // 
+            this.Prolongation.Location = new System.Drawing.Point(422, 159);
+            this.Prolongation.Margin = new System.Windows.Forms.Padding(2);
+            this.Prolongation.Name = "Prolongation";
+            this.Prolongation.Size = new System.Drawing.Size(115, 23);
+            this.Prolongation.TabIndex = 7;
+            this.Prolongation.Text = "Prolonger Emprunt";
+            this.Prolongation.UseVisualStyleBackColor = true;
+            this.Prolongation.Click += new System.EventHandler(this.Prolongation_Click);
+            // 
+            // ConsulEmpProlongé
+            // 
+            this.ConsulEmpProlongé.Location = new System.Drawing.Point(11, 295);
+            this.ConsulEmpProlongé.Margin = new System.Windows.Forms.Padding(2);
+            this.ConsulEmpProlongé.Name = "ConsulEmpProlongé";
+            this.ConsulEmpProlongé.Size = new System.Drawing.Size(145, 23);
+            this.ConsulEmpProlongé.TabIndex = 8;
+            this.ConsulEmpProlongé.Text = "ConsulEmpruntProlongé";
+            this.ConsulEmpProlongé.UseVisualStyleBackColor = true;
+            this.ConsulEmpProlongé.Click += new System.EventHandler(this.ConsulEmpProlongé_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.ConsulEmpProlongé);
+            this.Controls.Add(this.Prolongation);
+            this.Controls.Add(this.ConsulE);
             this.Controls.Add(this.retourne);
             this.Controls.Add(this.emprunt);
             this.Controls.Add(this.ajouter);
             this.Controls.Add(this.supp);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -119,6 +164,9 @@ namespace PT2
         private System.Windows.Forms.Button ajouter;
         private System.Windows.Forms.Button emprunt;
         private System.Windows.Forms.Button retourne;
+        private System.Windows.Forms.Button ConsulE;
+        private System.Windows.Forms.Button Prolongation;
+        private System.Windows.Forms.Button ConsulEmpProlongé;
     }
 }
 
