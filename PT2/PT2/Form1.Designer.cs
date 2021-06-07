@@ -29,8 +29,8 @@ namespace PT2
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listEdition = new System.Windows.Forms.ListBox();
+            this.listEmprunt = new System.Windows.Forms.ListBox();
             this.supp = new System.Windows.Forms.Button();
             this.ajouter = new System.Windows.Forms.Button();
             this.emprunt = new System.Windows.Forms.Button();
@@ -38,163 +38,173 @@ namespace PT2
             this.ConsulE = new System.Windows.Forms.Button();
             this.Prolongation = new System.Windows.Forms.Button();
             this.ConsulEmpProlongé = new System.Windows.Forms.Button();
-            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.listProlongement = new System.Windows.Forms.ListBox();
             this.RefreshRetards = new System.Windows.Forms.Button();
             this.listPurge = new System.Windows.Forms.ListBox();
             this.Purgeur = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listBox1
+            // listEdition
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(9, 10);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(409, 69);
-            this.listBox1.TabIndex = 0;
+            this.listEdition.ForeColor = System.Drawing.SystemColors.MenuBar;
+            this.listEdition.FormattingEnabled = true;
+            this.listEdition.Location = new System.Drawing.Point(183, 26);
+            this.listEdition.Margin = new System.Windows.Forms.Padding(2);
+            this.listEdition.Name = "listEdition";
+            this.listEdition.Size = new System.Drawing.Size(483, 69);
+            this.listEdition.TabIndex = 0;
             // 
-            // listBox2
+            // listEmprunt
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(9, 92);
-            this.listBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(409, 69);
-            this.listBox2.TabIndex = 1;
+            this.listEmprunt.FormattingEnabled = true;
+            this.listEmprunt.Location = new System.Drawing.Point(183, 143);
+            this.listEmprunt.Margin = new System.Windows.Forms.Padding(2);
+            this.listEmprunt.Name = "listEmprunt";
+            this.listEmprunt.Size = new System.Drawing.Size(483, 69);
+            this.listEmprunt.TabIndex = 1;
             // 
             // supp
             // 
-            this.supp.Location = new System.Drawing.Point(422, 5);
+            this.supp.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.supp.Location = new System.Drawing.Point(440, 99);
             this.supp.Margin = new System.Windows.Forms.Padding(2);
             this.supp.Name = "supp";
             this.supp.Size = new System.Drawing.Size(70, 24);
             this.supp.TabIndex = 2;
             this.supp.Text = "Supprimer";
-            this.supp.UseVisualStyleBackColor = true;
+            this.supp.UseVisualStyleBackColor = false;
             this.supp.Click += new System.EventHandler(this.supp_Click);
             // 
             // ajouter
             // 
-            this.ajouter.Location = new System.Drawing.Point(422, 33);
+            this.ajouter.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.ajouter.Location = new System.Drawing.Point(333, 99);
             this.ajouter.Margin = new System.Windows.Forms.Padding(2);
             this.ajouter.Name = "ajouter";
             this.ajouter.Size = new System.Drawing.Size(70, 23);
             this.ajouter.TabIndex = 3;
             this.ajouter.Text = "Ajouter Abonné";
-            this.ajouter.UseVisualStyleBackColor = true;
+            this.ajouter.UseVisualStyleBackColor = false;
             this.ajouter.Click += new System.EventHandler(this.ajouter_Click);
             // 
             // emprunt
             // 
-            this.emprunt.Location = new System.Drawing.Point(422, 86);
+            this.emprunt.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.emprunt.Location = new System.Drawing.Point(486, 216);
             this.emprunt.Margin = new System.Windows.Forms.Padding(2);
             this.emprunt.Name = "emprunt";
             this.emprunt.Size = new System.Drawing.Size(66, 19);
             this.emprunt.TabIndex = 4;
             this.emprunt.Text = "Emprunter";
-            this.emprunt.UseVisualStyleBackColor = true;
+            this.emprunt.UseVisualStyleBackColor = false;
             this.emprunt.Click += new System.EventHandler(this.emprunt_Click);
             // 
             // retourne
             // 
-            this.retourne.Location = new System.Drawing.Point(422, 109);
+            this.retourne.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.retourne.Location = new System.Drawing.Point(573, 216);
             this.retourne.Margin = new System.Windows.Forms.Padding(2);
             this.retourne.Name = "retourne";
             this.retourne.Size = new System.Drawing.Size(64, 19);
             this.retourne.TabIndex = 5;
             this.retourne.Text = "Retourner";
-            this.retourne.UseVisualStyleBackColor = true;
+            this.retourne.UseVisualStyleBackColor = false;
             this.retourne.Click += new System.EventHandler(this.retourne_Click);
             // 
             // ConsulE
             // 
-            this.ConsulE.Location = new System.Drawing.Point(490, 111);
+            this.ConsulE.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.ConsulE.Location = new System.Drawing.Point(349, 216);
             this.ConsulE.Margin = new System.Windows.Forms.Padding(2);
             this.ConsulE.Name = "ConsulE";
             this.ConsulE.Size = new System.Drawing.Size(115, 23);
             this.ConsulE.TabIndex = 6;
             this.ConsulE.Text = "Consulter Emprunt";
-            this.ConsulE.UseVisualStyleBackColor = true;
+            this.ConsulE.UseVisualStyleBackColor = false;
             this.ConsulE.Click += new System.EventHandler(this.ConsulE_Click);
             // 
             // Prolongation
             // 
-            this.Prolongation.Location = new System.Drawing.Point(492, 84);
+            this.Prolongation.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.Prolongation.Location = new System.Drawing.Point(208, 216);
             this.Prolongation.Margin = new System.Windows.Forms.Padding(2);
             this.Prolongation.Name = "Prolongation";
             this.Prolongation.Size = new System.Drawing.Size(115, 23);
             this.Prolongation.TabIndex = 7;
             this.Prolongation.Text = "Prolonger Emprunt";
-            this.Prolongation.UseVisualStyleBackColor = true;
+            this.Prolongation.UseVisualStyleBackColor = false;
             this.Prolongation.Click += new System.EventHandler(this.Prolongation_Click);
             // 
             // ConsulEmpProlongé
             // 
-            this.ConsulEmpProlongé.Location = new System.Drawing.Point(422, 187);
+            this.ConsulEmpProlongé.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.ConsulEmpProlongé.Location = new System.Drawing.Point(258, 344);
             this.ConsulEmpProlongé.Margin = new System.Windows.Forms.Padding(2);
             this.ConsulEmpProlongé.Name = "ConsulEmpProlongé";
             this.ConsulEmpProlongé.Size = new System.Drawing.Size(145, 23);
             this.ConsulEmpProlongé.TabIndex = 8;
             this.ConsulEmpProlongé.Text = "ConsulEmpruntProlongé";
-            this.ConsulEmpProlongé.UseVisualStyleBackColor = true;
+            this.ConsulEmpProlongé.UseVisualStyleBackColor = false;
             this.ConsulEmpProlongé.Click += new System.EventHandler(this.ConsulEmpProlongé_Click);
             // 
-            // listBox3
+            // listProlongement
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(9, 187);
-            this.listBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(409, 69);
-            this.listBox3.TabIndex = 7;
+            this.listProlongement.FormattingEnabled = true;
+            this.listProlongement.Location = new System.Drawing.Point(183, 271);
+            this.listProlongement.Margin = new System.Windows.Forms.Padding(2);
+            this.listProlongement.Name = "listProlongement";
+            this.listProlongement.Size = new System.Drawing.Size(483, 69);
+            this.listProlongement.TabIndex = 7;
             // 
             // RefreshRetards
             // 
-            this.RefreshRetards.Location = new System.Drawing.Point(423, 215);
+            this.RefreshRetards.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.RefreshRetards.Location = new System.Drawing.Point(486, 345);
             this.RefreshRetards.Name = "RefreshRetards";
             this.RefreshRetards.Size = new System.Drawing.Size(112, 23);
             this.RefreshRetards.TabIndex = 8;
             this.RefreshRetards.Text = "Actualiser Retards";
-            this.RefreshRetards.UseVisualStyleBackColor = true;
+            this.RefreshRetards.UseVisualStyleBackColor = false;
             this.RefreshRetards.Click += new System.EventHandler(this.RefreshRetards_Click);
             // 
             // listPurge
             // 
             this.listPurge.FormattingEnabled = true;
-            this.listPurge.Location = new System.Drawing.Point(9, 260);
+            this.listPurge.Location = new System.Drawing.Point(183, 402);
             this.listPurge.Margin = new System.Windows.Forms.Padding(2);
             this.listPurge.Name = "listPurge";
-            this.listPurge.Size = new System.Drawing.Size(409, 69);
+            this.listPurge.Size = new System.Drawing.Size(483, 69);
             this.listPurge.TabIndex = 9;
             // 
             // Purgeur
             // 
-            this.Purgeur.Location = new System.Drawing.Point(423, 285);
+            this.Purgeur.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.Purgeur.Location = new System.Drawing.Point(376, 476);
             this.Purgeur.Name = "Purgeur";
             this.Purgeur.Size = new System.Drawing.Size(112, 23);
             this.Purgeur.TabIndex = 10;
             this.Purgeur.Text = "Purgeur";
-            this.Purgeur.UseVisualStyleBackColor = true;
+            this.Purgeur.UseVisualStyleBackColor = false;
             this.Purgeur.Click += new System.EventHandler(this.Purgeur_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(858, 554);
             this.Controls.Add(this.Purgeur);
             this.Controls.Add(this.listPurge);
             this.Controls.Add(this.ConsulEmpProlongé);
             this.Controls.Add(this.Prolongation);
             this.Controls.Add(this.ConsulE);
             this.Controls.Add(this.RefreshRetards);
-            this.Controls.Add(this.listBox3);
+            this.Controls.Add(this.listProlongement);
             this.Controls.Add(this.retourne);
             this.Controls.Add(this.emprunt);
             this.Controls.Add(this.ajouter);
             this.Controls.Add(this.supp);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listEmprunt);
+            this.Controls.Add(this.listEdition);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -204,8 +214,8 @@ namespace PT2
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox listEdition;
+        private System.Windows.Forms.ListBox listEmprunt;
         private System.Windows.Forms.Button supp;
         private System.Windows.Forms.Button ajouter;
         private System.Windows.Forms.Button emprunt;
@@ -213,7 +223,7 @@ namespace PT2
         private System.Windows.Forms.Button ConsulE;
         private System.Windows.Forms.Button Prolongation;
         private System.Windows.Forms.Button ConsulEmpProlongé;
-        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.ListBox listProlongement;
         private System.Windows.Forms.Button RefreshRetards;
         private System.Windows.Forms.ListBox listPurge;
         private System.Windows.Forms.Button Purgeur;

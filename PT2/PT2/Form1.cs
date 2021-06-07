@@ -30,10 +30,10 @@ namespace PT2
         {
             var abonne = (from j in musique.ABONNÉS
                           select j).ToList();
-            listBox1.Items.Clear();
+            listEdition.Items.Clear();
             foreach (ABONNÉS j in abonne)
             {
-                listBox1.Items.Add(j);
+                listEdition.Items.Add(j);
             }
         }
 
@@ -42,10 +42,10 @@ namespace PT2
             var emprunt = (from j in musique.EMPRUNTER
                            select j
                            ).ToList();
-            listBox2.Items.Clear();
+            listEmprunt.Items.Clear();
             foreach (EMPRUNTER j in emprunt)
             {
-                listBox2.Items.Add(j);
+                listEmprunt.Items.Add(j);
             }
         }
 
@@ -74,9 +74,9 @@ namespace PT2
 
         private void supp_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedItem != null)
+            if (listEdition.SelectedItem != null)
             {
-                ABONNÉS j = (ABONNÉS)listBox1.SelectedItem;
+                ABONNÉS j = (ABONNÉS)listEdition.SelectedItem;
                 musique.ABONNÉS.Remove(j);
                 musique.SaveChanges();
                 chargerListBoxAbonnees();
@@ -85,9 +85,9 @@ namespace PT2
 
         private void retourne_Click(object sender, EventArgs e)
         {
-            if (listBox2.SelectedItem != null)
+            if (listEmprunt.SelectedItem != null)
             {
-                EMPRUNTER titremprunt = (EMPRUNTER)listBox2.SelectedItem;
+                EMPRUNTER titremprunt = (EMPRUNTER)listEmprunt.SelectedItem;
                 var emprunt = from a1 in musique.EMPRUNTER
                               where a1.ALBUMS.TITRE_ALBUM == titremprunt.ALBUMS.TITRE_ALBUM
                               select a1;
@@ -101,11 +101,11 @@ namespace PT2
         private void emprunt_Click(object sender, EventArgs e)
         {
             
-            if(listBox1.SelectedItem != null)
+            if(listEdition.SelectedItem != null)
             {
                 EMPRUNTER emprunt = new EMPRUNTER();
 
-                ABONNÉS j = (ABONNÉS)listBox1.SelectedItem;
+                ABONNÉS j = (ABONNÉS)listEdition.SelectedItem;
                 bool emprunté = false;
                 emprunt.CODE_ABONNÉ = j.CODE_ABONNÉ;
                 emprunt.DATE_EMPRUNT = DateTime.Now;
@@ -136,9 +136,9 @@ namespace PT2
 
         private void ConsulE_Click(object sender, EventArgs e)
         {
-            if(listBox1.SelectedItem != null)
+            if(listEdition.SelectedItem != null)
             {
-                ABONNÉS j = (ABONNÉS)listBox1.SelectedItem;
+                ABONNÉS j = (ABONNÉS)listEdition.SelectedItem;
                 var albumemprunt = from alb in musique.ALBUMS
                                    join f in musique.EMPRUNTER
                                    on alb.CODE_ALBUM equals f.CODE_ALBUM
@@ -156,9 +156,9 @@ namespace PT2
 
         private void Prolongation_Click(object sender, EventArgs e)
         {
-            if (listBox2.SelectedItem != null)
+            if (listEmprunt.SelectedItem != null)
             {
-                EMPRUNTER albumsEmprunte = (EMPRUNTER)listBox2.SelectedItem;
+                EMPRUNTER albumsEmprunte = (EMPRUNTER)listEmprunt.SelectedItem;
 
                 if (!Prolonge(albumsEmprunte))
                 {
@@ -187,7 +187,7 @@ namespace PT2
         public void EmpruntsNonRapportes()
         {
             empruntsNonRapportes = new List<EMPRUNTER>();
-            var emprunts = (from j in musique.EMPRUNTER
+            var emprunts = (from j in musique.EMPRUNTER 
                             select j).ToList();
             foreach (EMPRUNTER e in emprunts)
             {
@@ -202,10 +202,10 @@ namespace PT2
         private void chargerListBoxRetards()
         {
             EmpruntsNonRapportes();
-            listBox3.Items.Clear();
+            listProlongement.Items.Clear();
             foreach (EMPRUNTER e in empruntsNonRapportes)
             {
-                listBox3.Items.Add(e.ALBUMS.TITRE_ALBUM);
+                listProlongement.Items.Add(e.ALBUMS.TITRE_ALBUM);
             }
         }
 
