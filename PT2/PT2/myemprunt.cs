@@ -11,7 +11,7 @@ namespace PT2
 
         public override string ToString()
         {
-            return ABONNÉS.CODE_ABONNÉ+ "     " + ALBUMS.TITRE_ALBUM + "" + DATE_RETOUR_ATTENDUE;
+            return ABONNÉS.CODE_ABONNÉ+ " " + ALBUMS.TITRE_ALBUM + " " + DATE_RETOUR_ATTENDUE + " " + DATE_RETOUR;
         }
 
         

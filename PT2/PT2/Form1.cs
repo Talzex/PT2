@@ -91,7 +91,7 @@ namespace PT2
                 var emprunt = from a1 in musique.EMPRUNTER
                               where a1.ALBUMS.TITRE_ALBUM == titremprunt.ALBUMS.TITRE_ALBUM
                               select a1;
-                musique.EMPRUNTER.Remove(emprunt.First());
+                titremprunt.DATE_RETOUR = DateTime.Now;
                 musique.SaveChanges();
                 chargerListBoxEmprunter();
             }
@@ -149,7 +149,7 @@ namespace PT2
                                   where f.CODE_ABONNÉ == j.CODE_ABONNÉ
                                   select f;
                 if(dateemprunt.Count() != 0 || albumemprunt.Count() != 0)
-                MessageBox.Show(albumemprunt.First().TITRE_ALBUM + dateemprunt.First().DATE_RETOUR_ATTENDUE.ToString());
+                MessageBox.Show(albumemprunt.First().TITRE_ALBUM + dateemprunt.First().DATE_RETOUR_ATTENDUE.ToString() + " " + dateemprunt.First().DATE_RETOUR.ToString());
             }
             
         }
@@ -191,7 +191,7 @@ namespace PT2
                             select j).ToList();
             foreach (EMPRUNTER e in emprunts)
             {
-                if (e.DATE_RETOUR == null && DateTime.Now.Day - e.DATE_RETOUR_ATTENDUE.Day >= 10)
+                if (e.DATE_RETOUR == null && DateTime.Now.Day - e.DATE_RETOUR_ATTENDUE.Day >= 1)
                 {
                     empruntsNonRapportes.Add(e);
                 }
@@ -224,7 +224,7 @@ namespace PT2
             var abo = from a in musique.ABONNÉS
                       join emp in musique.EMPRUNTER
                       on a.CODE_ABONNÉ equals emp.CODE_ABONNÉ
-                      where 2023 /* DateTime.Now.Year */ -emp.DATE_EMPRUNT.Year >= 1
+                      where 2023  /*DateTime.Now.Year*/  - emp.DATE_EMPRUNT.Year >= 1
                       select a;
             foreach (ABONNÉS a in abo)
             {
