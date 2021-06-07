@@ -164,6 +164,19 @@ namespace PT2
             }
         }
 
+        private void ConsulEmpProlongé_Click(object sender, EventArgs e)
+        {
+            var emprunt = (from j in musique.EMPRUNTER
+                           select j
+                           ).ToList();
+            foreach (EMPRUNTER j in emprunt)
+            {
+                if(Prolonge(j))
+                {
+                    MessageBox.Show(j.ToString());
+                }
+
+            }
         private void chargerListBoxRetards()
         {
             EmpruntsNonRapportes();
