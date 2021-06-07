@@ -19,7 +19,6 @@ namespace PT2
 
         public Form1()
         {
-
             InitializeComponent();
             musique = new MusiquePT2_MEntities();
             chargerListBoxAbonnees();
@@ -41,12 +40,13 @@ namespace PT2
 
         private void chargerListBoxEmprunter()
         {
-            var emprunts = (from j in musique.EMPRUNTER
-                           select j.ALBUMS.TITRE_ALBUM).ToList();
+            var emprunt = (from j in musique.EMPRUNTER
+                           select j
+                           ).ToList();
             listBox2.Items.Clear();
-            foreach (String e in emprunts)
+            foreach (EMPRUNTER j in emprunt)
             {
-                listBox2.Items.Add(e);
+                listBox2.Items.Add(j);
             }
         }
 
@@ -78,9 +78,9 @@ namespace PT2
         {
             if (listBox2.SelectedItem != null)
             {
-                String titremprunt = (String)listBox2.SelectedItem;
+                EMPRUNTER titremprunt = (EMPRUNTER)listBox2.SelectedItem;
                 var emprunt = from a1 in musique.EMPRUNTER
-                              where a1.ALBUMS.TITRE_ALBUM == titremprunt
+                              where a1.ALBUMS.TITRE_ALBUM == titremprunt.ALBUMS.TITRE_ALBUM
                               select a1;
                 musique.EMPRUNTER.Remove(emprunt.First());
                 musique.SaveChanges();
@@ -88,60 +88,79 @@ namespace PT2
             }
         }
 
+
         private void emprunt_Click(object sender, EventArgs e)
         {
-            EMPRUNTER emprunt = new EMPRUNTER();
-            ABONNÉS j = (ABONNÉS)listBox1.SelectedItem;
+            
+            if(listBox1.SelectedItem != null)
+            {
+                EMPRUNTER emprunt = new EMPRUNTER();
 
-            emprunt.CODE_ABONNÉ = j.CODE_ABONNÉ;
-            emprunt.DATE_EMPRUNT = DateTime.Now;
-            emprunt.CODE_ALBUM = 15;
-            var delaiAlbum = from a2 in musique.ALBUMS
-                             where a2.CODE_ALBUM == 15
-                             join p in musique.GENRES
-                             on a2.CODE_GENRE equals p.CODE_GENRE
-                             select p.DÉLAI;
-            emprunt.DATE_RETOUR_ATTENDUE = DateTime.Now.AddDays((double)delaiAlbum.First());
-            musique.EMPRUNTER.Add(emprunt);
-            musique.SaveChanges();
-            chargerListBoxEmprunter();
+                ABONNÉS j = (ABONNÉS)listBox1.SelectedItem;
+                emprunt.CODE_ABONNÉ = j.CODE_ABONNÉ;
+                emprunt.DATE_EMPRUNT = DateTime.Now;
+                emprunt.CODE_ALBUM = 15;
+                var delaiAlbum = from a2 in musique.ALBUMS
+                                 where a2.CODE_ALBUM == 15
+                                 join p in musique.GENRES
+                                 on a2.CODE_GENRE equals p.CODE_GENRE
+                                 select p.DÉLAI;
+                emprunt.DATE_RETOUR_ATTENDUE = DateTime.Now.AddDays((double)delaiAlbum.First());
+                musique.EMPRUNTER.Add(emprunt);
+                musique.SaveChanges();
+                chargerListBoxEmprunter();
+            }
+            
         }
 
-        public void EmpruntsNonRapportes()
+        private void ConsulE_Click(object sender, EventArgs e)
         {
-            empruntsNonRapportes = new List<EMPRUNTER>();
-            var emprunts = (from j in musique.EMPRUNTER
-                            select j).ToList();
-            foreach (EMPRUNTER e in emprunts)
+            if(listBox1.SelectedItem != null)
             {
-                if (e.DATE_RETOUR == null && DateTime.Now.Day - e.DATE_RETOUR_ATTENDUE.Day >= 10)
+                ABONNÉS j = (ABONNÉS)listBox1.SelectedItem;
+                var albumemprunt = from alb in musique.ALBUMS
+                                   join f in musique.EMPRUNTER
+                                   on alb.CODE_ALBUM equals f.CODE_ALBUM
+                                   where f.CODE_ABONNÉ == j.CODE_ABONNÉ
+                                   orderby f.DATE_RETOUR_ATTENDUE
+                                   select alb;
+                var dateemprunt = from f in musique.EMPRUNTER
+                                  where f.CODE_ABONNÉ == j.CODE_ABONNÉ
+                                  select f;
+                if(dateemprunt.Count() != 0 || albumemprunt.Count() != 0)
+                MessageBox.Show(albumemprunt.First().TITRE_ALBUM + dateemprunt.First().DATE_RETOUR_ATTENDUE.ToString());
+            }
+            
+        }
+
+        private void Prolongation_Click(object sender, EventArgs e)
+        {
+            if (listBox2.SelectedItem != null)
+            {
+                EMPRUNTER albumsEmprunte = (EMPRUNTER)listBox2.SelectedItem;
+
+                if (!Prolonge(albumsEmprunte))
                 {
-                    empruntsNonRapportes.Add(e);
+                    albumsEmprunte.DATE_RETOUR_ATTENDUE = albumsEmprunte.DATE_RETOUR_ATTENDUE.AddMonths(1);
+                    musique.SaveChanges();
+                    MessageBox.Show(albumsEmprunte.ALBUMS.TITRE_ALBUM + " " + albumsEmprunte.DATE_RETOUR_ATTENDUE);
+                    chargerListBoxEmprunter();
                 }
             }
-
         }
 
-        public void ConsultEmprunt()
+        private void ConsulEmpProlongé_Click(object sender, EventArgs e)
         {
-            var albumemprunt = from alb in musique.ALBUMS
-                          join e in musique.EMPRUNTER
-                          on alb.CODE_ALBUM equals e.CODE_ALBUM
-                          where e.CODE_ABONNÉ == 27
-                          orderby e.DATE_RETOUR_ATTENDUE
-                          select alb;
-            var dateemprunt = from e in musique.EMPRUNTER
-                              where e.CODE_ABONNÉ == 27
-                              select e;
-            MessageBox.Show(albumemprunt.First().TITRE_ALBUM + " " + dateemprunt.First().DATE_RETOUR_ATTENDUE);
-        }
-
-        public void Prolongement(EMPRUNTER e) {
-
-            if (prolonge)
+            var emprunt = (from j in musique.EMPRUNTER
+                           select j
+                           ).ToList();
+            foreach (EMPRUNTER j in emprunt)
             {
-                e.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                prolonge = false;
+                if(Prolonge(j))
+                {
+                    MessageBox.Show(j.ToString());
+                }
+
             }
         }
 
@@ -158,6 +177,11 @@ namespace PT2
         private void RefreshRetards_Click(object sender, EventArgs e)
         {
             chargerListBoxRetards();
+        }
+
+        private bool Prolonge(EMPRUNTER j)
+        {
+            return j.DATE_EMPRUNT.Month + 1 == j.DATE_RETOUR_ATTENDUE.Month;
         }
     }
 }
