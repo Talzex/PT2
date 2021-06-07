@@ -14,7 +14,6 @@ namespace PT2
     public partial class Form1 : Form
     {
         MusiquePT2_MEntities musique;
-        private bool prolonge;
         List<EMPRUNTER> empruntsNonRapportes;
 
         public Form1()
@@ -97,6 +96,7 @@ namespace PT2
                 EMPRUNTER emprunt = new EMPRUNTER();
 
                 ABONNÉS j = (ABONNÉS)listBox1.SelectedItem;
+                bool emprunté = false;
                 emprunt.CODE_ABONNÉ = j.CODE_ABONNÉ;
                 emprunt.DATE_EMPRUNT = DateTime.Now;
                 emprunt.CODE_ALBUM = 15;
@@ -106,9 +106,20 @@ namespace PT2
                                  on a2.CODE_GENRE equals p.CODE_GENRE
                                  select p.DÉLAI;
                 emprunt.DATE_RETOUR_ATTENDUE = DateTime.Now.AddDays((double)delaiAlbum.First());
-                musique.EMPRUNTER.Add(emprunt);
-                musique.SaveChanges();
-                chargerListBoxEmprunter();
+                foreach (EMPRUNTER emp in j.EMPRUNTER)
+                {
+                    if(emprunt.CODE_ALBUM == emp.CODE_ALBUM && !emprunté)
+                    {
+                        emprunté = true;
+                    }
+                }
+                if (!emprunté)
+                {
+                    musique.EMPRUNTER.Add(emprunt);
+                    musique.SaveChanges();
+                    chargerListBoxEmprunter();
+                }
+                
             }
             
         }

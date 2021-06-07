@@ -106,7 +106,7 @@ namespace PT2
             // 
             // ConsulE
             // 
-            this.ConsulE.Location = new System.Drawing.Point(422, 132);
+            this.ConsulE.Location = new System.Drawing.Point(490, 111);
             this.ConsulE.Margin = new System.Windows.Forms.Padding(2);
             this.ConsulE.Name = "ConsulE";
             this.ConsulE.Size = new System.Drawing.Size(115, 23);
@@ -117,7 +117,7 @@ namespace PT2
             // 
             // Prolongation
             // 
-            this.Prolongation.Location = new System.Drawing.Point(422, 159);
+            this.Prolongation.Location = new System.Drawing.Point(492, 84);
             this.Prolongation.Margin = new System.Windows.Forms.Padding(2);
             this.Prolongation.Name = "Prolongation";
             this.Prolongation.Size = new System.Drawing.Size(115, 23);
@@ -128,7 +128,7 @@ namespace PT2
             // 
             // ConsulEmpProlongé
             // 
-            this.ConsulEmpProlongé.Location = new System.Drawing.Point(11, 295);
+            this.ConsulEmpProlongé.Location = new System.Drawing.Point(422, 187);
             this.ConsulEmpProlongé.Margin = new System.Windows.Forms.Padding(2);
             this.ConsulEmpProlongé.Name = "ConsulEmpProlongé";
             this.ConsulEmpProlongé.Size = new System.Drawing.Size(145, 23);
@@ -140,15 +140,15 @@ namespace PT2
             // listBox3
             // 
             this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(11, 272);
+            this.listBox3.Location = new System.Drawing.Point(9, 187);
             this.listBox3.Margin = new System.Windows.Forms.Padding(2);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(282, 69);
+            this.listBox3.Size = new System.Drawing.Size(409, 69);
             this.listBox3.TabIndex = 7;
             // 
             // RefreshRetards
             // 
-            this.RefreshRetards.Location = new System.Drawing.Point(340, 290);
+            this.RefreshRetards.Location = new System.Drawing.Point(423, 215);
             this.RefreshRetards.Name = "RefreshRetards";
             this.RefreshRetards.Size = new System.Drawing.Size(112, 23);
             this.RefreshRetards.TabIndex = 8;
@@ -164,7 +164,6 @@ namespace PT2
             this.Controls.Add(this.ConsulEmpProlongé);
             this.Controls.Add(this.Prolongation);
             this.Controls.Add(this.ConsulE);
-            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.RefreshRetards);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.retourne);
