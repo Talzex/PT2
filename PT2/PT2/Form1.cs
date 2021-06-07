@@ -14,6 +14,9 @@ namespace PT2
     public partial class Form1 : Form
     {
         MusiquePT2_MEntities musique;
+        MusiquePT2_MEntities bd = new MusiquePT2_MEntities();
+        private bool prolonge;
+
         public Form1()
         {
 
@@ -140,15 +143,11 @@ namespace PT2
 
         public void Prolongement(EMPRUNTER e) {
 
-            if (!e.PROLONGE)
+            if (prolonge)
             {
                 e.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                e.PROLONGE = true;
+                prolonge = false;
             }
-        }
-
-        public int Get_Code_Album(EMPRUNTER e){
-            return e.CODE_ALBUM;
         }
          
     }
