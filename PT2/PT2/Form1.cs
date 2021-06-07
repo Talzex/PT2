@@ -160,7 +160,7 @@ namespace PT2
             {
                 EMPRUNTER albumsEmprunte = (EMPRUNTER)listEmprunt.SelectedItem;
 
-                if (!Prolonge(albumsEmprunte))
+                if (!Prolonge(albumsEmprunte) && albumsEmprunte.DATE_RETOUR == null)
                 {
                     albumsEmprunte.DATE_RETOUR_ATTENDUE = albumsEmprunte.DATE_RETOUR_ATTENDUE.AddMonths(1);
                     musique.SaveChanges();
