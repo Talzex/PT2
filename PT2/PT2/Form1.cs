@@ -163,20 +163,21 @@ namespace PT2
 
             }
         }
-
-        private void ConsulEmpProlongé_Click(object sender, EventArgs e)
+        public void EmpruntsNonRapportes()
         {
-            var emprunt = (from j in musique.EMPRUNTER
-                           select j
-                           ).ToList();
-            foreach (EMPRUNTER j in emprunt)
+            empruntsNonRapportes = new List<EMPRUNTER>();
+            var emprunts = (from j in musique.EMPRUNTER
+                            select j).ToList();
+            foreach (EMPRUNTER e in emprunts)
             {
-                if(Prolonge(j))
+                if (e.DATE_RETOUR == null && DateTime.Now.Day - e.DATE_RETOUR_ATTENDUE.Day >= 10)
                 {
-                    MessageBox.Show(j.ToString());
+                    empruntsNonRapportes.Add(e);
                 }
-
             }
+
+        }
+
         private void chargerListBoxRetards()
         {
             EmpruntsNonRapportes();
