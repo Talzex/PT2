@@ -40,6 +40,8 @@ namespace PT2
             this.ConsulEmpProlongé = new System.Windows.Forms.Button();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.RefreshRetards = new System.Windows.Forms.Button();
+            this.listPurge = new System.Windows.Forms.ListBox();
+            this.Purgeur = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -156,11 +158,32 @@ namespace PT2
             this.RefreshRetards.UseVisualStyleBackColor = true;
             this.RefreshRetards.Click += new System.EventHandler(this.RefreshRetards_Click);
             // 
+            // listPurge
+            // 
+            this.listPurge.FormattingEnabled = true;
+            this.listPurge.Location = new System.Drawing.Point(9, 260);
+            this.listPurge.Margin = new System.Windows.Forms.Padding(2);
+            this.listPurge.Name = "listPurge";
+            this.listPurge.Size = new System.Drawing.Size(409, 69);
+            this.listPurge.TabIndex = 9;
+            // 
+            // Purgeur
+            // 
+            this.Purgeur.Location = new System.Drawing.Point(423, 285);
+            this.Purgeur.Name = "Purgeur";
+            this.Purgeur.Size = new System.Drawing.Size(112, 23);
+            this.Purgeur.TabIndex = 10;
+            this.Purgeur.Text = "Purgeur";
+            this.Purgeur.UseVisualStyleBackColor = true;
+            this.Purgeur.Click += new System.EventHandler(this.Purgeur_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.Purgeur);
+            this.Controls.Add(this.listPurge);
             this.Controls.Add(this.ConsulEmpProlongé);
             this.Controls.Add(this.Prolongation);
             this.Controls.Add(this.ConsulE);
@@ -192,6 +215,8 @@ namespace PT2
         private System.Windows.Forms.Button ConsulEmpProlongé;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Button RefreshRetards;
+        private System.Windows.Forms.ListBox listPurge;
+        private System.Windows.Forms.Button Purgeur;
     }
 }
 
