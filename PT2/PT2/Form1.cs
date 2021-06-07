@@ -15,6 +15,7 @@ namespace PT2
     {
         MusiquePT2_MEntities musique;
         private bool prolonge;
+        List<EMPRUNTER> empruntsNonRapportes;
 
         public Form1()
         {
@@ -23,7 +24,8 @@ namespace PT2
             musique = new MusiquePT2_MEntities();
             chargerListBoxAbonnees();
             chargerListBoxEmprunter();
-            ConsultEmprunt();
+            chargerListBoxRetards();
+            //ConsultEmprunt();
         }
 
         private void chargerListBoxAbonnees()
@@ -39,12 +41,12 @@ namespace PT2
 
         private void chargerListBoxEmprunter()
         {
-            var joueurs = (from j in musique.EMPRUNTER
+            var emprunts = (from j in musique.EMPRUNTER
                            select j.ALBUMS.TITRE_ALBUM).ToList();
             listBox2.Items.Clear();
-            foreach (String j in joueurs)
+            foreach (String e in emprunts)
             {
-                listBox2.Items.Add(j);
+                listBox2.Items.Add(e);
             }
         }
 
@@ -105,6 +107,21 @@ namespace PT2
             chargerListBoxEmprunter();
         }
 
+        public void EmpruntsNonRapportes()
+        {
+            empruntsNonRapportes = new List<EMPRUNTER>();
+            var emprunts = (from j in musique.EMPRUNTER
+                            select j).ToList();
+            foreach (EMPRUNTER e in emprunts)
+            {
+                if (e.DATE_RETOUR == null && DateTime.Now.Day - e.DATE_RETOUR_ATTENDUE.Day >= 10)
+                {
+                    empruntsNonRapportes.Add(e);
+                }
+            }
+
+        }
+
         public void ConsultEmprunt()
         {
             var albumemprunt = from alb in musique.ALBUMS
@@ -127,7 +144,21 @@ namespace PT2
                 prolonge = false;
             }
         }
-         
+
+        private void chargerListBoxRetards()
+        {
+            EmpruntsNonRapportes();
+            listBox3.Items.Clear();
+            foreach (EMPRUNTER e in empruntsNonRapportes)
+            {
+                listBox3.Items.Add(e.ALBUMS.TITRE_ALBUM);
+            }
+        }
+
+        private void RefreshRetards_Click(object sender, EventArgs e)
+        {
+            chargerListBoxRetards();
+        }
     }
 }
 
