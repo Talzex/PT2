@@ -43,13 +43,14 @@ namespace PT2
             // Prolongation
             // 
             this.Prolongation.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.Prolongation.Location = new System.Drawing.Point(591, 357);
+            this.Prolongation.Location = new System.Drawing.Point(726, 357);
             this.Prolongation.Margin = new System.Windows.Forms.Padding(2);
             this.Prolongation.Name = "Prolongation";
             this.Prolongation.Size = new System.Drawing.Size(198, 23);
             this.Prolongation.TabIndex = 12;
             this.Prolongation.Text = "Prolonger Emprunt";
             this.Prolongation.UseVisualStyleBackColor = false;
+            this.Prolongation.Click += new System.EventHandler(this.Prolongation_Click);
             // 
             // retourne
             // 
@@ -81,7 +82,7 @@ namespace PT2
             this.listEmprunt.Location = new System.Drawing.Point(444, 11);
             this.listEmprunt.Margin = new System.Windows.Forms.Padding(2);
             this.listEmprunt.Name = "listEmprunt";
-            this.listEmprunt.Size = new System.Drawing.Size(345, 329);
+            this.listEmprunt.Size = new System.Drawing.Size(480, 329);
             this.listEmprunt.TabIndex = 8;
             // 
             // ListeDisques
@@ -131,7 +132,7 @@ namespace PT2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(977, 450);
             this.Controls.Add(this.precedent);
             this.Controls.Add(this.suivant);
             this.Controls.Add(this.textBox1);

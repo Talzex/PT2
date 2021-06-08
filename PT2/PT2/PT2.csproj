@@ -98,7 +98,11 @@
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="myabonne.cs" />
+    <Compile Include="myalbum.cs" />
     <Compile Include="myemprunt.cs" />
+    <Compile Include="OpAbonne.cs" />
+    <Compile Include="OpAdministator.cs" />
+    <Compile Include="OpUSER.cs" />
     <Compile Include="PAYS.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
