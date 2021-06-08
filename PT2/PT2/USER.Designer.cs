@@ -43,10 +43,10 @@ namespace PT2
             // Prolongation
             // 
             this.Prolongation.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.Prolongation.Location = new System.Drawing.Point(726, 357);
-            this.Prolongation.Margin = new System.Windows.Forms.Padding(2);
+            this.Prolongation.Location = new System.Drawing.Point(968, 439);
+            this.Prolongation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Prolongation.Name = "Prolongation";
-            this.Prolongation.Size = new System.Drawing.Size(198, 23);
+            this.Prolongation.Size = new System.Drawing.Size(264, 28);
             this.Prolongation.TabIndex = 12;
             this.Prolongation.Text = "Prolonger Emprunt";
             this.Prolongation.UseVisualStyleBackColor = false;
@@ -55,10 +55,10 @@ namespace PT2
             // retourne
             // 
             this.retourne.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.retourne.Location = new System.Drawing.Point(444, 357);
-            this.retourne.Margin = new System.Windows.Forms.Padding(2);
+            this.retourne.Location = new System.Drawing.Point(592, 439);
+            this.retourne.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.retourne.Name = "retourne";
-            this.retourne.Size = new System.Drawing.Size(143, 23);
+            this.retourne.Size = new System.Drawing.Size(191, 28);
             this.retourne.TabIndex = 10;
             this.retourne.Text = "Retourner";
             this.retourne.UseVisualStyleBackColor = false;
@@ -67,10 +67,10 @@ namespace PT2
             // emprunt
             // 
             this.emprunt.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.emprunt.Location = new System.Drawing.Point(99, 399);
-            this.emprunt.Margin = new System.Windows.Forms.Padding(2);
+            this.emprunt.Location = new System.Drawing.Point(198, 425);
+            this.emprunt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.emprunt.Name = "emprunt";
-            this.emprunt.Size = new System.Drawing.Size(113, 23);
+            this.emprunt.Size = new System.Drawing.Size(151, 28);
             this.emprunt.TabIndex = 9;
             this.emprunt.Text = "Emprunter";
             this.emprunt.UseVisualStyleBackColor = false;
@@ -79,60 +79,67 @@ namespace PT2
             // listEmprunt
             // 
             this.listEmprunt.FormattingEnabled = true;
-            this.listEmprunt.Location = new System.Drawing.Point(444, 11);
-            this.listEmprunt.Margin = new System.Windows.Forms.Padding(2);
+            this.listEmprunt.ItemHeight = 16;
+            this.listEmprunt.Location = new System.Drawing.Point(592, 14);
+            this.listEmprunt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listEmprunt.Name = "listEmprunt";
-            this.listEmprunt.Size = new System.Drawing.Size(480, 329);
+            this.listEmprunt.Size = new System.Drawing.Size(639, 404);
             this.listEmprunt.TabIndex = 8;
             // 
             // ListeDisques
             // 
             this.ListeDisques.FormattingEnabled = true;
-            this.ListeDisques.Location = new System.Drawing.Point(11, 11);
-            this.ListeDisques.Margin = new System.Windows.Forms.Padding(2);
+            this.ListeDisques.ItemHeight = 16;
+            this.ListeDisques.Location = new System.Drawing.Point(15, 14);
+            this.ListeDisques.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ListeDisques.Name = "ListeDisques";
-            this.ListeDisques.Size = new System.Drawing.Size(393, 329);
+            this.ListeDisques.Size = new System.Drawing.Size(523, 404);
             this.ListeDisques.TabIndex = 13;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 377);
+            this.label1.Location = new System.Drawing.Point(32, 464);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.Size = new System.Drawing.Size(89, 17);
             this.label1.TabIndex = 14;
             this.label1.Text = "Recherche : ";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(99, 374);
+            this.textBox1.Location = new System.Drawing.Point(132, 460);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(305, 20);
+            this.textBox1.Size = new System.Drawing.Size(405, 22);
             this.textBox1.TabIndex = 15;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // suivant
             // 
-            this.suivant.Location = new System.Drawing.Point(319, 345);
+            this.suivant.Location = new System.Drawing.Point(425, 425);
+            this.suivant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.suivant.Name = "suivant";
-            this.suivant.Size = new System.Drawing.Size(85, 23);
+            this.suivant.Size = new System.Drawing.Size(113, 28);
             this.suivant.TabIndex = 16;
             this.suivant.Text = "Suivant";
             this.suivant.UseVisualStyleBackColor = true;
             // 
             // precedent
             // 
-            this.precedent.Location = new System.Drawing.Point(12, 345);
+            this.precedent.Location = new System.Drawing.Point(16, 425);
+            this.precedent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.precedent.Name = "precedent";
-            this.precedent.Size = new System.Drawing.Size(85, 23);
+            this.precedent.Size = new System.Drawing.Size(113, 28);
             this.precedent.TabIndex = 17;
             this.precedent.Text = "Précédent";
             this.precedent.UseVisualStyleBackColor = true;
             // 
             // USER
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 450);
+            this.ClientSize = new System.Drawing.Size(1303, 554);
             this.Controls.Add(this.precedent);
             this.Controls.Add(this.suivant);
             this.Controls.Add(this.textBox1);
@@ -142,6 +149,7 @@ namespace PT2
             this.Controls.Add(this.retourne);
             this.Controls.Add(this.emprunt);
             this.Controls.Add(this.listEmprunt);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "USER";
             this.Text = "USER";
             this.ResumeLayout(false);

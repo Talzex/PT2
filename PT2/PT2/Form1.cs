@@ -27,25 +27,7 @@ namespace PT2
         {
             InitializeComponent();
             musique = new MusiquePT2_MEntities();
-            //chargerListBoxAbonnees();
-
-            //chargerListBoxRetards();
-            //ConsultEmprunt();
         }
-
-        /*private void chargerListBoxAbonnees()
-        {
-            var abonne = (from j in musique.ABONNÉS
-                          select j).ToList();
-            listEdition.Items.Clear();
-            foreach (ABONNÉS j in abonne)
-            {
-                listEdition.Items.Add(j);
-            }
-        }*/
-
-        
-
         
         private void ajouter_Click(object sender, EventArgs e)
         {
@@ -62,16 +44,6 @@ namespace PT2
             Refresh();
 
         }
-        /*private void supp_Click(object sender, EventArgs e)
-        {
-            if (listEdition.SelectedItem != null)
-            {
-                ABONNÉS j = (ABONNÉS)listEdition.SelectedItem;
-                musique.ABONNÉS.Remove(j);
-                musique.SaveChanges();
-                chargerListBoxAbonnees();
-            }
-        }*/
 
         private void textBox_nom_TextChanged(object sender, EventArgs e)
         {

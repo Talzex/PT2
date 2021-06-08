@@ -32,6 +32,7 @@ namespace PT2
         {
             var emprunt = (from j in musique.EMPRUNTER
                            where j.CODE_ABONNÉ == abonne.CODE_ABONNÉ
+                           orderby j.DATE_EMPRUNT ascending
                            select j).ToList();
             listEmprunt.Items.Clear();
             foreach (EMPRUNTER j in emprunt)
@@ -72,26 +73,6 @@ namespace PT2
             }
         }
 
-        /*private void ConsulE_Click(object sender, EventArgs e)
-            {
-                if (listEdition.SelectedItem != null)
-                {
-                    ABONNÉS j = (ABONNÉS)listEdition.SelectedItem;
-                    var albumemprunt = from alb in musique.ALBUMS
-                                       join f in musique.EMPRUNTER
-                                       on alb.CODE_ALBUM equals f.CODE_ALBUM
-                                       where f.CODE_ABONNÉ == j.CODE_ABONNÉ
-                                       orderby f.DATE_RETOUR_ATTENDUE
-                                       select alb;
-                    var dateemprunt = from f in musique.EMPRUNTER
-                                      where f.CODE_ABONNÉ == j.CODE_ABONNÉ
-                                      select f;
-                    if (dateemprunt.Count() != 0 || albumemprunt.Count() != 0)
-                        MessageBox.Show(albumemprunt.First().TITRE_ALBUM + dateemprunt.First().DATE_RETOUR_ATTENDUE.ToString() + " " + dateemprunt.First().DATE_RETOUR.ToString());
-                }
-
-        }*/
-
         private void Prolongation_Click(object sender, EventArgs e)
         {
             if (listEmprunt.SelectedItem != null)
@@ -100,6 +81,23 @@ namespace PT2
                 opu.prolongation(albumsEmprunte);
                 chargerListBoxEmprunter();
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+   
+            ListeDisques.Items.Clear();
+            if(textBox1.Text != "")
+            {
+                foreach (ALBUMS al in opu.RechercheAlbum(textBox1.Text))
+                {
+                    ListeDisques.Items.Add(al);
+                }
+            } else
+            {
+                chargerListBoxDisques();
+            }
+            
         }
     }
 }

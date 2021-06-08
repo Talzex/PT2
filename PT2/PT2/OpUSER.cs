@@ -65,5 +65,19 @@ namespace PT2
         {
             return j.DATE_EMPRUNT.Month + 1 == j.DATE_RETOUR_ATTENDUE.Month;
         }
+
+        public List<ALBUMS> RechercheAlbum(String textBox1)
+        {
+            List<ALBUMS> albumsR = new List<ALBUMS>();
+            var albumR = (from al in musique.ALBUMS
+                             where al.TITRE_ALBUM.ToUpper().Contains(textBox1.ToUpper())
+                             orderby al.TITRE_ALBUM
+                             select al).ToList();
+            foreach (ALBUMS al in albumR)
+            {
+                albumsR.Add(al);
+            }
+            return albumR;
+        }
     }
 }
