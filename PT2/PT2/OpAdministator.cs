@@ -9,6 +9,7 @@ namespace PT2
     class OpAdministator
     {
         MusiquePT2_MEntities musique;
+        List<EMPRUNTER> empruntsNonRapportes;
 
         public OpAdministator(MusiquePT2_MEntities musique)
         {
@@ -40,11 +41,7 @@ namespace PT2
             var abo = from a in musique.ABONNÉS
                       join emp in musique.EMPRUNTER
                       on a.CODE_ABONNÉ equals emp.CODE_ABONNÉ
-                      where DateTime.Now.Year - emp.DATE_EMPRUNT.Year >= 1
-                      where DateTime.Now.Month - emp.DATE_EMPRUNT.Month >= 0
-                      where DateTime.Now.Day - emp.DATE_EMPRUNT.Day >= 0
-                      where DateTime.Now.Hour - emp.DATE_EMPRUNT.Hour >= 0
-                      where DateTime.Now.Minute - emp.DATE_EMPRUNT.Minute >= 0
+                      where DateTime.Now.Subtract(emp.DATE_EMPRUNT).TotalDays >= 365
                       select a;
             foreach (ABONNÉS a in abo)
             {
@@ -54,6 +51,22 @@ namespace PT2
             }
             musique.SaveChanges();
         }
+
+        public List<EMPRUNTER> RetardEmprunt()
+        {
+            empruntsNonRapportes = new List<EMPRUNTER>();
+            var emprunts = (from j in musique.EMPRUNTER
+                            select j).ToList();
+            foreach (EMPRUNTER e in emprunts)
+            {
+                if (e.DATE_RETOUR == null && DateTime.Now.Subtract(e.DATE_RETOUR_ATTENDUE).TotalDays >= 10)
+                {
+                    empruntsNonRapportes.Add(e);
+                }
+            }
+            return empruntsNonRapportes;
+        }
+                
 
     }
 }

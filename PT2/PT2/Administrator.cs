@@ -12,7 +12,7 @@ namespace PT2
 {
     public partial class Administrator : Form
     {
-        List<EMPRUNTER> empruntsNonRapportes;
+        
         MusiquePT2_MEntities musique;
         OpAdministator Opa;
 
@@ -27,11 +27,12 @@ namespace PT2
 
         private void chargerListBoxRetards()
         {
-            EmpruntsNonRapportes();
-            listProlongement.Items.Clear();
-            foreach (EMPRUNTER e in empruntsNonRapportes)
+            var emprunt = (from emp in musique.EMPRUNTER
+                           select emp).ToList();
+            listEmprunt.Items.Clear();
+            foreach (EMPRUNTER p in emprunt)
             {
-                listProlongement.Items.Add(e.ALBUMS.TITRE_ALBUM);
+                listEmprunt.Items.Add(p.ToString());
             }
         }
 
@@ -46,32 +47,13 @@ namespace PT2
             }
         }
 
-        public void EmpruntsNonRapportes()
-        {
-            empruntsNonRapportes = new List<EMPRUNTER>();
-            var emprunts = (from j in musique.EMPRUNTER
-                            select j).ToList();
-            foreach (EMPRUNTER e in emprunts)
-            {
-                if (e.DATE_RETOUR == null && DateTime.Now.Day - e.DATE_RETOUR_ATTENDUE.Day >= 10)
-                {
-                    empruntsNonRapportes.Add(e);
-                }
-            }
-        }
-
         private void ConsulEmpProlongé_Click(object sender, EventArgs e)
         {
-            listProlongement.Items.Clear();
+            listEmprunt.Items.Clear();
             foreach (EMPRUNTER emp in Opa.EmpruntProlonge())
             {
-                listProlongement.Items.Add(emp);
-            }   
-        }
-
-        private void RefreshRetards_Click(object sender, EventArgs e)
-        {
-            chargerListBoxRetards();
+                listEmprunt.Items.Add(emp);
+            }
         }
 
         
@@ -83,5 +65,14 @@ namespace PT2
             
         }
 
+        private void RetardsRetourEmprunt_Click(object sender, EventArgs e)
+        {
+            Opa.RetardEmprunt();
+            listEmprunt.Items.Clear();
+            foreach (EMPRUNTER emp in Opa.RetardEmprunt())
+            {
+                listEmprunt.Items.Add(emp);
+            }
+        }
     }
 }
