@@ -45,6 +45,8 @@ namespace PT2
             this.ProlongeTousEmprunts = new System.Windows.Forms.Button();
             this.AlbumNonEmp = new System.Windows.Forms.Button();
             this.TopAlbumEmp = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.ListAbo = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // listEdition
@@ -221,11 +223,31 @@ namespace PT2
             this.TopAlbumEmp.UseVisualStyleBackColor = true;
             this.TopAlbumEmp.Click += new System.EventHandler(this.TopAlbumEmp_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(47, 99);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // ListAbo
+            // 
+            this.ListAbo.FormattingEnabled = true;
+            this.ListAbo.Location = new System.Drawing.Point(27, 143);
+            this.ListAbo.Name = "ListAbo";
+            this.ListAbo.Size = new System.Drawing.Size(120, 95);
+            this.ListAbo.TabIndex = 14;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(754, 378);
+            this.Controls.Add(this.ListAbo);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.AlbumNonEmp);
             this.Controls.Add(this.ProlongeTousEmprunts);
             this.Controls.Add(this.Purgeur);
@@ -267,6 +289,8 @@ namespace PT2
         private System.Windows.Forms.Button Purgeur;
         private System.Windows.Forms.Button ProlongeTousEmprunts;
         private System.Windows.Forms.Button AlbumNonEmp;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ListBox ListAbo;
     }
 }
 

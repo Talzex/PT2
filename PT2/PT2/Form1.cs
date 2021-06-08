@@ -304,7 +304,30 @@ namespace PT2
             }
 
         }
+        public void chargerListAbos()
+        {
+            var abonne = (from j in musique.ABONNÉS
+                          select j).ToList();
+            ListAbo.Items.Clear();
+            if (abonne != null)
+            {
+                foreach (ABONNÉS j in abonne)
+                {
+                    ListAbo.Items.Add(j);
+                }
+            } else { 
+                    MessageBox.Show("Il n'y a aucun abonnés");
+                }
+            }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            chargerListAbos();
+        }
+
+  
     }
-}
+    }
+  
             
 
