@@ -272,10 +272,15 @@ namespace PT2
                     MessageBox.Show(a.TITRE_ALBUM + " ");
                 }
             }
+
+            else
+            {
+                MessageBox.Show("Aucun Album n'a été emprunté il y a plus d'un ans");
+            }
+
         }
 
    
-
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -303,12 +308,5 @@ namespace PT2
         }
     }
 }
-            else
-            {
-                MessageBox.Show("Aucun Album n'a été emprunté il y a plus d'un ans");
-            }
-
-        }
-    }
-}
+            
 
