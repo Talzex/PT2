@@ -14,7 +14,7 @@ namespace PT2
     public partial class Form1 : Form
     {
         MusiquePT2_MEntities musique;
-        List<EMPRUNTER> empruntsNonRapportes;
+        
         String nomAbonne;
         String prenomAbonne;
         String loginAbonne;
@@ -46,16 +46,7 @@ namespace PT2
 
         
 
-        /*private void chargerListBoxPurge()
-        {
-            var purge = (from p in musique.ABONNÉS
-                         select p.NOM_ABONNÉ).ToList();
-            listPurge.Items.Clear();
-            foreach (String p in purge)
-            {
-                listPurge.Items.Add(p);
-            }
-        }*/
+        
         private void ajouter_Click(object sender, EventArgs e)
         {
             bool unique = true;
