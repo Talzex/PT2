@@ -23,7 +23,6 @@ namespace PT2
             chargerListBoxAbonnees();
             chargerListBoxEmprunter();
             chargerListBoxRetards();
-            //ConsultEmprunt();
         }
 
         private void chargerListBoxAbonnees()
@@ -100,8 +99,8 @@ namespace PT2
 
         private void emprunt_Click(object sender, EventArgs e)
         {
-            
-            if(listEdition.SelectedItem != null)
+
+            if (listEdition.SelectedItem != null)
             {
                 EMPRUNTER emprunt = new EMPRUNTER();
 
@@ -118,7 +117,7 @@ namespace PT2
                 emprunt.DATE_RETOUR_ATTENDUE = DateTime.Now.AddDays((double)delaiAlbum.First());
                 foreach (EMPRUNTER emp in j.EMPRUNTER)
                 {
-                    if(emprunt.CODE_ALBUM == emp.CODE_ALBUM && !emprunté)
+                    if (emprunt.CODE_ALBUM == emp.CODE_ALBUM && !emprunté)
                     {
                         emprunté = true;
                     }
@@ -129,14 +128,14 @@ namespace PT2
                     musique.SaveChanges();
                     chargerListBoxEmprunter();
                 }
-                
+
             }
-            
+
         }
 
         private void ConsulE_Click(object sender, EventArgs e)
         {
-            if(listEdition.SelectedItem != null)
+            if (listEdition.SelectedItem != null)
             {
                 ABONNÉS j = (ABONNÉS)listEdition.SelectedItem;
                 var albumemprunt = from alb in musique.ALBUMS
@@ -148,10 +147,10 @@ namespace PT2
                 var dateemprunt = from f in musique.EMPRUNTER
                                   where f.CODE_ABONNÉ == j.CODE_ABONNÉ
                                   select f;
-                if(dateemprunt.Count() != 0 || albumemprunt.Count() != 0)
-                MessageBox.Show(albumemprunt.First().TITRE_ALBUM + dateemprunt.First().DATE_RETOUR_ATTENDUE.ToString() + " " + dateemprunt.First().DATE_RETOUR.ToString());
+                if (dateemprunt.Count() != 0 || albumemprunt.Count() != 0)
+                    MessageBox.Show(albumemprunt.First().TITRE_ALBUM + dateemprunt.First().DATE_RETOUR_ATTENDUE.ToString() + " " + dateemprunt.First().DATE_RETOUR.ToString());
             }
-            
+
         }
 
         private void Prolongation_Click(object sender, EventArgs e)
@@ -177,7 +176,7 @@ namespace PT2
                            ).ToList();
             foreach (EMPRUNTER j in emprunt)
             {
-                if(Prolonge(j))
+                if (Prolonge(j))
                 {
                     MessageBox.Show(j.ToString());
                 }
@@ -187,7 +186,7 @@ namespace PT2
         public void EmpruntsNonRapportes()
         {
             empruntsNonRapportes = new List<EMPRUNTER>();
-            var emprunts = (from j in musique.EMPRUNTER 
+            var emprunts = (from j in musique.EMPRUNTER
                             select j).ToList();
             foreach (EMPRUNTER e in emprunts)
             {
@@ -224,7 +223,7 @@ namespace PT2
             var abo = from a in musique.ABONNÉS
                       join emp in musique.EMPRUNTER
                       on a.CODE_ABONNÉ equals emp.CODE_ABONNÉ
-                      where 2023  /*DateTime.Now.Year*/  - emp.DATE_EMPRUNT.Year >= 1
+                      where DateTime.Now.Year - emp.DATE_EMPRUNT.Year >= 1
                       select a;
             foreach (ABONNÉS a in abo)
             {
@@ -234,6 +233,31 @@ namespace PT2
             }
             //musique.SaveChanges();
             //chargerListBoxAbonnees();
+        }
+
+        private void AlbumNonEmp_Click(object sender, EventArgs e)
+        {
+            var albumNonEmpruntesDepuisUnAn = (from a in musique.ALBUMS
+                                               join emp in musique.EMPRUNTER
+                                               on a.CODE_ALBUM equals emp.CODE_ALBUM
+                                               where DateTime.Now.Year - emp.DATE_EMPRUNT.Year >= 1
+                                               where DateTime.Now.Month - emp.DATE_EMPRUNT.Month >= 0
+                                               where DateTime.Now.Day - emp.DATE_EMPRUNT.Day >= 0
+                                               where DateTime.Now.Hour - emp.DATE_EMPRUNT.Hour >= 0
+                                               where DateTime.Now.Minute - emp.DATE_EMPRUNT.Minute >= 0
+                                               select a);
+            if (albumNonEmpruntesDepuisUnAn.Count() != 0)
+            {
+                foreach (ALBUMS a in albumNonEmpruntesDepuisUnAn)
+                {
+                    MessageBox.Show(a.TITRE_ALBUM + " ");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Aucun Album n'a été emprunté il y a plus d'un ans");
+            }
+
         }
     }
 }

@@ -42,6 +42,7 @@ namespace PT2
             this.RefreshRetards = new System.Windows.Forms.Button();
             this.listPurge = new System.Windows.Forms.ListBox();
             this.Purgeur = new System.Windows.Forms.Button();
+            this.AlbumNonEmp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listEdition
@@ -187,11 +188,23 @@ namespace PT2
             this.Purgeur.UseVisualStyleBackColor = false;
             this.Purgeur.Click += new System.EventHandler(this.Purgeur_Click);
             // 
+            // AlbumNonEmp
+            // 
+            this.AlbumNonEmp.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.AlbumNonEmp.Location = new System.Drawing.Point(494, 476);
+            this.AlbumNonEmp.Name = "AlbumNonEmp";
+            this.AlbumNonEmp.Size = new System.Drawing.Size(112, 23);
+            this.AlbumNonEmp.TabIndex = 11;
+            this.AlbumNonEmp.Text = "AlbumNonEmp";
+            this.AlbumNonEmp.UseVisualStyleBackColor = false;
+            this.AlbumNonEmp.Click += new System.EventHandler(this.AlbumNonEmp_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 554);
+            this.Controls.Add(this.AlbumNonEmp);
             this.Controls.Add(this.Purgeur);
             this.Controls.Add(this.listPurge);
             this.Controls.Add(this.ConsulEmpProlongé);
@@ -227,6 +240,7 @@ namespace PT2
         private System.Windows.Forms.Button RefreshRetards;
         private System.Windows.Forms.ListBox listPurge;
         private System.Windows.Forms.Button Purgeur;
+        private System.Windows.Forms.Button AlbumNonEmp;
     }
 }
 
