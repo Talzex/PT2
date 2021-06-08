@@ -122,5 +122,6 @@ namespace PT2
         {
             return j.DATE_EMPRUNT.Month + 1 == j.DATE_RETOUR_ATTENDUE.Month;
         }
+
     }
 }

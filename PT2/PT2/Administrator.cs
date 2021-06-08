@@ -22,7 +22,7 @@ namespace PT2
             chargerListBoxPurge();
             chargerListBoxRetards();
         }
-        
+
         private void chargerListBoxRetards()
         {
             EmpruntsNonRapportes();
@@ -51,7 +51,7 @@ namespace PT2
                             select j).ToList();
             foreach (EMPRUNTER e in emprunts)
             {
-                if (e.DATE_RETOUR == null && DateTime.Now.Day - e.DATE_RETOUR_ATTENDUE.Day >= 1)
+                if (e.DATE_RETOUR == null && DateTime.Now.Day - e.DATE_RETOUR_ATTENDUE.Day >= 10)
                 {
                     empruntsNonRapportes.Add(e);
                 }
@@ -60,14 +60,14 @@ namespace PT2
 
         private void ConsulEmpProlongé_Click(object sender, EventArgs e)
         {
+            listProlongement.Items.Clear();
             var emprunt = (from j in musique.EMPRUNTER
-                           select j
-                           ).ToList();
+                           select j).ToList();
             foreach (EMPRUNTER j in emprunt)
             {
                 if(Prolonge(j))
                 {
-                    MessageBox.Show(j.ToString());
+                    listProlongement.Items.Add(j.ToString());
                 }
 
             }
@@ -99,5 +99,6 @@ namespace PT2
             //musique.SaveChanges();
             //chargerListBoxAbonnees();
         }
+
     }
 }
