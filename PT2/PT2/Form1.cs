@@ -45,55 +45,6 @@ namespace PT2
 
         }
 
-        
-
-        /*private void ProlongeTousEmprunts_Click(object sender, EventArgs e)
-        {
-            var emprunt = from emp in musique.EMPRUNTER
-                          join abo in musique.ABONNÉS
-                          on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
-                          where emp.CODE_ABONNÉ == abo.CODE_ABONNÉ
-                          select emp;
-            foreach(EMPRUNTER emp in emprunt)
-            {
-                if (!Prolonge(emp) && emp.DATE_RETOUR == null)
-                {
-                    emp.DATE_RETOUR_ATTENDUE = emp.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                }
-            }
-            MessageBox.Show("Tous les emprunts ont été prolongés.");
-            musique.SaveChanges();
-            chargerListBoxEmprunter();
-        }
-
-        private void ConsulEmpProlongé_Click(object sender, EventArgs e)
-        {
-            var emprunt = (from j in musique.EMPRUNTER
-                           select j
-                           ).ToList();
-            foreach (EMPRUNTER j in emprunt)
-            {
-                if (Prolonge(j))
-                {
-                    MessageBox.Show(j.ToString());
-                }
-
-            }
-        }
-        public void EmpruntsNonRapportes()
-        {
-            empruntsNonRapportes = new List<EMPRUNTER>();
-            var emprunts = (from j in musique.EMPRUNTER
-                            select j).ToList();
-            foreach (EMPRUNTER e in emprunts)
-            {
-                if (e.DATE_RETOUR == null && DateTime.Now.Day - e.DATE_RETOUR_ATTENDUE.Day >= 1)
-                {
-                    empruntsNonRapportes.Add(e);
-                }
-            }
-
-        }*/
 
         private void textBox_nom_TextChanged(object sender, EventArgs e)
         {
@@ -130,97 +81,7 @@ namespace PT2
             mdpIn = textBox_mdpIn.Text;
         }
 
-
-
-
-        /*private void chargerListBoxRetards()
-        {
-            EmpruntsNonRapportes();
-            listProlongement.Items.Clear();
-            foreach (EMPRUNTER e in empruntsNonRapportes)
-            {
-                listProlongement.Items.Add(e.ALBUMS.TITRE_ALBUM);
-            }
-        }*/
-
-        /*private void RefreshRetards_Click(object sender, EventArgs e)
-        {
-            chargerListBoxRetards();
-        }*/
-
-        /*private bool Prolonge(EMPRUNTER j)
-        {
-            return j.DATE_EMPRUNT.Month + 1 == j.DATE_RETOUR_ATTENDUE.Month;
-        }*/
-
-        /*private void Purgeur_Click(object sender, EventArgs e)
-        {
-            var abo = from a in musique.ABONNÉS
-                      join emp in musique.EMPRUNTER
-                      on a.CODE_ABONNÉ equals emp.CODE_ABONNÉ
-                      where DateTime.Now.Year - emp.DATE_EMPRUNT.Year >= 1
-                      select a;
-            foreach (ABONNÉS a in abo)
-            {
-                //musique.ABONNÉS.Remove(a);
-                chargerListBoxPurge();
-
-            }
-            //musique.SaveChanges();
-            //chargerListBoxAbonnees();
-        }
-
-        private void AlbumNonEmp_Click(object sender, EventArgs e)
-        {
-            var albumNonEmpruntesDepuisUnAn = (from a in musique.ALBUMS
-                                               join emp in musique.EMPRUNTER
-                                               on a.CODE_ALBUM equals emp.CODE_ALBUM
-                                               where DateTime.Now.Year - emp.DATE_EMPRUNT.Year >= 1
-                                               where DateTime.Now.Month - emp.DATE_EMPRUNT.Month >= 0
-                                               where DateTime.Now.Day - emp.DATE_EMPRUNT.Day >= 0
-                                               where DateTime.Now.Hour - emp.DATE_EMPRUNT.Hour >= 0
-                                               where DateTime.Now.Minute - emp.DATE_EMPRUNT.Minute >= 0
-                                               select a);
-            if (albumNonEmpruntesDepuisUnAn.Count() != 0)
-            {
-                foreach (ALBUMS a in albumNonEmpruntesDepuisUnAn)
-                {
-                    MessageBox.Show(a.TITRE_ALBUM + " ");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Aucun Album n'a été emprunté il y a plus d'un ans");
-            }
-
-        }
-
-        private void TopAlbumEmp_Click(object sender, EventArgs e)
-        {
-            var topAlbum = from al in musique.ALBUMS
-                           join e4 in musique.EMPRUNTER on al.CODE_ALBUM equals e4.CODE_ALBUM
-                           where e4.DATE_EMPRUNT.Year == DateTime.Now.Year
-                           group al by al.TITRE_ALBUM into g
-                           orderby g.Count() descending
-                           select new
-                           {
-                               nb = g.Count(),
-                               Name = g.Key
-                           };
-            if (topAlbum.Count() != 0)
-            {
-                foreach (var p in topAlbum)
-                {
-                    MessageBox.Show(p.nb + " " + p.Name);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Aucun Album emprunté durant l'année : " + DateTime.Now.Year);
-            }
-
-        }
-
+        /*
         private void Suggestions(ABONNÉS abo)
         {
             List<String> ng = new List<String>();
@@ -309,31 +170,7 @@ namespace PT2
                 ABONNÉS abo = (ABONNÉS)listEdition.SelectedItem;
                 Suggestions(abo);
             }
-        }
-    
-
-        public void chargerListAbos()
-        {
-            var abonne = (from j in musique.ABONNÉS
-                          select j).ToList();
-            ListAbo.Items.Clear();
-            if (abonne != null)
-            {
-                foreach (ABONNÉS j in abonne)
-                {
-                    ListAbo.Items.Add(j);
-                }
-            } else { 
-                    MessageBox.Show("Il n'y a aucun abonnés");
-                }
-            }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            chargerListAbos();
         }*/
-
-  
     }
 }
   

@@ -99,5 +99,11 @@ namespace PT2
             }
             
         }
+
+        private void ProlAllEmprunt_Click(object sender, EventArgs e)
+        {
+            opu.prolongationAll();
+            chargerListBoxEmprunter();
+        }
     }
 }

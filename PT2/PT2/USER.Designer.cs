@@ -38,15 +38,16 @@ namespace PT2
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.suivant = new System.Windows.Forms.Button();
             this.precedent = new System.Windows.Forms.Button();
+            this.ProlAllEmprunt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Prolongation
             // 
             this.Prolongation.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.Prolongation.Location = new System.Drawing.Point(968, 439);
+            this.Prolongation.Location = new System.Drawing.Point(1028, 439);
             this.Prolongation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Prolongation.Name = "Prolongation";
-            this.Prolongation.Size = new System.Drawing.Size(264, 28);
+            this.Prolongation.Size = new System.Drawing.Size(204, 28);
             this.Prolongation.TabIndex = 12;
             this.Prolongation.Text = "Prolonger Emprunt";
             this.Prolongation.UseVisualStyleBackColor = false;
@@ -109,7 +110,7 @@ namespace PT2
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(132, 460);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(405, 22);
             this.textBox1.TabIndex = 15;
@@ -118,7 +119,7 @@ namespace PT2
             // suivant
             // 
             this.suivant.Location = new System.Drawing.Point(425, 425);
-            this.suivant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.suivant.Margin = new System.Windows.Forms.Padding(4);
             this.suivant.Name = "suivant";
             this.suivant.Size = new System.Drawing.Size(113, 28);
             this.suivant.TabIndex = 16;
@@ -128,18 +129,31 @@ namespace PT2
             // precedent
             // 
             this.precedent.Location = new System.Drawing.Point(16, 425);
-            this.precedent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.precedent.Margin = new System.Windows.Forms.Padding(4);
             this.precedent.Name = "precedent";
             this.precedent.Size = new System.Drawing.Size(113, 28);
             this.precedent.TabIndex = 17;
             this.precedent.Text = "Précédent";
             this.precedent.UseVisualStyleBackColor = true;
             // 
+            // ProlAllEmprunt
+            // 
+            this.ProlAllEmprunt.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.ProlAllEmprunt.Location = new System.Drawing.Point(791, 439);
+            this.ProlAllEmprunt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ProlAllEmprunt.Name = "ProlAllEmprunt";
+            this.ProlAllEmprunt.Size = new System.Drawing.Size(231, 28);
+            this.ProlAllEmprunt.TabIndex = 18;
+            this.ProlAllEmprunt.Text = "Prolonger Tout Emprunt";
+            this.ProlAllEmprunt.UseVisualStyleBackColor = false;
+            this.ProlAllEmprunt.Click += new System.EventHandler(this.ProlAllEmprunt_Click);
+            // 
             // USER
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1303, 554);
+            this.Controls.Add(this.ProlAllEmprunt);
             this.Controls.Add(this.precedent);
             this.Controls.Add(this.suivant);
             this.Controls.Add(this.textBox1);
@@ -149,7 +163,7 @@ namespace PT2
             this.Controls.Add(this.retourne);
             this.Controls.Add(this.emprunt);
             this.Controls.Add(this.listEmprunt);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "USER";
             this.Text = "USER";
             this.ResumeLayout(false);
@@ -168,5 +182,6 @@ namespace PT2
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button suivant;
         private System.Windows.Forms.Button precedent;
+        private System.Windows.Forms.Button ProlAllEmprunt;
     }
 }

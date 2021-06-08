@@ -67,12 +67,49 @@ namespace PT2
 
         private void RetardsRetourEmprunt_Click(object sender, EventArgs e)
         {
-            Opa.RetardEmprunt();
             listEmprunt.Items.Clear();
-            foreach (EMPRUNTER emp in Opa.RetardEmprunt())
+            if (Opa.RetardEmprunt().Count() != 0)
             {
-                listEmprunt.Items.Add(emp);
+                foreach (EMPRUNTER emp in Opa.RetardEmprunt())
+                {
+                    listEmprunt.Items.Add(emp);
+                }
+            } else
+            {
+                listEmprunt.Items.Add("Aucun Emprunt en retard");
             }
+            
+        }
+
+        private void AlbumNonEmp_Click(object sender, EventArgs e)
+        {
+            listEmprunt.Items.Clear();
+            if(Opa.AlbumsNonEmprunte().Count() != 0) {
+                foreach (ALBUMS al in Opa.AlbumsNonEmprunte())
+                {
+                    listEmprunt.Items.Add(al);
+                }
+            } else
+            {
+                listEmprunt.Items.Add("Aucun Album ne figure dans la plage horaire");
+            }
+            
+        }
+
+        private void TopAlbumEmp_Click(object sender, EventArgs e)
+        {
+            listEmprunt.Items.Clear();
+            if(Opa.TopAlbums().Count() != 0)
+            {
+                foreach (String al in Opa.TopAlbums())
+                {
+                    listEmprunt.Items.Add(al);
+                }
+            } else
+            {
+                listEmprunt.Items.Add("Aucun Album n'a été encore emprunté");
+            }
+            
         }
     }
 }
