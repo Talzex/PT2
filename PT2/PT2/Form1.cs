@@ -394,8 +394,8 @@ namespace PT2
                 Suggestions(abo);
             }
         }
-    }
-}
+    
+
         public void chargerListAbos()
         {
             var abonne = (from j in musique.ABONNÉS
@@ -419,7 +419,7 @@ namespace PT2
 
   
     }
-    }
+}
   
             
 
