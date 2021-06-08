@@ -170,6 +170,30 @@ namespace PT2
             }
         }
 
+        private bool Prolonge(EMPRUNTER j)
+        {
+            return j.DATE_EMPRUNT.Month + 1 == j.DATE_RETOUR_ATTENDUE.Month;
+        }
+
+        private void ProlongeTousEmprunts_Click(object sender, EventArgs e)
+        {
+            var emprunt = from emp in musique.EMPRUNTER
+                          join abo in musique.ABONNÉS
+                          on emp.CODE_ABONNÉ equals abo.CODE_ABONNÉ
+                          where emp.CODE_ABONNÉ == abo.CODE_ABONNÉ
+                          select emp;
+            foreach(EMPRUNTER emp in emprunt)
+            {
+                if (!Prolonge(emp) && emp.DATE_RETOUR == null)
+                {
+                    emp.DATE_RETOUR_ATTENDUE = emp.DATE_RETOUR_ATTENDUE.AddMonths(1);
+                }
+            }
+            MessageBox.Show("Tous les emprunts ont été prolongés.");
+            musique.SaveChanges();
+            chargerListBoxEmprunter();
+        }
+
         private void ConsulEmpProlongé_Click(object sender, EventArgs e)
         {
             var emprunt = (from j in musique.EMPRUNTER
@@ -212,11 +236,6 @@ namespace PT2
         private void RefreshRetards_Click(object sender, EventArgs e)
         {
             chargerListBoxRetards();
-        }
-
-        private bool Prolonge(EMPRUNTER j)
-        {
-            return j.DATE_EMPRUNT.Month + 1 == j.DATE_RETOUR_ATTENDUE.Month;
         }
 
         private void Purgeur_Click(object sender, EventArgs e)
