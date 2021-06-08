@@ -23,7 +23,7 @@ namespace PT2
             musique = new MusiquePT2_MEntities();
             chargerListBoxAbonnees();
             chargerListBoxEmprunter();
-            ConsultEmprunt();
+            //ConsultEmprunt();
         }
 
         private void chargerListBoxAbonnees()
@@ -89,13 +89,14 @@ namespace PT2
         private void emprunt_Click(object sender, EventArgs e)
         {
             EMPRUNTER emprunt = new EMPRUNTER();
+            ALBUMS album = new ALBUMS();
             ABONNÉS j = (ABONNÉS)listBox1.SelectedItem;
 
             emprunt.CODE_ABONNÉ = j.CODE_ABONNÉ;
             emprunt.DATE_EMPRUNT = DateTime.Now;
-            emprunt.CODE_ALBUM = 15;
+            emprunt.CODE_ALBUM = 28;
             var delaiAlbum = from a2 in musique.ALBUMS
-                             where a2.CODE_ALBUM == 15
+                             where a2.CODE_ALBUM == 28
                              join p in musique.GENRES
                              on a2.CODE_GENRE equals p.CODE_GENRE
                              select p.DÉLAI;
@@ -103,6 +104,7 @@ namespace PT2
             musique.EMPRUNTER.Add(emprunt);
             musique.SaveChanges();
             chargerListBoxEmprunter();
+            album.cpt++;
         }
 
         public void ConsultEmprunt()
@@ -127,7 +129,36 @@ namespace PT2
                 prolonge = false;
             }
         }
-         
+
+   
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //List<ALBUMS> topAlbums = new List<ALBUMS>();
+            var albums = (from j in musique.ALBUMS
+                          select j).ToList();
+            foreach (ALBUMS a in albums)
+            {
+                a.cpt = a.EMPRUNTER.Count();
+            }
+            var topAlbum = (from a3 in musique.ALBUMS
+                           join e4 in musique.EMPRUNTER on a3.CODE_ALBUM equals e4.CODE_ALBUM
+                           where e4.DATE_EMPRUNT.Year == DateTime.Now.Year
+                           orderby e4.CODE_ALBUM descending
+                           select  a3).Distinct().ToList();
+            int b = 0;
+            String list = "";
+            foreach (ALBUMS a in topAlbum)
+            {
+                if (b < 11) { 
+                    list = list + a.TITRE_ALBUM + "\n";
+                    b++;
+                } 
+            }
+            MessageBox.Show(list);
+
+
+        }
     }
 }
 
