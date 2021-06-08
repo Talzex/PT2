@@ -44,6 +44,7 @@ namespace PT2
             this.Purgeur = new System.Windows.Forms.Button();
             this.ProlongeTousEmprunts = new System.Windows.Forms.Button();
             this.AlbumNonEmp = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listEdition
@@ -140,7 +141,7 @@ namespace PT2
             // ConsulEmpProlongé
             // 
             this.ConsulEmpProlongé.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ConsulEmpProlongé.Location = new System.Drawing.Point(258, 344);
+            this.ConsulEmpProlongé.Location = new System.Drawing.Point(258, 343);
             this.ConsulEmpProlongé.Margin = new System.Windows.Forms.Padding(2);
             this.ConsulEmpProlongé.Name = "ConsulEmpProlongé";
             this.ConsulEmpProlongé.Size = new System.Drawing.Size(145, 23);
@@ -189,17 +190,6 @@ namespace PT2
             this.Purgeur.UseVisualStyleBackColor = false;
             this.Purgeur.Click += new System.EventHandler(this.Purgeur_Click);
             // 
-            // AlbumNonEmp
-            // 
-            this.AlbumNonEmp.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.AlbumNonEmp.Location = new System.Drawing.Point(494, 476);
-            this.AlbumNonEmp.Name = "AlbumNonEmp";
-            this.AlbumNonEmp.Size = new System.Drawing.Size(112, 23);
-            this.AlbumNonEmp.TabIndex = 11;
-            this.AlbumNonEmp.Text = "AlbumNonEmp";
-            this.AlbumNonEmp.UseVisualStyleBackColor = false;
-            this.AlbumNonEmp.Click += new System.EventHandler(this.AlbumNonEmp_Click);
-            // 
             // ProlongeTousEmprunts
             // 
             this.ProlongeTousEmprunts.Location = new System.Drawing.Point(283, 215);
@@ -210,11 +200,32 @@ namespace PT2
             this.ProlongeTousEmprunts.UseVisualStyleBackColor = true;
             this.ProlongeTousEmprunts.Click += new System.EventHandler(this.ProlongeTousEmprunts_Click);
             // 
+            // AlbumNonEmp
+            // 
+            this.AlbumNonEmp.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.AlbumNonEmp.Location = new System.Drawing.Point(141, 343);
+            this.AlbumNonEmp.Name = "AlbumNonEmp";
+            this.AlbumNonEmp.Size = new System.Drawing.Size(112, 23);
+            this.AlbumNonEmp.TabIndex = 11;
+            this.AlbumNonEmp.Text = "AlbumNonEmp";
+            this.AlbumNonEmp.UseVisualStyleBackColor = false;
+            this.AlbumNonEmp.Click += new System.EventHandler(this.AlbumNonEmp_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(603, 343);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "TopAlbum";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(858, 554);
+            this.ClientSize = new System.Drawing.Size(754, 378);
             this.Controls.Add(this.AlbumNonEmp);
             this.Controls.Add(this.ProlongeTousEmprunts);
             this.Controls.Add(this.Purgeur);
@@ -224,6 +235,7 @@ namespace PT2
             this.Controls.Add(this.ConsulE);
             this.Controls.Add(this.RefreshRetards);
             this.Controls.Add(this.listProlongement);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.retourne);
             this.Controls.Add(this.emprunt);
             this.Controls.Add(this.ajouter);
@@ -245,6 +257,7 @@ namespace PT2
         private System.Windows.Forms.Button ajouter;
         private System.Windows.Forms.Button emprunt;
         private System.Windows.Forms.Button retourne;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button ConsulE;
         private System.Windows.Forms.Button Prolongation;
         private System.Windows.Forms.Button ConsulEmpProlongé;

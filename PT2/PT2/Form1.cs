@@ -272,12 +272,41 @@ namespace PT2
                     MessageBox.Show(a.TITRE_ALBUM + " ");
                 }
             }
+
             else
             {
                 MessageBox.Show("Aucun Album n'a été emprunté il y a plus d'un ans");
             }
 
         }
+
+   
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            var topAlbum = from al in musique.ALBUMS
+                           join e4 in musique.EMPRUNTER on al.CODE_ALBUM equals e4.CODE_ALBUM
+                           where e4.DATE_EMPRUNT.Year == DateTime.Now.Year
+                           group al by al.TITRE_ALBUM into g
+                           orderby g.Count() descending
+                           select new
+                           {
+                               nb = g.Count(),
+                               Name = g.Key
+                            };
+            if(topAlbum.Count() != 0)
+            {
+                foreach (var p in topAlbum)
+                {
+                    MessageBox.Show(p.nb + " " + p.Name);
+                }
+            } else
+            {
+                MessageBox.Show("Aucun Album emprunté durant l'année : " + DateTime.Now.Year);
+            }
+            
+        }
     }
 }
+            
 

@@ -13,7 +13,7 @@ namespace PT2
     using System.Collections.Generic;
     
     public partial class ALBUMS
-    {
+    { 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ALBUMS()
         {
@@ -29,10 +29,12 @@ namespace PT2
         public string ALLÉE_ALBUM { get; set; }
         public int CASIER_ALBUM { get; set; }
         public byte[] POCHETTE { get; set; }
+        public int cpt { get; set; }
     
         public virtual EDITEURS EDITEURS { get; set; }
         public virtual GENRES GENRES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EMPRUNTER> EMPRUNTER { get; set; }
-    }
+
+    }   
 }
