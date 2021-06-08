@@ -66,7 +66,5 @@ namespace PT2
             }
             return empruntsNonRapportes;
         }
-                
-
     }
 }
