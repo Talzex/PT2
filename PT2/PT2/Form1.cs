@@ -134,30 +134,28 @@ namespace PT2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //List<ALBUMS> topAlbums = new List<ALBUMS>();
-            var albums = (from j in musique.ALBUMS
-                          select j).ToList();
-            foreach (ALBUMS a in albums)
-            {
-                a.cpt = a.EMPRUNTER.Count();
-            }
-            var topAlbum = (from a3 in musique.ALBUMS
-                           join e4 in musique.EMPRUNTER on a3.CODE_ALBUM equals e4.CODE_ALBUM
+
+            var topAlbum = from al in musique.ALBUMS
+                           join e4 in musique.EMPRUNTER on al.CODE_ALBUM equals e4.CODE_ALBUM
                            where e4.DATE_EMPRUNT.Year == DateTime.Now.Year
-                           orderby e4.CODE_ALBUM descending
-                           select  a3).Distinct().ToList();
-            int b = 0;
-            String list = "";
-            foreach (ALBUMS a in topAlbum)
+                           group al by al.TITRE_ALBUM into g
+                           orderby g.Count() descending
+                           select new
+                           {
+                               nb = g.Count(),
+                               Name = g.Key
+                            };
+            if(topAlbum.Count() != 0)
             {
-                if (b < 11) { 
-                    list = list + a.TITRE_ALBUM + "\n";
-                    b++;
-                } 
+                foreach (var p in topAlbum)
+                {
+                    MessageBox.Show(p.nb + " " + p.Name);
+                }
+            } else
+            {
+                MessageBox.Show("Aucun Album emprunté durant l'année : " + DateTime.Now.Year);
             }
-            MessageBox.Show(list);
-
-
+            
         }
     }
 }

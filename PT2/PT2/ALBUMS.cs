@@ -12,8 +12,8 @@ namespace PT2
     using System;
     using System.Collections.Generic;
     
-    public partial class ALBUMS : IComparable
-    {
+    public partial class ALBUMS
+    { 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ALBUMS()
         {
@@ -36,10 +36,5 @@ namespace PT2
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EMPRUNTER> EMPRUNTER { get; set; }
 
-    int IComparable.CompareTo(object obj)
-    {
-        ALBUMS c = (ALBUMS)obj;
-        return this.cpt < c.cpt;
-    }
-}   
+    }   
 }
