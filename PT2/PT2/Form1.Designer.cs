@@ -42,6 +42,7 @@ namespace PT2
             this.RefreshRetards = new System.Windows.Forms.Button();
             this.listPurge = new System.Windows.Forms.ListBox();
             this.Purgeur = new System.Windows.Forms.Button();
+            this.ProlongeTousEmprunts = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listEdition
@@ -90,10 +91,10 @@ namespace PT2
             // emprunt
             // 
             this.emprunt.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.emprunt.Location = new System.Drawing.Point(486, 216);
+            this.emprunt.Location = new System.Drawing.Point(544, 216);
             this.emprunt.Margin = new System.Windows.Forms.Padding(2);
             this.emprunt.Name = "emprunt";
-            this.emprunt.Size = new System.Drawing.Size(66, 19);
+            this.emprunt.Size = new System.Drawing.Size(66, 24);
             this.emprunt.TabIndex = 4;
             this.emprunt.Text = "Emprunter";
             this.emprunt.UseVisualStyleBackColor = false;
@@ -102,10 +103,10 @@ namespace PT2
             // retourne
             // 
             this.retourne.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.retourne.Location = new System.Drawing.Point(573, 216);
+            this.retourne.Location = new System.Drawing.Point(614, 216);
             this.retourne.Margin = new System.Windows.Forms.Padding(2);
             this.retourne.Name = "retourne";
-            this.retourne.Size = new System.Drawing.Size(64, 19);
+            this.retourne.Size = new System.Drawing.Size(64, 24);
             this.retourne.TabIndex = 5;
             this.retourne.Text = "Retourner";
             this.retourne.UseVisualStyleBackColor = false;
@@ -114,10 +115,10 @@ namespace PT2
             // ConsulE
             // 
             this.ConsulE.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ConsulE.Location = new System.Drawing.Point(349, 216);
+            this.ConsulE.Location = new System.Drawing.Point(425, 216);
             this.ConsulE.Margin = new System.Windows.Forms.Padding(2);
             this.ConsulE.Name = "ConsulE";
-            this.ConsulE.Size = new System.Drawing.Size(115, 23);
+            this.ConsulE.Size = new System.Drawing.Size(115, 25);
             this.ConsulE.TabIndex = 6;
             this.ConsulE.Text = "Consulter Emprunt";
             this.ConsulE.UseVisualStyleBackColor = false;
@@ -126,10 +127,10 @@ namespace PT2
             // Prolongation
             // 
             this.Prolongation.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.Prolongation.Location = new System.Drawing.Point(208, 216);
+            this.Prolongation.Location = new System.Drawing.Point(163, 216);
             this.Prolongation.Margin = new System.Windows.Forms.Padding(2);
             this.Prolongation.Name = "Prolongation";
-            this.Prolongation.Size = new System.Drawing.Size(115, 23);
+            this.Prolongation.Size = new System.Drawing.Size(115, 25);
             this.Prolongation.TabIndex = 7;
             this.Prolongation.Text = "Prolonger Emprunt";
             this.Prolongation.UseVisualStyleBackColor = false;
@@ -187,11 +188,22 @@ namespace PT2
             this.Purgeur.UseVisualStyleBackColor = false;
             this.Purgeur.Click += new System.EventHandler(this.Purgeur_Click);
             // 
+            // ProlongeTousEmprunts
+            // 
+            this.ProlongeTousEmprunts.Location = new System.Drawing.Point(283, 215);
+            this.ProlongeTousEmprunts.Name = "ProlongeTousEmprunts";
+            this.ProlongeTousEmprunts.Size = new System.Drawing.Size(137, 26);
+            this.ProlongeTousEmprunts.TabIndex = 11;
+            this.ProlongeTousEmprunts.Text = "Prolonger Tous Emprunts";
+            this.ProlongeTousEmprunts.UseVisualStyleBackColor = true;
+            this.ProlongeTousEmprunts.Click += new System.EventHandler(this.ProlongeTousEmprunts_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 554);
+            this.Controls.Add(this.ProlongeTousEmprunts);
             this.Controls.Add(this.Purgeur);
             this.Controls.Add(this.listPurge);
             this.Controls.Add(this.ConsulEmpProlongé);
@@ -227,6 +239,7 @@ namespace PT2
         private System.Windows.Forms.Button RefreshRetards;
         private System.Windows.Forms.ListBox listPurge;
         private System.Windows.Forms.Button Purgeur;
+        private System.Windows.Forms.Button ProlongeTousEmprunts;
     }
 }
 
