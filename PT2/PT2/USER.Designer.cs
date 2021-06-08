@@ -36,6 +36,8 @@ namespace PT2
             this.ListeDisques = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.suivant = new System.Windows.Forms.Button();
+            this.precedent = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Prolongation
@@ -64,7 +66,7 @@ namespace PT2
             // emprunt
             // 
             this.emprunt.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.emprunt.Location = new System.Drawing.Point(99, 398);
+            this.emprunt.Location = new System.Drawing.Point(99, 399);
             this.emprunt.Margin = new System.Windows.Forms.Padding(2);
             this.emprunt.Name = "emprunt";
             this.emprunt.Size = new System.Drawing.Size(113, 23);
@@ -94,7 +96,7 @@ namespace PT2
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 367);
+            this.label1.Location = new System.Drawing.Point(24, 377);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 14;
@@ -102,16 +104,36 @@ namespace PT2
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(99, 364);
+            this.textBox1.Location = new System.Drawing.Point(99, 374);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(305, 20);
             this.textBox1.TabIndex = 15;
+            // 
+            // suivant
+            // 
+            this.suivant.Location = new System.Drawing.Point(319, 345);
+            this.suivant.Name = "suivant";
+            this.suivant.Size = new System.Drawing.Size(85, 23);
+            this.suivant.TabIndex = 16;
+            this.suivant.Text = "Suivant";
+            this.suivant.UseVisualStyleBackColor = true;
+            // 
+            // precedent
+            // 
+            this.precedent.Location = new System.Drawing.Point(12, 345);
+            this.precedent.Name = "precedent";
+            this.precedent.Size = new System.Drawing.Size(85, 23);
+            this.precedent.TabIndex = 17;
+            this.precedent.Text = "Précédent";
+            this.precedent.UseVisualStyleBackColor = true;
             // 
             // USER
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.precedent);
+            this.Controls.Add(this.suivant);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ListeDisques);
@@ -135,5 +157,7 @@ namespace PT2
         private System.Windows.Forms.ListBox ListeDisques;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button suivant;
+        private System.Windows.Forms.Button precedent;
     }
 }

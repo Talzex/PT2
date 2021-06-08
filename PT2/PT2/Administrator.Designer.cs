@@ -45,6 +45,7 @@ namespace PT2
             this.Purgeur.TabIndex = 15;
             this.Purgeur.Text = "Purgeur";
             this.Purgeur.UseVisualStyleBackColor = false;
+            this.Purgeur.Click += new System.EventHandler(this.Purgeur_Click);
             // 
             // listPurge
             // 
@@ -65,6 +66,7 @@ namespace PT2
             this.ConsulEmpProlongé.TabIndex = 12;
             this.ConsulEmpProlongé.Text = "ConsulEmpruntProlongé";
             this.ConsulEmpProlongé.UseVisualStyleBackColor = false;
+            this.ConsulEmpProlongé.Click += new System.EventHandler(this.ConsulEmpProlongé_Click);
             // 
             // RefreshRetards
             // 
@@ -75,6 +77,7 @@ namespace PT2
             this.RefreshRetards.TabIndex = 13;
             this.RefreshRetards.Text = "Actualiser Retards";
             this.RefreshRetards.UseVisualStyleBackColor = false;
+            this.RefreshRetards.Click += new System.EventHandler(this.RefreshRetards_Click);
             // 
             // listProlongement
             // 
