@@ -39,7 +39,7 @@ namespace PT2
             // Purgeur
             // 
             this.Purgeur.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.Purgeur.Location = new System.Drawing.Point(334, 291);
+            this.Purgeur.Location = new System.Drawing.Point(544, 366);
             this.Purgeur.Name = "Purgeur";
             this.Purgeur.Size = new System.Drawing.Size(112, 23);
             this.Purgeur.TabIndex = 15;
@@ -49,16 +49,16 @@ namespace PT2
             // listPurge
             // 
             this.listPurge.FormattingEnabled = true;
-            this.listPurge.Location = new System.Drawing.Point(141, 217);
+            this.listPurge.Location = new System.Drawing.Point(431, 11);
             this.listPurge.Margin = new System.Windows.Forms.Padding(2);
             this.listPurge.Name = "listPurge";
-            this.listPurge.Size = new System.Drawing.Size(483, 69);
+            this.listPurge.Size = new System.Drawing.Size(358, 342);
             this.listPurge.TabIndex = 14;
             // 
             // ConsulEmpProlongé
             // 
             this.ConsulEmpProlongé.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ConsulEmpProlongé.Location = new System.Drawing.Point(216, 159);
+            this.ConsulEmpProlongé.Location = new System.Drawing.Point(28, 366);
             this.ConsulEmpProlongé.Margin = new System.Windows.Forms.Padding(2);
             this.ConsulEmpProlongé.Name = "ConsulEmpProlongé";
             this.ConsulEmpProlongé.Size = new System.Drawing.Size(145, 23);
@@ -69,7 +69,7 @@ namespace PT2
             // RefreshRetards
             // 
             this.RefreshRetards.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.RefreshRetards.Location = new System.Drawing.Point(444, 160);
+            this.RefreshRetards.Location = new System.Drawing.Point(242, 366);
             this.RefreshRetards.Name = "RefreshRetards";
             this.RefreshRetards.Size = new System.Drawing.Size(112, 23);
             this.RefreshRetards.TabIndex = 13;
@@ -79,10 +79,10 @@ namespace PT2
             // listProlongement
             // 
             this.listProlongement.FormattingEnabled = true;
-            this.listProlongement.Location = new System.Drawing.Point(141, 86);
+            this.listProlongement.Location = new System.Drawing.Point(11, 11);
             this.listProlongement.Margin = new System.Windows.Forms.Padding(2);
             this.listProlongement.Name = "listProlongement";
-            this.listProlongement.Size = new System.Drawing.Size(483, 69);
+            this.listProlongement.Size = new System.Drawing.Size(367, 342);
             this.listProlongement.TabIndex = 11;
             // 
             // Administrator
