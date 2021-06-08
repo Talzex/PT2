@@ -100,19 +100,30 @@ namespace PT2
                           select j).ToList();
             if (loginIn != null && mdpIn != null && loginIn != "" && mdpIn != "")
             {
-                foreach (ABONNÉS ab in abonne)
+                if (loginIn.Equals("admin") && mdpIn.Equals("admin"))
                 {
-                    if (ab.LOGIN_ABONNÉ.Equals(loginIn) && ab.PASSWORD_ABONNÉ.Equals(mdpIn) && !trouve)
+                    trouve = true;
+                    Administrator admin = new Administrator();
+                    admin.Show();
+                }
+                else
+                {
+                    foreach (ABONNÉS ab in abonne)
                     {
-                        trouve = true;
-                        USER Iuser = new USER(ab);
-                        Iuser.Show();
+
+                        if (ab.LOGIN_ABONNÉ.Equals(loginIn) && ab.PASSWORD_ABONNÉ.Equals(mdpIn) && !trouve)
+                        {
+                            trouve = true;
+                            USER Iuser = new USER(ab);
+                            Iuser.Show();
+                        }
+                    }
+                    if (!trouve)
+                    {
+                        MessageBox.Show("erreur : login ou mot de passe incorrects");
                     }
                 }
-                if (!trouve)
-                {
-                    MessageBox.Show("erreur : login ou mot de passe incorrects");
-                }
+                
             }
             else
             {
