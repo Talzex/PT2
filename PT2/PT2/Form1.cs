@@ -15,17 +15,25 @@ namespace PT2
     {
         MusiquePT2_MEntities musique;
         List<EMPRUNTER> empruntsNonRapportes;
+        String nomAbonne;
+        String prenomAbonne;
+        String loginAbonne;
+        String mdpAbonne;
+        String ConfmdpAbonne;
+        String loginIn;
+        String mdpIn;
 
         public Form1()
         {
             InitializeComponent();
             musique = new MusiquePT2_MEntities();
-            chargerListBoxAbonnees();
-            chargerListBoxEmprunter();
-            chargerListBoxRetards();
+            //chargerListBoxAbonnees();
+
+            //chargerListBoxRetards();
+            //ConsultEmprunt();
         }
 
-        private void chargerListBoxAbonnees()
+        /*private void chargerListBoxAbonnees()
         {
             var abonne = (from j in musique.ABONNÉS
                           select j).ToList();
@@ -34,21 +42,11 @@ namespace PT2
             {
                 listEdition.Items.Add(j);
             }
-        }
+        }*/
 
-        private void chargerListBoxEmprunter()
-        {
-            var emprunt = (from j in musique.EMPRUNTER
-                           select j
-                           ).ToList();
-            listEmprunt.Items.Clear();
-            foreach (EMPRUNTER j in emprunt)
-            {
-                listEmprunt.Items.Add(j);
-            }
-        }
+        
 
-        private void chargerListBoxPurge()
+        /*private void chargerListBoxPurge()
         {
             var purge = (from p in musique.ABONNÉS
                          select p.NOM_ABONNÉ).ToList();
@@ -57,21 +55,81 @@ namespace PT2
             {
                 listPurge.Items.Add(p);
             }
-        }
+        }*/
         private void ajouter_Click(object sender, EventArgs e)
         {
-            ABONNÉS a = new ABONNÉS();
-            a.NOM_ABONNÉ = "Duthil";
-            a.PRÉNOM_ABONNÉ = "Thomas";
-            a.LOGIN_ABONNÉ = "tduthil";
-            a.PASSWORD_ABONNÉ = "12345";
-
-            musique.ABONNÉS.Add(a);
-            musique.SaveChanges();
-            chargerListBoxAbonnees();
+            bool unique = true;
+            var abonne = (from j in musique.ABONNÉS
+                          select j).ToList();
+            ABONNÉS a = new ABONNÉS(); 
+            if (nomAbonne != null && prenomAbonne != null && loginAbonne != null && mdpAbonne != null && ConfmdpAbonne != null && 
+                nomAbonne != "" && prenomAbonne != "" && loginAbonne != "" && mdpAbonne != "" && ConfmdpAbonne != "")
+            {
+                foreach (ABONNÉS ab in abonne)
+                {
+                    if (mdpAbonne.Equals(ab.PASSWORD_ABONNÉ))
+                    {
+                        unique = false;
+                        MessageBox.Show("erreur : ce mot de passe existe déjà, il appartient à " + ab.NOM_ABONNÉ + " " +ab.PRÉNOM_ABONNÉ);
+                    }
+                    else if (loginAbonne.Equals(ab.LOGIN_ABONNÉ))
+                    {
+                        unique = false;
+                        MessageBox.Show("erreur : ce login existe déjà");
+                    }
+                }
+                if (unique)
+                {
+                    a.NOM_ABONNÉ = nomAbonne;
+                    a.PRÉNOM_ABONNÉ = prenomAbonne;
+                    a.LOGIN_ABONNÉ = loginAbonne;
+                    if (mdpAbonne.Equals(ConfmdpAbonne))
+                    {
+                        a.PASSWORD_ABONNÉ = mdpAbonne;
+                        musique.ABONNÉS.Add(a);
+                        musique.SaveChanges();
+                        MessageBox.Show("Inscription réussie");
+                    }
+                    else
+                    {
+                        MessageBox.Show("erreur : mot de passe non confirmé");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("erreur : champs non remplis, veuillez remplir tous les champs");
+            }
+            Refresh();          
         }
-
-        private void supp_Click(object sender, EventArgs e)
+        private void connexion_Click(object sender, EventArgs e)
+        {
+            bool trouve = false;
+            var abonne = (from j in musique.ABONNÉS
+                          select j).ToList();
+            if (loginIn != null && mdpIn != null && loginIn != "" && mdpIn != "")
+            {
+                foreach (ABONNÉS ab in abonne)
+                {
+                    if (ab.LOGIN_ABONNÉ.Equals(loginIn) && ab.PASSWORD_ABONNÉ.Equals(mdpIn) && !trouve)
+                    {
+                        trouve = true;
+                        USER Iuser = new USER(ab);
+                        Iuser.Show();
+                    }
+                }
+                if (!trouve)
+                {
+                    MessageBox.Show("erreur : login ou mot de passe incorrects");
+                }
+            }
+            else
+            {
+                MessageBox.Show("erreur : champs non remplis, veuillez remplir tous les champs");
+            }
+            
+        }
+        /*private void supp_Click(object sender, EventArgs e)
         {
             if (listEdition.SelectedItem != null)
             {
@@ -80,60 +138,9 @@ namespace PT2
                 musique.SaveChanges();
                 chargerListBoxAbonnees();
             }
-        }
+        }*/
 
-        private void retourne_Click(object sender, EventArgs e)
-        {
-            if (listEmprunt.SelectedItem != null)
-            {
-                EMPRUNTER titremprunt = (EMPRUNTER)listEmprunt.SelectedItem;
-                var emprunt = from a1 in musique.EMPRUNTER
-                              where a1.ALBUMS.TITRE_ALBUM == titremprunt.ALBUMS.TITRE_ALBUM
-                              select a1;
-                titremprunt.DATE_RETOUR = DateTime.Now;
-                musique.SaveChanges();
-                chargerListBoxEmprunter();
-            }
-        }
-
-
-        private void emprunt_Click(object sender, EventArgs e)
-        {
-
-            if (listEdition.SelectedItem != null)
-            {
-                EMPRUNTER emprunt = new EMPRUNTER();
-
-                ABONNÉS j = (ABONNÉS)listEdition.SelectedItem;
-                bool emprunté = false;
-                emprunt.CODE_ABONNÉ = j.CODE_ABONNÉ;
-                emprunt.DATE_EMPRUNT = DateTime.Now;
-                emprunt.CODE_ALBUM = 15;
-                var delaiAlbum = from a2 in musique.ALBUMS
-                                 where a2.CODE_ALBUM == 15
-                                 join p in musique.GENRES
-                                 on a2.CODE_GENRE equals p.CODE_GENRE
-                                 select p.DÉLAI;
-                emprunt.DATE_RETOUR_ATTENDUE = DateTime.Now.AddDays((double)delaiAlbum.First());
-                foreach (EMPRUNTER emp in j.EMPRUNTER)
-                {
-                    if (emprunt.CODE_ALBUM == emp.CODE_ALBUM && !emprunté)
-                    {
-                        emprunté = true;
-                    }
-                }
-                if (!emprunté)
-                {
-                    musique.EMPRUNTER.Add(emprunt);
-                    musique.SaveChanges();
-                    chargerListBoxEmprunter();
-                }
-
-            }
-
-        }
-
-        private void ConsulE_Click(object sender, EventArgs e)
+        /*private void ConsulE_Click(object sender, EventArgs e)
         {
             if (listEdition.SelectedItem != null)
             {
@@ -150,29 +157,10 @@ namespace PT2
                 if (dateemprunt.Count() != 0 || albumemprunt.Count() != 0)
                     MessageBox.Show(albumemprunt.First().TITRE_ALBUM + dateemprunt.First().DATE_RETOUR_ATTENDUE.ToString() + " " + dateemprunt.First().DATE_RETOUR.ToString());
             }
+            
+        }*/
 
-        }
-
-        private void Prolongation_Click(object sender, EventArgs e)
-        {
-            if (listEmprunt.SelectedItem != null)
-            {
-                EMPRUNTER albumsEmprunte = (EMPRUNTER)listEmprunt.SelectedItem;
-
-                if (!Prolonge(albumsEmprunte) && albumsEmprunte.DATE_RETOUR == null)
-                {
-                    albumsEmprunte.DATE_RETOUR_ATTENDUE = albumsEmprunte.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                    musique.SaveChanges();
-                    MessageBox.Show(albumsEmprunte.ALBUMS.TITRE_ALBUM + " " + albumsEmprunte.DATE_RETOUR_ATTENDUE);
-                    chargerListBoxEmprunter();
-                }
-            }
-        }
-
-        private bool Prolonge(EMPRUNTER j)
-        {
-            return j.DATE_EMPRUNT.Month + 1 == j.DATE_RETOUR_ATTENDUE.Month;
-        }
+        
 
         private void ProlongeTousEmprunts_Click(object sender, EventArgs e)
         {
@@ -206,7 +194,7 @@ namespace PT2
                 }
 
             }
-        }
+        }*/
         public void EmpruntsNonRapportes()
         {
             empruntsNonRapportes = new List<EMPRUNTER>();
@@ -222,7 +210,45 @@ namespace PT2
 
         }
 
-        private void chargerListBoxRetards()
+        private void textBox_nom_TextChanged(object sender, EventArgs e)
+        {
+            nomAbonne = textBox_nom.Text;
+        }
+
+        private void textBox_prenom_TextChanged(object sender, EventArgs e)
+        {
+            prenomAbonne = textBox_prenom.Text;
+        }
+
+        private void textBox_login_TextChanged(object sender, EventArgs e)
+        {
+            loginAbonne = textBox_login.Text;
+        }
+
+        private void textBox_mdp_TextChanged(object sender, EventArgs e)
+        {
+            mdpAbonne = textBox_mdp.Text;
+        }
+
+        private void textBox_cmdp_TextChanged(object sender, EventArgs e)
+        {
+            ConfmdpAbonne = textBox_cmdp.Text;
+        }
+
+        private void textBox_loginIn_TextChanged(object sender, EventArgs e)
+        {
+            loginIn = textBox_loginIn.Text;
+        }
+
+        private void textBox_mdpIn_TextChanged(object sender, EventArgs e)
+        {
+            mdpIn = textBox_mdpIn.Text;
+        }
+
+
+
+
+        /*private void chargerListBoxRetards()
         {
             EmpruntsNonRapportes();
             listProlongement.Items.Clear();
@@ -230,14 +256,19 @@ namespace PT2
             {
                 listProlongement.Items.Add(e.ALBUMS.TITRE_ALBUM);
             }
-        }
+        }*/
 
-        private void RefreshRetards_Click(object sender, EventArgs e)
+        /*private void RefreshRetards_Click(object sender, EventArgs e)
         {
             chargerListBoxRetards();
-        }
+        }*/
 
-        private void Purgeur_Click(object sender, EventArgs e)
+        /*private bool Prolonge(EMPRUNTER j)
+        {
+            return j.DATE_EMPRUNT.Month + 1 == j.DATE_RETOUR_ATTENDUE.Month;
+        }*/
+
+        /*private void Purgeur_Click(object sender, EventArgs e)
         {
             var abo = from a in musique.ABONNÉS
                       join emp in musique.EMPRUNTER
