@@ -45,6 +45,8 @@ namespace PT2
             this.ProlongeTousEmprunts = new System.Windows.Forms.Button();
             this.AlbumNonEmp = new System.Windows.Forms.Button();
             this.TopAlbumEmp = new System.Windows.Forms.Button();
+            this.listSuggestions = new System.Windows.Forms.ListBox();
+            this.sug = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listEdition
@@ -221,11 +223,30 @@ namespace PT2
             this.TopAlbumEmp.UseVisualStyleBackColor = true;
             this.TopAlbumEmp.Click += new System.EventHandler(this.TopAlbumEmp_Click);
             // 
+            // listSuggestions
+            // 
+            this.listSuggestions.Location = new System.Drawing.Point(740, 99);
+            this.listSuggestions.Name = "listSuggestions";
+            this.listSuggestions.Size = new System.Drawing.Size(711, 316);
+            this.listSuggestions.TabIndex = 12;
+            // 
+            // sug
+            // 
+            this.sug.Location = new System.Drawing.Point(910, 458);
+            this.sug.Name = "sug";
+            this.sug.Size = new System.Drawing.Size(75, 23);
+            this.sug.TabIndex = 13;
+            this.sug.Text = "Suggestions";
+            this.sug.UseVisualStyleBackColor = true;
+            this.sug.Click += new System.EventHandler(this.sug_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 378);
+            this.ClientSize = new System.Drawing.Size(1542, 585);
+            this.Controls.Add(this.sug);
+            this.Controls.Add(this.listSuggestions);
             this.Controls.Add(this.AlbumNonEmp);
             this.Controls.Add(this.ProlongeTousEmprunts);
             this.Controls.Add(this.Purgeur);
@@ -267,6 +288,8 @@ namespace PT2
         private System.Windows.Forms.Button Purgeur;
         private System.Windows.Forms.Button ProlongeTousEmprunts;
         private System.Windows.Forms.Button AlbumNonEmp;
+        private System.Windows.Forms.ListBox listSuggestions;
+        private System.Windows.Forms.Button sug;
     }
 }
 
