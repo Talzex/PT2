@@ -44,7 +44,7 @@ namespace PT2
             this.Purgeur = new System.Windows.Forms.Button();
             this.ProlongeTousEmprunts = new System.Windows.Forms.Button();
             this.AlbumNonEmp = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.TopAlbumEmp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listEdition
@@ -141,7 +141,7 @@ namespace PT2
             // ConsulEmpProlongé
             // 
             this.ConsulEmpProlongé.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ConsulEmpProlongé.Location = new System.Drawing.Point(258, 343);
+            this.ConsulEmpProlongé.Location = new System.Drawing.Point(275, 343);
             this.ConsulEmpProlongé.Margin = new System.Windows.Forms.Padding(2);
             this.ConsulEmpProlongé.Name = "ConsulEmpProlongé";
             this.ConsulEmpProlongé.Size = new System.Drawing.Size(145, 23);
@@ -162,7 +162,7 @@ namespace PT2
             // RefreshRetards
             // 
             this.RefreshRetards.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.RefreshRetards.Location = new System.Drawing.Point(486, 345);
+            this.RefreshRetards.Location = new System.Drawing.Point(440, 343);
             this.RefreshRetards.Name = "RefreshRetards";
             this.RefreshRetards.Size = new System.Drawing.Size(112, 23);
             this.RefreshRetards.TabIndex = 8;
@@ -203,7 +203,7 @@ namespace PT2
             // AlbumNonEmp
             // 
             this.AlbumNonEmp.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.AlbumNonEmp.Location = new System.Drawing.Point(141, 343);
+            this.AlbumNonEmp.Location = new System.Drawing.Point(146, 343);
             this.AlbumNonEmp.Name = "AlbumNonEmp";
             this.AlbumNonEmp.Size = new System.Drawing.Size(112, 23);
             this.AlbumNonEmp.TabIndex = 11;
@@ -211,15 +211,15 @@ namespace PT2
             this.AlbumNonEmp.UseVisualStyleBackColor = false;
             this.AlbumNonEmp.Click += new System.EventHandler(this.AlbumNonEmp_Click);
             // 
-            // button2
+            // TopAlbumEmp
             // 
-            this.button2.Location = new System.Drawing.Point(603, 343);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "TopAlbum";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.TopAlbumEmp.Location = new System.Drawing.Point(571, 343);
+            this.TopAlbumEmp.Name = "TopAlbumEmp";
+            this.TopAlbumEmp.Size = new System.Drawing.Size(75, 23);
+            this.TopAlbumEmp.TabIndex = 7;
+            this.TopAlbumEmp.Text = "TopAlbum";
+            this.TopAlbumEmp.UseVisualStyleBackColor = true;
+            this.TopAlbumEmp.Click += new System.EventHandler(this.TopAlbumEmp_Click);
             // 
             // Form1
             // 
@@ -235,7 +235,7 @@ namespace PT2
             this.Controls.Add(this.ConsulE);
             this.Controls.Add(this.RefreshRetards);
             this.Controls.Add(this.listProlongement);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.TopAlbumEmp);
             this.Controls.Add(this.retourne);
             this.Controls.Add(this.emprunt);
             this.Controls.Add(this.ajouter);
@@ -257,7 +257,7 @@ namespace PT2
         private System.Windows.Forms.Button ajouter;
         private System.Windows.Forms.Button emprunt;
         private System.Windows.Forms.Button retourne;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button TopAlbumEmp;
         private System.Windows.Forms.Button ConsulE;
         private System.Windows.Forms.Button Prolongation;
         private System.Windows.Forms.Button ConsulEmpProlongé;
