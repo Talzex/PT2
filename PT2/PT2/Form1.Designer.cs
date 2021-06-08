@@ -209,7 +209,7 @@ namespace PT2
             this.connexion.Text = "Connexion";
             this.connexion.UseVisualStyleBackColor = false;
             this.connexion.Click += new System.EventHandler(this.connexion_Click);
-            // 
+            /*// 
             // ProlongeTousEmprunts
             // 
             this.ProlongeTousEmprunts.Location = new System.Drawing.Point(283, 215);
@@ -274,7 +274,7 @@ namespace PT2
             this.ListAbo.Location = new System.Drawing.Point(27, 143);
             this.ListAbo.Name = "ListAbo";
             this.ListAbo.Size = new System.Drawing.Size(120, 95);
-            this.ListAbo.TabIndex = 14;
+            this.ListAbo.TabIndex = 14;*/
             // 
             // Form1
             // 

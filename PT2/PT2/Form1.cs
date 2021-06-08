@@ -47,7 +47,7 @@ namespace PT2
 
         
 
-        private void ProlongeTousEmprunts_Click(object sender, EventArgs e)
+        /*private void ProlongeTousEmprunts_Click(object sender, EventArgs e)
         {
             var emprunt = from emp in musique.EMPRUNTER
                           join abo in musique.ABONNÉS
@@ -79,7 +79,7 @@ namespace PT2
                 }
 
             }
-        }*/
+        }
         public void EmpruntsNonRapportes()
         {
             empruntsNonRapportes = new List<EMPRUNTER>();
@@ -93,7 +93,7 @@ namespace PT2
                 }
             }
 
-        }
+        }*/
 
         private void textBox_nom_TextChanged(object sender, EventArgs e)
         {
@@ -331,7 +331,7 @@ namespace PT2
         private void button2_Click(object sender, EventArgs e)
         {
             chargerListAbos();
-        }
+        }*/
 
   
     }
