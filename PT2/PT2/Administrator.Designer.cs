@@ -30,7 +30,7 @@ namespace PT2
         private void InitializeComponent()
         {
             this.Purgeur = new System.Windows.Forms.Button();
-            this.listPurge = new System.Windows.Forms.ListBox();
+            this.listAbonne = new System.Windows.Forms.ListBox();
             this.ConsulEmpProlongé = new System.Windows.Forms.Button();
             this.RefreshRetards = new System.Windows.Forms.Button();
             this.listProlongement = new System.Windows.Forms.ListBox();
@@ -47,14 +47,14 @@ namespace PT2
             this.Purgeur.UseVisualStyleBackColor = false;
             this.Purgeur.Click += new System.EventHandler(this.Purgeur_Click);
             // 
-            // listPurge
+            // listAbonne
             // 
-            this.listPurge.FormattingEnabled = true;
-            this.listPurge.Location = new System.Drawing.Point(431, 11);
-            this.listPurge.Margin = new System.Windows.Forms.Padding(2);
-            this.listPurge.Name = "listPurge";
-            this.listPurge.Size = new System.Drawing.Size(358, 342);
-            this.listPurge.TabIndex = 14;
+            this.listAbonne.FormattingEnabled = true;
+            this.listAbonne.Location = new System.Drawing.Point(431, 11);
+            this.listAbonne.Margin = new System.Windows.Forms.Padding(2);
+            this.listAbonne.Name = "listAbonne";
+            this.listAbonne.Size = new System.Drawing.Size(406, 342);
+            this.listAbonne.TabIndex = 14;
             // 
             // ConsulEmpProlongé
             // 
@@ -85,16 +85,16 @@ namespace PT2
             this.listProlongement.Location = new System.Drawing.Point(11, 11);
             this.listProlongement.Margin = new System.Windows.Forms.Padding(2);
             this.listProlongement.Name = "listProlongement";
-            this.listProlongement.Size = new System.Drawing.Size(367, 342);
+            this.listProlongement.Size = new System.Drawing.Size(400, 342);
             this.listProlongement.TabIndex = 11;
             // 
             // Administrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(848, 450);
             this.Controls.Add(this.Purgeur);
-            this.Controls.Add(this.listPurge);
+            this.Controls.Add(this.listAbonne);
             this.Controls.Add(this.ConsulEmpProlongé);
             this.Controls.Add(this.RefreshRetards);
             this.Controls.Add(this.listProlongement);
@@ -107,7 +107,7 @@ namespace PT2
         #endregion
 
         private System.Windows.Forms.Button Purgeur;
-        private System.Windows.Forms.ListBox listPurge;
+        private System.Windows.Forms.ListBox listAbonne;
         private System.Windows.Forms.Button ConsulEmpProlongé;
         private System.Windows.Forms.Button RefreshRetards;
         private System.Windows.Forms.ListBox listProlongement;

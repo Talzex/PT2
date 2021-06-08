@@ -49,87 +49,18 @@ namespace PT2
         
         private void ajouter_Click(object sender, EventArgs e)
         {
-            bool unique = true;
-            var abonne = (from j in musique.ABONNÉS
-                          select j).ToList();
-            ABONNÉS a = new ABONNÉS(); 
-            if (nomAbonne != null && prenomAbonne != null && loginAbonne != null && mdpAbonne != null && ConfmdpAbonne != null && 
-                nomAbonne != "" && prenomAbonne != "" && loginAbonne != "" && mdpAbonne != "" && ConfmdpAbonne != "")
-            {
-                foreach (ABONNÉS ab in abonne)
-                {
-                    if (mdpAbonne.Equals(ab.PASSWORD_ABONNÉ))
-                    {
-                        unique = false;
-                        MessageBox.Show("erreur : ce mot de passe existe déjà, il appartient à " + ab.NOM_ABONNÉ + " " +ab.PRÉNOM_ABONNÉ);
-                    }
-                    else if (loginAbonne.Equals(ab.LOGIN_ABONNÉ))
-                    {
-                        unique = false;
-                        MessageBox.Show("erreur : ce login existe déjà");
-                    }
-                }
-                if (unique)
-                {
-                    a.NOM_ABONNÉ = nomAbonne;
-                    a.PRÉNOM_ABONNÉ = prenomAbonne;
-                    a.LOGIN_ABONNÉ = loginAbonne;
-                    if (mdpAbonne.Equals(ConfmdpAbonne))
-                    {
-                        a.PASSWORD_ABONNÉ = mdpAbonne;
-                        musique.ABONNÉS.Add(a);
-                        musique.SaveChanges();
-                        MessageBox.Show("Inscription réussie");
-                    }
-                    else
-                    {
-                        MessageBox.Show("erreur : mot de passe non confirmé");
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("erreur : champs non remplis, veuillez remplir tous les champs");
-            }
+            OpAbonne opa = new OpAbonne(nomAbonne, prenomAbonne, loginAbonne, mdpAbonne, ConfmdpAbonne, loginIn, mdpIn, musique);
+            opa.ajoutAbonne();
             Refresh();          
         }
+
+        
         private void connexion_Click(object sender, EventArgs e)
         {
-            bool trouve = false;
-            var abonne = (from j in musique.ABONNÉS
-                          select j).ToList();
-            if (loginIn != null && mdpIn != null && loginIn != "" && mdpIn != "")
-            {
-                if (loginIn.Equals("admin") && mdpIn.Equals("admin"))
-                {
-                    trouve = true;
-                    Administrator admin = new Administrator();
-                    admin.Show();
-                }
-                else
-                {
-                    foreach (ABONNÉS ab in abonne)
-                    {
+            OpAbonne opa = new OpAbonne(nomAbonne, prenomAbonne, loginAbonne, mdpAbonne, ConfmdpAbonne, loginIn, mdpIn, musique);
+            opa.connexion();
+            Refresh();
 
-                        if (ab.LOGIN_ABONNÉ.Equals(loginIn) && ab.PASSWORD_ABONNÉ.Equals(mdpIn) && !trouve)
-                        {
-                            trouve = true;
-                            USER Iuser = new USER(ab);
-                            Iuser.Show();
-                        }
-                    }
-                    if (!trouve)
-                    {
-                        MessageBox.Show("erreur : login ou mot de passe incorrects");
-                    }
-                }
-                
-            }
-            else
-            {
-                MessageBox.Show("erreur : champs non remplis, veuillez remplir tous les champs");
-            }
-            
         }
         /*private void supp_Click(object sender, EventArgs e)
         {
@@ -140,26 +71,6 @@ namespace PT2
                 musique.SaveChanges();
                 chargerListBoxAbonnees();
             }
-        }*/
-
-        /*private void ConsulE_Click(object sender, EventArgs e)
-        {
-            if (listEdition.SelectedItem != null)
-            {
-                ABONNÉS j = (ABONNÉS)listEdition.SelectedItem;
-                var albumemprunt = from alb in musique.ALBUMS
-                                   join f in musique.EMPRUNTER
-                                   on alb.CODE_ALBUM equals f.CODE_ALBUM
-                                   where f.CODE_ABONNÉ == j.CODE_ABONNÉ
-                                   orderby f.DATE_RETOUR_ATTENDUE
-                                   select alb;
-                var dateemprunt = from f in musique.EMPRUNTER
-                                  where f.CODE_ABONNÉ == j.CODE_ABONNÉ
-                                  select f;
-                if (dateemprunt.Count() != 0 || albumemprunt.Count() != 0)
-                    MessageBox.Show(albumemprunt.First().TITRE_ALBUM + dateemprunt.First().DATE_RETOUR_ATTENDUE.ToString() + " " + dateemprunt.First().DATE_RETOUR.ToString());
-            }
-            
         }*/
 
         

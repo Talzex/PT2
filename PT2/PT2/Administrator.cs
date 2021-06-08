@@ -14,13 +14,15 @@ namespace PT2
     {
         List<EMPRUNTER> empruntsNonRapportes;
         MusiquePT2_MEntities musique;
+        OpAdministator Opa;
 
         public Administrator()
         {
             InitializeComponent();
             musique = new MusiquePT2_MEntities();
-            chargerListBoxPurge();
+            chargerListBoxAbonne();
             chargerListBoxRetards();
+            Opa = new OpAdministator(musique);
         }
 
         private void chargerListBoxRetards()
@@ -33,14 +35,14 @@ namespace PT2
             }
         }
 
-        private void chargerListBoxPurge()
+        private void chargerListBoxAbonne()
         {
-            var purge = (from p in musique.ABONNÉS
-                         select p.NOM_ABONNÉ).ToList();
-            listPurge.Items.Clear();
-            foreach (String p in purge)
+            var abo = (from p in musique.ABONNÉS
+                         select p).ToList();
+            listAbonne.Items.Clear();
+            foreach (ABONNÉS p in abo)
             {
-                listPurge.Items.Add(p);
+                listAbonne.Items.Add(p.ToString());
             }
         }
 
@@ -61,16 +63,10 @@ namespace PT2
         private void ConsulEmpProlongé_Click(object sender, EventArgs e)
         {
             listProlongement.Items.Clear();
-            var emprunt = (from j in musique.EMPRUNTER
-                           select j).ToList();
-            foreach (EMPRUNTER j in emprunt)
+            foreach (EMPRUNTER emp in Opa.EmpruntProlonge())
             {
-                if(Prolonge(j))
-                {
-                    listProlongement.Items.Add(j.ToString());
-                }
-
-            }
+                listProlongement.Items.Add(emp);
+            }   
         }
 
         private void RefreshRetards_Click(object sender, EventArgs e)
@@ -78,26 +74,13 @@ namespace PT2
             chargerListBoxRetards();
         }
 
-        private bool Prolonge(EMPRUNTER j)
-        {
-            return j.DATE_EMPRUNT.Month + 1 == j.DATE_RETOUR_ATTENDUE.Month;
-        }
+        
 
         private void Purgeur_Click(object sender, EventArgs e)
         {
-            var abo = from a in musique.ABONNÉS
-                      join emp in musique.EMPRUNTER
-                      on a.CODE_ABONNÉ equals emp.CODE_ABONNÉ
-                      where 2023  /*DateTime.Now.Year*/  - emp.DATE_EMPRUNT.Year >= 1
-                      select a;
-            foreach (ABONNÉS a in abo)
-            {
-                //musique.ABONNÉS.Remove(a);
-                chargerListBoxPurge();
-
-            }
-            //musique.SaveChanges();
-            //chargerListBoxAbonnees();
+            Opa.Purge();
+            chargerListBoxAbonne();
+            
         }
 
     }
