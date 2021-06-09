@@ -69,7 +69,7 @@ namespace PT2
             // emprunt
             // 
             this.emprunt.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.emprunt.Location = new System.Drawing.Point(148, 345);
+            this.emprunt.Location = new System.Drawing.Point(148, 399);
             this.emprunt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.emprunt.Name = "emprunt";
             this.emprunt.Size = new System.Drawing.Size(113, 23);
@@ -145,7 +145,7 @@ namespace PT2
             // 
             // Suggestions
             // 
-            this.Suggestions.Location = new System.Drawing.Point(148, 401);
+            this.Suggestions.Location = new System.Drawing.Point(148, 345);
             this.Suggestions.Name = "Suggestions";
             this.Suggestions.Size = new System.Drawing.Size(113, 23);
             this.Suggestions.TabIndex = 19;

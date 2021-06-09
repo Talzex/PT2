@@ -44,12 +44,12 @@ namespace PT2
             {
                 foreach (ABONNÉS ab in abonne)
                 {
-                    if (mdpAbonne.Equals(ab.PASSWORD_ABONNÉ.Trim()))
+                    if (mdpAbonne.Equals(ab.PASSWORD_ABONNÉ.Trim()) && unique)
                     {
                         unique = false;
                         MessageBox.Show("erreur : ce mot de passe existe déjà, il appartient à " + ab.NOM_ABONNÉ + " " + ab.PRÉNOM_ABONNÉ);
                     }
-                    else if (loginAbonne.Equals(ab.LOGIN_ABONNÉ.Trim()))
+                    else if (loginAbonne.Equals(ab.LOGIN_ABONNÉ.Trim()) && unique)
                     {
                         unique = false;
                         MessageBox.Show("erreur : ce login existe déjà");

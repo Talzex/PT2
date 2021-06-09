@@ -104,11 +104,11 @@ namespace PT2
             List<String> ne = new List<String>();
             List<int> aa = new List<int>();
 
-            var albemp = from emp in musique.EMPRUNTER
+            var albemp = (from emp in musique.EMPRUNTER
                          where emp.CODE_ABONNÉ == abo.CODE_ABONNÉ
-                         select emp;
+                         select emp).ToList();
 
-            if (albemp != null)
+            if (albemp.Count() > 0)
             {
                 foreach (EMPRUNTER e in albemp)
                 {
@@ -166,15 +166,36 @@ namespace PT2
 
                     foreach (ALBUMS a in sug)
                     {
+                        bool emprunté = false;
+                        foreach (EMPRUNTER emp in albemp)
+                        {
+                            if (emp.CODE_ALBUM.Equals(a.CODE_ALBUM))
+                            {
+                                emprunté = true;
+                            }
+                        }
+                        if (!emprunté)
                         suggestions.Add(a);
                         i++;
                     }
 
                 }
             }
-            else
+            if (suggestions.Count() < 1)
             {
-                //  Appeller méthode TOP10
+                OpAdministator opa = new OpAdministator(musique);
+                var albums = (from j in musique.ALBUMS
+                              select j).ToList();
+                foreach (String name in opa.TopAlbums())
+                {
+                    foreach (ALBUMS a in albums)
+                    {
+                        if (name.Equals(a.TITRE_ALBUM))
+                        {
+                            suggestions.Add(a);
+                        }
+                    }
+                }
             }
             return suggestions;
         }

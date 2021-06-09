@@ -110,10 +110,17 @@ namespace PT2
         {
             ListeDisques.Items.Clear();
             List<ALBUMS> suggestions = opu.Suggestions(abonne);
-            foreach (ALBUMS a in suggestions)
+            if (suggestions.Count() != 0)
             {
-                ListeDisques.Items.Add(a.ToString());
+                foreach (ALBUMS a in suggestions)
+                {
+                    ListeDisques.Items.Add(a);
+                }
             }
+            else
+            {
+                ListeDisques.Items.Add("Aucune suggestion disponible : aucun disque n'a été emprunté");
+            }  
         }
     }
 }
