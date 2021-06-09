@@ -41,10 +41,9 @@ namespace PT2
             // Purgeur
             // 
             this.Purgeur.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.Purgeur.Location = new System.Drawing.Point(923, 440);
-            this.Purgeur.Margin = new System.Windows.Forms.Padding(4);
+            this.Purgeur.Location = new System.Drawing.Point(692, 358);
             this.Purgeur.Name = "Purgeur";
-            this.Purgeur.Size = new System.Drawing.Size(149, 28);
+            this.Purgeur.Size = new System.Drawing.Size(112, 23);
             this.Purgeur.TabIndex = 15;
             this.Purgeur.Text = "Purgeur";
             this.Purgeur.UseVisualStyleBackColor = false;
@@ -52,21 +51,22 @@ namespace PT2
             // 
             // listAbonne
             // 
+            this.listAbonne.FormatString = "D";
             this.listAbonne.FormattingEnabled = true;
-            this.listAbonne.ItemHeight = 16;
-            this.listAbonne.Location = new System.Drawing.Point(725, 14);
-            this.listAbonne.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listAbonne.HorizontalScrollbar = true;
+            this.listAbonne.Location = new System.Drawing.Point(544, 11);
+            this.listAbonne.Margin = new System.Windows.Forms.Padding(2);
             this.listAbonne.Name = "listAbonne";
-            this.listAbonne.Size = new System.Drawing.Size(540, 420);
+            this.listAbonne.Size = new System.Drawing.Size(406, 342);
             this.listAbonne.TabIndex = 14;
             // 
             // ConsulEmpProlongé
             // 
             this.ConsulEmpProlongé.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ConsulEmpProlongé.Location = new System.Drawing.Point(15, 450);
-            this.ConsulEmpProlongé.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ConsulEmpProlongé.Location = new System.Drawing.Point(11, 366);
+            this.ConsulEmpProlongé.Margin = new System.Windows.Forms.Padding(2);
             this.ConsulEmpProlongé.Name = "ConsulEmpProlongé";
-            this.ConsulEmpProlongé.Size = new System.Drawing.Size(193, 28);
+            this.ConsulEmpProlongé.Size = new System.Drawing.Size(145, 23);
             this.ConsulEmpProlongé.TabIndex = 12;
             this.ConsulEmpProlongé.Text = "ConsulEmpruntProlongé";
             this.ConsulEmpProlongé.UseVisualStyleBackColor = false;
@@ -75,10 +75,9 @@ namespace PT2
             // RefreshRetards
             // 
             this.RefreshRetards.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.RefreshRetards.Location = new System.Drawing.Point(215, 450);
-            this.RefreshRetards.Margin = new System.Windows.Forms.Padding(4);
+            this.RefreshRetards.Location = new System.Drawing.Point(161, 366);
             this.RefreshRetards.Name = "RefreshRetards";
-            this.RefreshRetards.Size = new System.Drawing.Size(149, 28);
+            this.RefreshRetards.Size = new System.Drawing.Size(112, 23);
             this.RefreshRetards.TabIndex = 13;
             this.RefreshRetards.Text = "Actualiser Retards";
             this.RefreshRetards.UseVisualStyleBackColor = false;
@@ -87,20 +86,19 @@ namespace PT2
             // listEmprunt
             // 
             this.listEmprunt.FormattingEnabled = true;
-            this.listEmprunt.ItemHeight = 16;
-            this.listEmprunt.Location = new System.Drawing.Point(15, 14);
-            this.listEmprunt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listEmprunt.HorizontalScrollbar = true;
+            this.listEmprunt.Location = new System.Drawing.Point(11, 11);
+            this.listEmprunt.Margin = new System.Windows.Forms.Padding(2);
             this.listEmprunt.Name = "listEmprunt";
-            this.listEmprunt.Size = new System.Drawing.Size(706, 420);
+            this.listEmprunt.Size = new System.Drawing.Size(530, 342);
             this.listEmprunt.TabIndex = 11;
             // 
             // AlbumNonEmp
             // 
             this.AlbumNonEmp.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.AlbumNonEmp.Location = new System.Drawing.Point(372, 450);
-            this.AlbumNonEmp.Margin = new System.Windows.Forms.Padding(4);
+            this.AlbumNonEmp.Location = new System.Drawing.Point(279, 366);
             this.AlbumNonEmp.Name = "AlbumNonEmp";
-            this.AlbumNonEmp.Size = new System.Drawing.Size(165, 28);
+            this.AlbumNonEmp.Size = new System.Drawing.Size(124, 23);
             this.AlbumNonEmp.TabIndex = 17;
             this.AlbumNonEmp.Text = "Album Non Emprunté";
             this.AlbumNonEmp.UseVisualStyleBackColor = false;
@@ -109,10 +107,9 @@ namespace PT2
             // TopAlbumEmp
             // 
             this.TopAlbumEmp.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.TopAlbumEmp.Location = new System.Drawing.Point(545, 450);
-            this.TopAlbumEmp.Margin = new System.Windows.Forms.Padding(4);
+            this.TopAlbumEmp.Location = new System.Drawing.Point(409, 366);
             this.TopAlbumEmp.Name = "TopAlbumEmp";
-            this.TopAlbumEmp.Size = new System.Drawing.Size(165, 28);
+            this.TopAlbumEmp.Size = new System.Drawing.Size(124, 23);
             this.TopAlbumEmp.TabIndex = 18;
             this.TopAlbumEmp.Text = "Top Album Emprunté";
             this.TopAlbumEmp.UseVisualStyleBackColor = false;
@@ -120,9 +117,9 @@ namespace PT2
             // 
             // Administrator
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1279, 554);
+            this.ClientSize = new System.Drawing.Size(959, 450);
             this.Controls.Add(this.TopAlbumEmp);
             this.Controls.Add(this.AlbumNonEmp);
             this.Controls.Add(this.Purgeur);
@@ -130,7 +127,6 @@ namespace PT2
             this.Controls.Add(this.ConsulEmpProlongé);
             this.Controls.Add(this.RefreshRetards);
             this.Controls.Add(this.listEmprunt);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Administrator";
             this.Text = "Administrator";
             this.ResumeLayout(false);

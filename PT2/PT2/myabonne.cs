@@ -10,7 +10,7 @@ namespace PT2
     {
         public override string ToString()
         {
-            return NOM_ABONNÉ + " " + PRÉNOM_ABONNÉ + " " + CODE_ABONNÉ;
+            return NOM_ABONNÉ + " " + PRÉNOM_ABONNÉ + " " + LOGIN_ABONNÉ;
         }
     }
 }

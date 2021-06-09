@@ -38,12 +38,13 @@ namespace PT2
 
         private void chargerListBoxAbonne()
         {
+            Opa = new OpAdministator(musique);
             var abo = (from p in musique.ABONNÉS
                        select p).ToList();
             listAbonne.Items.Clear();
             foreach (ABONNÉS p in abo)
             {
-                listAbonne.Items.Add(p.ToString());
+                listAbonne.Items.Add(p.ToString() + Opa.dernierEmprunt(p));
             }
         }
 

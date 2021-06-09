@@ -23,7 +23,7 @@ namespace PT2
             musique.SaveChanges();
         }
 
-        public EMPRUNTER emprunte(ALBUMS a, ABONNÉS abo )
+        public bool emprunte(ALBUMS a, ABONNÉS abo )
         {
             EMPRUNTER emprunt = new EMPRUNTER();
 
@@ -49,7 +49,7 @@ namespace PT2
                 musique.EMPRUNTER.Add(emprunt);
                 musique.SaveChanges();
             }
-            return emprunt;
+            return emprunté;
         }
 
         public void prolongation(EMPRUNTER e)

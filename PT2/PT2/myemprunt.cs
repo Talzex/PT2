@@ -11,7 +11,7 @@ namespace PT2
 
         public override string ToString()
         {
-            return  ALBUMS.TITRE_ALBUM.Trim() + "    " + DATE_EMPRUNT +  "    " + DATE_RETOUR_ATTENDUE + "    " + DATE_RETOUR;
+            return  ALBUMS.TITRE_ALBUM + "   " + DATE_EMPRUNT.ToString().PadRight(50) +  "    " + DATE_RETOUR_ATTENDUE.ToString().PadRight(50) + "   " + DATE_RETOUR;
         }
 
         
