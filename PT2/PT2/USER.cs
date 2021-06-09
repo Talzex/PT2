@@ -32,10 +32,25 @@ namespace PT2
         {
             var emprunt = (from j in musique.EMPRUNTER
                            where j.CODE_ABONNÉ == abonne.CODE_ABONNÉ
+                           where j.DATE_RETOUR == null
+                           orderby j.DATE_EMPRUNT ascending
+                           select j).ToList();
+            var rendu = (from j in musique.EMPRUNTER
+                           where j.CODE_ABONNÉ == abonne.CODE_ABONNÉ
+                           where j.DATE_RETOUR != null
                            orderby j.DATE_EMPRUNT ascending
                            select j).ToList();
             listEmprunt.Items.Clear();
+            listEmprunt.Items.Add("les disques non rendu :");
+            listEmprunt.Items.Add("");
             foreach (EMPRUNTER j in emprunt)
+            {
+                listEmprunt.Items.Add(j);
+            }
+            listEmprunt.Items.Add("");
+            listEmprunt.Items.Add("les disques rendu :");
+            listEmprunt.Items.Add("");
+            foreach (EMPRUNTER j in rendu)
             {
                 listEmprunt.Items.Add(j);
             }
@@ -64,11 +79,18 @@ namespace PT2
 
         private void emprunt_Click(object sender, EventArgs e)
         {
-
             if (ListeDisques.SelectedItem != null)
             {
                 ALBUMS a = (ALBUMS)ListeDisques.SelectedItem;
-                opu.emprunte(a,abonne);
+                bool emprunté = opu.emprunte(a,abonne);
+                if (emprunté)
+                {
+                    MessageBox.Show("erreur : vous avez déjà emprunté ce disque");
+                }
+                else
+                {
+                    MessageBox.Show("disque emprunté");
+                }
                 chargerListBoxEmprunter();
             }
         }
@@ -105,5 +127,23 @@ namespace PT2
             opu.prolongationAll();
             chargerListBoxEmprunter();
         }
+
+        private void Suggestions_Click(object sender, EventArgs e)
+        {
+            ListeDisques.Items.Clear();
+            List<ALBUMS> suggestions = opu.Suggestions(abonne);
+            if (suggestions.Count() != 0)
+            {
+                foreach (ALBUMS a in suggestions)
+                {
+                    ListeDisques.Items.Add(a);
+                }
+            }
+            else
+            {
+                ListeDisques.Items.Add("Aucune suggestion disponible : aucun disque n'a été emprunté");
+            }  
+        }
+
     }
 }

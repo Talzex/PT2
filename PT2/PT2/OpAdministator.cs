@@ -20,7 +20,7 @@ namespace PT2
         }
         private bool Prolonge(EMPRUNTER j)
         {
-            return j.DATE_EMPRUNT.Month + 1 == j.DATE_RETOUR_ATTENDUE.Month;
+            return j.DATE_EMPRUNT.AddDays(j.ALBUMS.GENRES.DÉLAI)!= j.DATE_RETOUR_ATTENDUE;
         }
 
         public List<EMPRUNTER> EmpruntProlonge()
@@ -42,14 +42,13 @@ namespace PT2
         public void Purge()
         {
             var abo = from a in musique.ABONNÉS
-                      join emp in musique.EMPRUNTER
-                      on a.CODE_ABONNÉ equals emp.CODE_ABONNÉ
-                      where DateTime.Now.Subtract(emp.DATE_EMPRUNT).TotalDays >= 365//A changer ne fonctionn pas
                       select a;
             foreach (ABONNÉS a in abo)
             {
-
-                musique.ABONNÉS.Remove(a);
+                if (DateTime.Now.Subtract(dernierEmprunt(a)).TotalDays >= 365 && !aDesEmprunts(a))
+                {
+                    musique.ABONNÉS.Remove(a);
+                }
 
             }
             musique.SaveChanges();
@@ -77,12 +76,14 @@ namespace PT2
             var emprunts = (from j in musique.EMPRUNTER
                             select j).ToList();
             var albums  = (from j in musique.ALBUMS
+                           /*join p in musique.EMPRUNTER
+                           on j.CODE_ALBUM equals p.CODE_ALBUM*/
                            select j).ToList();
             foreach (EMPRUNTER e in emprunts)
             {
                 foreach(ALBUMS a in albums)
                 {
-                    if(DateTime.Now.Subtract(e.DATE_EMPRUNT).TotalDays >= 365 && e.DATE_EMPRUNT == null)
+                    if(DateTime.Now.Subtract(e.DATE_EMPRUNT).TotalDays >= 365 && e.CODE_ALBUM.Equals(a.CODE_ALBUM))
                     {
                         albumsnonemprunte.Add(a);
                     }
@@ -112,6 +113,35 @@ namespace PT2
                 }
             }
             return topalbums;
+        }
+
+        public DateTime dernierEmprunt(ABONNÉS abo)
+        {
+            DateTime lastEmprunt = new DateTime();
+            var emprunts = (from j in musique.EMPRUNTER
+                            where j.CODE_ABONNÉ == abo.CODE_ABONNÉ
+                            select j).ToList();
+            foreach (EMPRUNTER emp in emprunts)
+            {
+                if (emp.DATE_EMPRUNT > lastEmprunt)
+                {
+                    lastEmprunt = emp.DATE_EMPRUNT;
+                }
+            }
+            return lastEmprunt;
+        }
+
+        public bool aDesEmprunts(ABONNÉS abo)
+        {
+            bool emprunts = false;
+            foreach (EMPRUNTER emp in abo.EMPRUNTER)
+            {
+                if (emp.DATE_RETOUR != null)
+                {
+                    emprunts = true;
+                }
+            }
+            return emprunts;
         }
     }
 }
