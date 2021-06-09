@@ -96,5 +96,87 @@ namespace PT2
             }
             return albumR;
         }
+
+        public List<ALBUMS> Suggestions(ABONNÉS abo)
+        {
+            List<ALBUMS> suggestions = new List<ALBUMS>();
+            List<String> ng = new List<String>();
+            List<String> ne = new List<String>();
+            List<int> aa = new List<int>();
+
+            var albemp = from emp in musique.EMPRUNTER
+                         where emp.CODE_ABONNÉ == abo.CODE_ABONNÉ
+                         select emp;
+
+            if (albemp != null)
+            {
+                foreach (EMPRUNTER e in albemp)
+                {
+                    var genre = from alb in musique.ALBUMS
+                                where e.CODE_ALBUM == alb.CODE_ALBUM
+                                select alb.CODE_GENRE;
+                    foreach (int g in genre)
+                    {
+                        var nomGenre = from gen in musique.GENRES
+                                       where gen.CODE_GENRE == g
+                                       select gen.LIBELLÉ_GENRE;
+                        foreach (String s in nomGenre)
+                        {
+                            ng.Add(s);
+                        }
+                    }
+
+                    var editeur = from alb in musique.ALBUMS
+                                  where e.CODE_ALBUM == alb.CODE_ALBUM
+                                  select alb.CODE_EDITEUR;
+                    foreach (int edi in editeur)
+                    {
+                        var nomEditeur = from nomEdi in musique.EDITEURS
+                                         where nomEdi.CODE_EDITEUR == edi
+                                         select nomEdi.NOM_EDITEUR;
+                        foreach (String s in nomEditeur)
+                        {
+                            ne.Add(s);
+                        }
+                    }
+
+                    var annee = from an in musique.ALBUMS
+                                where e.CODE_ALBUM == an.CODE_ALBUM
+                                select an.ANNÉE_ALBUM;
+                    foreach (int an in annee)
+                    {
+                        aa.Add(an);
+                    }
+                }
+                for (int i = 0; i < aa.Count(); i++)
+                {
+                    String nomGenre = ng.ElementAt(i);
+                    String nomEdit = ne.ElementAt(i);
+                    int anneeAlb = aa.ElementAt(i);
+
+                    var sug = (from a in musique.ALBUMS
+                               join e in musique.EDITEURS
+                               on a.CODE_EDITEUR equals e.CODE_EDITEUR
+                               join g in musique.GENRES
+                               on a.CODE_GENRE equals g.CODE_GENRE
+                               where g.LIBELLÉ_GENRE == nomGenre
+                               where e.NOM_EDITEUR == nomEdit
+                               where a.ANNÉE_ALBUM == anneeAlb
+                               select a);
+
+                    foreach (ALBUMS a in sug)
+                    {
+                        suggestions.Add(a);
+                        i++;
+                    }
+
+                }
+            }
+            else
+            {
+                //  Appeller méthode TOP10
+            }
+            return suggestions;
+        }
     }
 }

@@ -82,7 +82,7 @@ namespace PT2
             {
                 foreach(ALBUMS a in albums)
                 {
-                    if(DateTime.Now.Subtract(e.DATE_EMPRUNT).TotalDays >= 365 && e.DATE_EMPRUNT == null)
+                    if(DateTime.Now.Subtract(e.DATE_EMPRUNT).TotalDays >= 365 || e.DATE_EMPRUNT == null)
                     {
                         albumsnonemprunte.Add(a);
                     }
@@ -113,5 +113,6 @@ namespace PT2
             }
             return topalbums;
         }
+
     }
 }

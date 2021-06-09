@@ -105,5 +105,15 @@ namespace PT2
             opu.prolongationAll();
             chargerListBoxEmprunter();
         }
+
+        private void Suggestions_Click(object sender, EventArgs e)
+        {
+            ListeDisques.Items.Clear();
+            List<ALBUMS> suggestions = opu.Suggestions(abonne);
+            foreach (ALBUMS a in suggestions)
+            {
+                ListeDisques.Items.Add(a.ToString());
+            }
+        }
     }
 }
