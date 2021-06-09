@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PT2
 {
-    class OpUSER
+    public class OpUSER
     {
         MusiquePT2_MEntities musique;
         public OpUSER(MusiquePT2_MEntities musique)

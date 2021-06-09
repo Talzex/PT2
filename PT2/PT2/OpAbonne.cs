@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace PT2
 {
-    class OpAbonne
+    public class OpAbonne
     {
         MusiquePT2_MEntities musique;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PT2
 {
-    class OpAdministator
+    public class OpAdministator
     {
         MusiquePT2_MEntities musique;
         List<EMPRUNTER> empruntsprol;
