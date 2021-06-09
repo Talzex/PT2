@@ -110,6 +110,7 @@ namespace PT2
 
             if (albemp.Count() > 0)
             {
+                
                 foreach (EMPRUNTER e in albemp)
                 {
                     var genre = from alb in musique.ALBUMS
@@ -174,14 +175,17 @@ namespace PT2
                                 emprunté = true;
                             }
                         }
-                        if (!emprunté)
-                        suggestions.Add(a);
-                        i++;
+                        if (!emprunté && !suggestions.Contains(a))
+                        {
+                            suggestions.Add(a);
+                            i++;
+                        }
+                        
                     }
 
                 }
             }
-            if (suggestions.Count() < 1)
+            else
             {
                 OpAdministator opa = new OpAdministator(musique);
                 var albums = (from j in musique.ALBUMS
