@@ -73,16 +73,19 @@ namespace PT2
         public List<ALBUMS> AlbumsNonEmprunte()
         {
             albumsnonemprunte = new List<ALBUMS>();
-            var albumNonEmpruntesDepuisUnAn = (from a in musique.ALBUMS
-                                               join emp in musique.EMPRUNTER
-                                               on a.CODE_ALBUM equals emp.CODE_ALBUM
-                                               where DateTime.Now.Subtract(emp.DATE_EMPRUNT).TotalDays >= 365//A changer ne fonctionne pas
-                                               select a);
-            if (albumNonEmpruntesDepuisUnAn.Count() != 0)
+            
+            var emprunts = (from j in musique.EMPRUNTER
+                            select j).ToList();
+            var albums  = (from j in musique.ALBUMS
+                           select j).ToList();
+            foreach (EMPRUNTER e in emprunts)
             {
-                foreach (ALBUMS a in albumNonEmpruntesDepuisUnAn)
+                foreach(ALBUMS a in albums)
                 {
-                    albumsnonemprunte.Add(a);
+                    if(DateTime.Now.Subtract(e.DATE_EMPRUNT).TotalDays >= 365 && e.DATE_EMPRUNT == null)
+                    {
+                        albumsnonemprunte.Add(a);
+                    }
                 }
             }
             return albumsnonemprunte;
