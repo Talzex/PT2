@@ -15,7 +15,7 @@ namespace PT2
 
         MusiquePT2_MEntities musique;
         OpAdministator Opa;
-
+        public decimal n;
         public Administrator()
         {
             InitializeComponent();
@@ -23,6 +23,7 @@ namespace PT2
             chargerListBoxAbonne();
             chargerListBoxRetards();
             Opa = new OpAdministator(musique);
+            n = numericUpDown1.Value;
         }
 
         private void chargerListBoxRetards()
@@ -37,7 +38,7 @@ namespace PT2
         }
 
         private void chargerListBoxAbonne()
-        {
+        {   
             Opa = new OpAdministator(musique);
             var abo = (from p in musique.ABONNÉS
                        select p).ToList();
@@ -61,7 +62,7 @@ namespace PT2
 
         private void Purgeur_Click(object sender, EventArgs e)
         {
-            Opa.Purge();
+            Opa.Purge(n);
             chargerListBoxAbonne();
 
         }
@@ -69,9 +70,9 @@ namespace PT2
         private void RetardsRetourEmprunt_Click(object sender, EventArgs e)
         {
             listEmprunt.Items.Clear();
-            if (Opa.RetardEmprunt().Count() != 0)
+            if (Opa.RetardEmprunt(n).Count() != 0)
             {
-                foreach (EMPRUNTER emp in Opa.RetardEmprunt())
+                foreach (EMPRUNTER emp in Opa.RetardEmprunt(n))
                 {
                     listEmprunt.Items.Add(emp);
                 }
@@ -86,9 +87,9 @@ namespace PT2
         private void AlbumNonEmp_Click(object sender, EventArgs e)
         {
             listEmprunt.Items.Clear();
-            if (Opa.AlbumsNonEmprunte().Count() != 0)
+            if (Opa.AlbumsNonEmprunte(n).Count() != 0)
             {
-                foreach (ALBUMS al in Opa.AlbumsNonEmprunte())
+                foreach (ALBUMS al in Opa.AlbumsNonEmprunte(n))
                 {
                     listEmprunt.Items.Add(al);
                 }
@@ -117,6 +118,5 @@ namespace PT2
 
         }
 
-        
     }
 }
