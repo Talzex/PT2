@@ -104,6 +104,7 @@
     <Compile Include="OpAbonne.cs" />
     <Compile Include="OpAdministator.cs" />
     <Compile Include="OpUSER.cs" />
+    <Compile Include="Outils.cs" />
     <Compile Include="PAYS.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
