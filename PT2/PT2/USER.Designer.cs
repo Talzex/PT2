@@ -32,20 +32,28 @@ namespace PT2
             this.Prolongation = new System.Windows.Forms.Button();
             this.retourne = new System.Windows.Forms.Button();
             this.emprunt = new System.Windows.Forms.Button();
-            this.listEmprunt = new System.Windows.Forms.ListBox();
-            this.ListeDisques = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.suivant = new System.Windows.Forms.Button();
             this.precedent = new System.Windows.Forms.Button();
             this.ProlAllEmprunt = new System.Windows.Forms.Button();
             this.Suggestions = new System.Windows.Forms.Button();
+            this.GridDisques = new System.Windows.Forms.DataGridView();
+            this.Titre_Album = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Genre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editeur = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Emprunté = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prolongé = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date_emprunt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date_retour_attendue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date_retour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.GridDisques)).BeginInit();
             this.SuspendLayout();
             // 
             // Prolongation
             // 
             this.Prolongation.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.Prolongation.Location = new System.Drawing.Point(923, 357);
+            this.Prolongation.Location = new System.Drawing.Point(1067, 345);
             this.Prolongation.Margin = new System.Windows.Forms.Padding(2);
             this.Prolongation.Name = "Prolongation";
             this.Prolongation.Size = new System.Drawing.Size(152, 23);
@@ -57,7 +65,7 @@ namespace PT2
             // retourne
             // 
             this.retourne.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.retourne.Location = new System.Drawing.Point(496, 357);
+            this.retourne.Location = new System.Drawing.Point(640, 345);
             this.retourne.Margin = new System.Windows.Forms.Padding(2);
             this.retourne.Name = "retourne";
             this.retourne.Size = new System.Drawing.Size(142, 23);
@@ -77,25 +85,6 @@ namespace PT2
             this.emprunt.Text = "Emprunter";
             this.emprunt.UseVisualStyleBackColor = false;
             this.emprunt.Click += new System.EventHandler(this.emprunt_Click);
-            // 
-            // listEmprunt
-            // 
-            this.listEmprunt.FormattingEnabled = true;
-            this.listEmprunt.HorizontalScrollbar = true;
-            this.listEmprunt.Location = new System.Drawing.Point(496, 11);
-            this.listEmprunt.Margin = new System.Windows.Forms.Padding(2);
-            this.listEmprunt.Name = "listEmprunt";
-            this.listEmprunt.Size = new System.Drawing.Size(579, 329);
-            this.listEmprunt.TabIndex = 8;
-            // 
-            // ListeDisques
-            // 
-            this.ListeDisques.FormattingEnabled = true;
-            this.ListeDisques.Location = new System.Drawing.Point(11, 11);
-            this.ListeDisques.Margin = new System.Windows.Forms.Padding(2);
-            this.ListeDisques.Name = "ListeDisques";
-            this.ListeDisques.Size = new System.Drawing.Size(447, 329);
-            this.ListeDisques.TabIndex = 13;
             // 
             // label1
             // 
@@ -135,7 +124,7 @@ namespace PT2
             // ProlAllEmprunt
             // 
             this.ProlAllEmprunt.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ProlAllEmprunt.Location = new System.Drawing.Point(688, 357);
+            this.ProlAllEmprunt.Location = new System.Drawing.Point(832, 345);
             this.ProlAllEmprunt.Margin = new System.Windows.Forms.Padding(2);
             this.ProlAllEmprunt.Name = "ProlAllEmprunt";
             this.ProlAllEmprunt.Size = new System.Drawing.Size(172, 23);
@@ -154,24 +143,107 @@ namespace PT2
             this.Suggestions.UseVisualStyleBackColor = true;
             this.Suggestions.Click += new System.EventHandler(this.Suggestions_Click);
             // 
+            // GridDisques
+            // 
+            this.GridDisques.AllowUserToAddRows = false;
+            this.GridDisques.AllowUserToDeleteRows = false;
+            this.GridDisques.AllowUserToOrderColumns = true;
+            this.GridDisques.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridDisques.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Titre_Album,
+            this.Genre,
+            this.Editeur,
+            this.Emprunté,
+            this.Prolongé,
+            this.Date_emprunt,
+            this.Date_retour_attendue,
+            this.Date_retour});
+            this.GridDisques.Location = new System.Drawing.Point(12, 12);
+            this.GridDisques.Name = "GridDisques";
+            this.GridDisques.Size = new System.Drawing.Size(1207, 327);
+            this.GridDisques.TabIndex = 20;
+            this.GridDisques.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridDisques_CellContentClick);
+            // 
+            // Titre_Album
+            // 
+            this.Titre_Album.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Titre_Album.HeaderText = "Titre_Album";
+            this.Titre_Album.Name = "Titre_Album";
+            this.Titre_Album.ReadOnly = true;
+            this.Titre_Album.Width = 88;
+            // 
+            // Genre
+            // 
+            this.Genre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Genre.HeaderText = "Genre";
+            this.Genre.Name = "Genre";
+            this.Genre.ReadOnly = true;
+            this.Genre.Width = 61;
+            // 
+            // Editeur
+            // 
+            this.Editeur.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Editeur.HeaderText = "Editeur";
+            this.Editeur.Name = "Editeur";
+            this.Editeur.ReadOnly = true;
+            this.Editeur.Width = 65;
+            // 
+            // Emprunté
+            // 
+            this.Emprunté.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Emprunté.HeaderText = "Emprunté";
+            this.Emprunté.Name = "Emprunté";
+            this.Emprunté.ReadOnly = true;
+            this.Emprunté.Width = 77;
+            // 
+            // Prolongé
+            // 
+            this.Prolongé.HeaderText = "Prolongé";
+            this.Prolongé.Name = "Prolongé";
+            this.Prolongé.ReadOnly = true;
+            // 
+            // Date_emprunt
+            // 
+            this.Date_emprunt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Date_emprunt.HeaderText = "Date_emprunt";
+            this.Date_emprunt.Name = "Date_emprunt";
+            this.Date_emprunt.ReadOnly = true;
+            this.Date_emprunt.Width = 99;
+            // 
+            // Date_retour_attendue
+            // 
+            this.Date_retour_attendue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Date_retour_attendue.HeaderText = "Date_retour_attendue";
+            this.Date_retour_attendue.Name = "Date_retour_attendue";
+            this.Date_retour_attendue.ReadOnly = true;
+            this.Date_retour_attendue.Width = 136;
+            // 
+            // Date_retour
+            // 
+            this.Date_retour.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Date_retour.HeaderText = "Date_retour";
+            this.Date_retour.Name = "Date_retour";
+            this.Date_retour.ReadOnly = true;
+            this.Date_retour.Width = 88;
+            // 
             // USER
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1107, 450);
+            this.ClientSize = new System.Drawing.Size(1231, 450);
+            this.Controls.Add(this.GridDisques);
             this.Controls.Add(this.Suggestions);
             this.Controls.Add(this.ProlAllEmprunt);
             this.Controls.Add(this.precedent);
             this.Controls.Add(this.suivant);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.ListeDisques);
             this.Controls.Add(this.Prolongation);
             this.Controls.Add(this.retourne);
             this.Controls.Add(this.emprunt);
-            this.Controls.Add(this.listEmprunt);
             this.Name = "USER";
             this.Text = "USER";
+            ((System.ComponentModel.ISupportInitialize)(this.GridDisques)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,13 +254,20 @@ namespace PT2
         private System.Windows.Forms.Button Prolongation;
         private System.Windows.Forms.Button retourne;
         private System.Windows.Forms.Button emprunt;
-        private System.Windows.Forms.ListBox listEmprunt;
-        private System.Windows.Forms.ListBox ListeDisques;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button suivant;
         private System.Windows.Forms.Button precedent;
         private System.Windows.Forms.Button ProlAllEmprunt;
         private System.Windows.Forms.Button Suggestions;
+        private System.Windows.Forms.DataGridView GridDisques;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Titre_Album;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Genre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Editeur;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Emprunté;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prolongé;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date_emprunt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date_retour_attendue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date_retour;
     }
 }

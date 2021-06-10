@@ -26,8 +26,9 @@ namespace PT2
         public bool emprunte(ALBUMS a, ABONNÉS abo )
         {
             EMPRUNTER emprunt = new EMPRUNTER();
-
+            EMPRUNTER empruntRendu = null;
             bool emprunté = false;
+            bool rendu = false;
             emprunt.CODE_ABONNÉ = abo.CODE_ABONNÉ;
             emprunt.DATE_EMPRUNT = DateTime.Now;
             emprunt.CODE_ALBUM = a.CODE_ALBUM;
@@ -41,8 +42,22 @@ namespace PT2
             {
                 if (emprunt.CODE_ALBUM == emp.CODE_ALBUM && !emprunté)
                 {
-                    emprunté = true;
+                    if (emp.DATE_RETOUR != null)
+                    {
+                        rendu = true;
+                        empruntRendu = emp;
+                    }
+                    else
+                    {
+                        emprunté = true;
+                    }
+                    
                 }
+            }
+            if (rendu)
+            {
+                musique.EMPRUNTER.Remove(empruntRendu);
+                musique.SaveChanges();
             }
             if (!emprunté)
             {
@@ -78,7 +93,7 @@ namespace PT2
             musique.SaveChanges();
         }
 
-        private bool Prolonge(EMPRUNTER j)
+        public bool Prolonge(EMPRUNTER j)
         {
             return j.DATE_EMPRUNT.Month + 1 == j.DATE_RETOUR_ATTENDUE.Month;
         }
