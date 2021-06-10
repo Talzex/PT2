@@ -102,6 +102,9 @@ namespace PT2
                 EMPRUNTER albumsEmprunte = (EMPRUNTER)listEmprunt.SelectedItem;
                 opu.prolongation(albumsEmprunte);
                 chargerListBoxEmprunter();
+            } else
+            {
+                MessageBox.Show("Prolongement Impossible");
             }
         }
 
