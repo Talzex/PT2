@@ -30,12 +30,21 @@ namespace PT2
         private void InitializeComponent()
         {
             this.Purgeur = new System.Windows.Forms.Button();
-            this.listAbonne = new System.Windows.Forms.ListBox();
             this.ConsulEmpProlongé = new System.Windows.Forms.Button();
             this.RefreshRetards = new System.Windows.Forms.Button();
-            this.listEmprunt = new System.Windows.Forms.ListBox();
             this.AlbumNonEmp = new System.Windows.Forms.Button();
             this.TopAlbumEmp = new System.Windows.Forms.Button();
+            this.Emprunts = new System.Windows.Forms.DataGridView();
+            this.titre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emprunt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.retour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idabo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.Emprunts)).BeginInit();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -45,7 +54,7 @@ namespace PT2
             // Purgeur
             // 
             this.Purgeur.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.Purgeur.Location = new System.Drawing.Point(692, 358);
+            this.Purgeur.Location = new System.Drawing.Point(844, 546);
             this.Purgeur.Name = "Purgeur";
             this.Purgeur.Size = new System.Drawing.Size(112, 23);
             this.Purgeur.TabIndex = 15;
@@ -53,21 +62,10 @@ namespace PT2
             this.Purgeur.UseVisualStyleBackColor = false;
             this.Purgeur.Click += new System.EventHandler(this.Purgeur_Click);
             // 
-            // listAbonne
-            // 
-            this.listAbonne.FormatString = "D";
-            this.listAbonne.FormattingEnabled = true;
-            this.listAbonne.HorizontalScrollbar = true;
-            this.listAbonne.Location = new System.Drawing.Point(544, 11);
-            this.listAbonne.Margin = new System.Windows.Forms.Padding(2);
-            this.listAbonne.Name = "listAbonne";
-            this.listAbonne.Size = new System.Drawing.Size(406, 342);
-            this.listAbonne.TabIndex = 14;
-            // 
             // ConsulEmpProlongé
             // 
             this.ConsulEmpProlongé.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ConsulEmpProlongé.Location = new System.Drawing.Point(11, 366);
+            this.ConsulEmpProlongé.Location = new System.Drawing.Point(11, 546);
             this.ConsulEmpProlongé.Margin = new System.Windows.Forms.Padding(2);
             this.ConsulEmpProlongé.Name = "ConsulEmpProlongé";
             this.ConsulEmpProlongé.Size = new System.Drawing.Size(145, 23);
@@ -79,7 +77,7 @@ namespace PT2
             // RefreshRetards
             // 
             this.RefreshRetards.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.RefreshRetards.Location = new System.Drawing.Point(161, 366);
+            this.RefreshRetards.Location = new System.Drawing.Point(161, 546);
             this.RefreshRetards.Name = "RefreshRetards";
             this.RefreshRetards.Size = new System.Drawing.Size(112, 23);
             this.RefreshRetards.TabIndex = 13;
@@ -87,20 +85,10 @@ namespace PT2
             this.RefreshRetards.UseVisualStyleBackColor = false;
             this.RefreshRetards.Click += new System.EventHandler(this.RetardsRetourEmprunt_Click);
             // 
-            // listEmprunt
-            // 
-            this.listEmprunt.FormattingEnabled = true;
-            this.listEmprunt.HorizontalScrollbar = true;
-            this.listEmprunt.Location = new System.Drawing.Point(11, 11);
-            this.listEmprunt.Margin = new System.Windows.Forms.Padding(2);
-            this.listEmprunt.Name = "listEmprunt";
-            this.listEmprunt.Size = new System.Drawing.Size(530, 342);
-            this.listEmprunt.TabIndex = 11;
-            // 
             // AlbumNonEmp
             // 
             this.AlbumNonEmp.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.AlbumNonEmp.Location = new System.Drawing.Point(279, 366);
+            this.AlbumNonEmp.Location = new System.Drawing.Point(279, 546);
             this.AlbumNonEmp.Name = "AlbumNonEmp";
             this.AlbumNonEmp.Size = new System.Drawing.Size(124, 23);
             this.AlbumNonEmp.TabIndex = 17;
@@ -111,13 +99,79 @@ namespace PT2
             // TopAlbumEmp
             // 
             this.TopAlbumEmp.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.TopAlbumEmp.Location = new System.Drawing.Point(409, 366);
+            this.TopAlbumEmp.Location = new System.Drawing.Point(409, 546);
             this.TopAlbumEmp.Name = "TopAlbumEmp";
             this.TopAlbumEmp.Size = new System.Drawing.Size(124, 23);
             this.TopAlbumEmp.TabIndex = 18;
             this.TopAlbumEmp.Text = "Top Album Emprunté";
             this.TopAlbumEmp.UseVisualStyleBackColor = false;
             this.TopAlbumEmp.Click += new System.EventHandler(this.TopAlbumEmp_Click);
+            // 
+            // Emprunts
+            // 
+            this.Emprunts.BackgroundColor = System.Drawing.Color.LightSkyBlue;
+            this.Emprunts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Emprunts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.titre,
+            this.emprunt,
+            this.delai,
+            this.retour,
+            this.idname,
+            this.idabo,
+            this.nom,
+            this.prenom,
+            this.date});
+            this.Emprunts.GridColor = System.Drawing.Color.DodgerBlue;
+            this.Emprunts.Location = new System.Drawing.Point(12, 12);
+            this.Emprunts.Name = "Emprunts";
+            this.Emprunts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.Emprunts.Size = new System.Drawing.Size(944, 529);
+            this.Emprunts.TabIndex = 19;
+            // 
+            // titre
+            // 
+            this.titre.HeaderText = "Titre";
+            this.titre.Name = "titre";
+            // 
+            // emprunt
+            // 
+            this.emprunt.HeaderText = "Date d\'Emprunt";
+            this.emprunt.Name = "emprunt";
+            // 
+            // delai
+            // 
+            this.delai.HeaderText = "Date de Retour Attendue";
+            this.delai.Name = "delai";
+            // 
+            // retour
+            // 
+            this.retour.HeaderText = "Date de Retour";
+            this.retour.Name = "retour";
+            // 
+            // idname
+            // 
+            this.idname.HeaderText = "Identifiant";
+            this.idname.Name = "idname";
+            // 
+            // idabo
+            // 
+            this.idabo.HeaderText = "ID";
+            this.idabo.Name = "idabo";
+            // 
+            // nom
+            // 
+            this.nom.HeaderText = "Nom";
+            this.nom.Name = "nom";
+            // 
+            // prenom
+            // 
+            this.prenom.HeaderText = "Prénom";
+            this.prenom.Name = "prenom";
+            // 
+            // date
+            // 
+            this.date.HeaderText = "Date du Dernier Emprunt";
+            this.date.Name = "date";
             // 
             // label1
             // 
@@ -152,16 +206,17 @@ namespace PT2
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(964, 573);
+            this.Controls.Add(this.Emprunts);
             this.Controls.Add(this.TopAlbumEmp);
             this.Controls.Add(this.AlbumNonEmp);
             this.Controls.Add(this.Purgeur);
-            this.Controls.Add(this.listAbonne);
             this.Controls.Add(this.ConsulEmpProlongé);
             this.Controls.Add(this.RefreshRetards);
-            this.Controls.Add(this.listEmprunt);
             this.Name = "Administrator";
             this.Text = "Administrator";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Emprunts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,14 +225,22 @@ namespace PT2
         #endregion
 
         private System.Windows.Forms.Button Purgeur;
-        private System.Windows.Forms.ListBox listAbonne;
         private System.Windows.Forms.Button ConsulEmpProlongé;
         private System.Windows.Forms.Button RefreshRetards;
-        private System.Windows.Forms.ListBox listEmprunt;
         private System.Windows.Forms.Button AlbumNonEmp;
         private System.Windows.Forms.Button TopAlbumEmp;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.DataGridView Emprunts;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emprunt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn delai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn retour;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idabo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prenom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn date;
     }
 }
