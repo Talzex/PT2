@@ -29,18 +29,19 @@ namespace PT2
         /// </summary>
         private void InitializeComponent()
         {
-            this.ajouter = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox_cmdp = new System.Windows.Forms.TextBox();
             this.textBox_nom = new System.Windows.Forms.TextBox();
             this.textBox_prenom = new System.Windows.Forms.TextBox();
+            this.comboBoxPays = new System.Windows.Forms.ComboBox();
             this.textBox_login = new System.Windows.Forms.TextBox();
             this.textBox_mdp = new System.Windows.Forms.TextBox();
+            this.textBox_cmdp = new System.Windows.Forms.TextBox();
+            this.ajouter = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox_mdpIn = new System.Windows.Forms.TextBox();
             this.textBox_loginIn = new System.Windows.Forms.TextBox();
@@ -48,20 +49,7 @@ namespace PT2
             this.label9 = new System.Windows.Forms.Label();
             this.connexion = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBoxPays = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // ajouter
-            // 
-            this.ajouter.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ajouter.Location = new System.Drawing.Point(182, 397);
-            this.ajouter.Margin = new System.Windows.Forms.Padding(2);
-            this.ajouter.Name = "ajouter";
-            this.ajouter.Size = new System.Drawing.Size(70, 23);
-            this.ajouter.TabIndex = 3;
-            this.ajouter.Text = "Inscription";
-            this.ajouter.UseVisualStyleBackColor = false;
-            this.ajouter.Click += new System.EventHandler(this.ajouter_Click);
             // 
             // label1
             // 
@@ -117,21 +105,12 @@ namespace PT2
             this.label6.TabIndex = 9;
             this.label6.Text = "Confirmation Mot de passe :";
             // 
-            // textBox_cmdp
-            // 
-            this.textBox_cmdp.Location = new System.Drawing.Point(182, 349);
-            this.textBox_cmdp.Name = "textBox_cmdp";
-            this.textBox_cmdp.PasswordChar = '*';
-            this.textBox_cmdp.Size = new System.Drawing.Size(195, 20);
-            this.textBox_cmdp.TabIndex = 10;
-            this.textBox_cmdp.TextChanged += new System.EventHandler(this.textBox_cmdp_TextChanged);
-            // 
             // textBox_nom
             // 
             this.textBox_nom.Location = new System.Drawing.Point(182, 95);
             this.textBox_nom.Name = "textBox_nom";
             this.textBox_nom.Size = new System.Drawing.Size(195, 20);
-            this.textBox_nom.TabIndex = 11;
+            this.textBox_nom.TabIndex = 0;
             this.textBox_nom.TextChanged += new System.EventHandler(this.textBox_nom_TextChanged);
             // 
             // textBox_prenom
@@ -139,15 +118,25 @@ namespace PT2
             this.textBox_prenom.Location = new System.Drawing.Point(182, 142);
             this.textBox_prenom.Name = "textBox_prenom";
             this.textBox_prenom.Size = new System.Drawing.Size(195, 20);
-            this.textBox_prenom.TabIndex = 12;
+            this.textBox_prenom.TabIndex = 1;
             this.textBox_prenom.TextChanged += new System.EventHandler(this.textBox_prenom_TextChanged);
+            // 
+            // comboBoxPays
+            // 
+            this.comboBoxPays.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPays.FormattingEnabled = true;
+            this.comboBoxPays.Location = new System.Drawing.Point(182, 191);
+            this.comboBoxPays.Name = "comboBoxPays";
+            this.comboBoxPays.Size = new System.Drawing.Size(195, 21);
+            this.comboBoxPays.TabIndex = 2;
+            this.comboBoxPays.SelectedIndexChanged += new System.EventHandler(this.comboBoxPays_SelectedIndexChanged);
             // 
             // textBox_login
             // 
             this.textBox_login.Location = new System.Drawing.Point(182, 251);
             this.textBox_login.Name = "textBox_login";
             this.textBox_login.Size = new System.Drawing.Size(195, 20);
-            this.textBox_login.TabIndex = 13;
+            this.textBox_login.TabIndex = 3;
             this.textBox_login.TextChanged += new System.EventHandler(this.textBox_login_TextChanged);
             // 
             // textBox_mdp
@@ -156,8 +145,29 @@ namespace PT2
             this.textBox_mdp.Name = "textBox_mdp";
             this.textBox_mdp.PasswordChar = '*';
             this.textBox_mdp.Size = new System.Drawing.Size(195, 20);
-            this.textBox_mdp.TabIndex = 14;
+            this.textBox_mdp.TabIndex = 4;
             this.textBox_mdp.TextChanged += new System.EventHandler(this.textBox_mdp_TextChanged);
+            // 
+            // textBox_cmdp
+            // 
+            this.textBox_cmdp.Location = new System.Drawing.Point(182, 349);
+            this.textBox_cmdp.Name = "textBox_cmdp";
+            this.textBox_cmdp.PasswordChar = '*';
+            this.textBox_cmdp.Size = new System.Drawing.Size(195, 20);
+            this.textBox_cmdp.TabIndex = 5;
+            this.textBox_cmdp.TextChanged += new System.EventHandler(this.textBox_cmdp_TextChanged);
+            // 
+            // ajouter
+            // 
+            this.ajouter.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.ajouter.Location = new System.Drawing.Point(182, 397);
+            this.ajouter.Margin = new System.Windows.Forms.Padding(2);
+            this.ajouter.Name = "ajouter";
+            this.ajouter.Size = new System.Drawing.Size(70, 23);
+            this.ajouter.TabIndex = 6;
+            this.ajouter.Text = "Inscription";
+            this.ajouter.UseVisualStyleBackColor = false;
+            this.ajouter.Click += new System.EventHandler(this.ajouter_Click);
             // 
             // label7
             // 
@@ -174,7 +184,7 @@ namespace PT2
             this.textBox_mdpIn.Name = "textBox_mdpIn";
             this.textBox_mdpIn.PasswordChar = '*';
             this.textBox_mdpIn.Size = new System.Drawing.Size(195, 20);
-            this.textBox_mdpIn.TabIndex = 19;
+            this.textBox_mdpIn.TabIndex = 8;
             this.textBox_mdpIn.TextChanged += new System.EventHandler(this.textBox_mdpIn_TextChanged);
             // 
             // textBox_loginIn
@@ -182,7 +192,7 @@ namespace PT2
             this.textBox_loginIn.Location = new System.Drawing.Point(602, 138);
             this.textBox_loginIn.Name = "textBox_loginIn";
             this.textBox_loginIn.Size = new System.Drawing.Size(195, 20);
-            this.textBox_loginIn.TabIndex = 18;
+            this.textBox_loginIn.TabIndex = 7;
             this.textBox_loginIn.TextChanged += new System.EventHandler(this.textBox_loginIn_TextChanged);
             // 
             // label8
@@ -210,7 +220,7 @@ namespace PT2
             this.connexion.Margin = new System.Windows.Forms.Padding(2);
             this.connexion.Name = "connexion";
             this.connexion.Size = new System.Drawing.Size(70, 23);
-            this.connexion.TabIndex = 20;
+            this.connexion.TabIndex = 9;
             this.connexion.Text = "Connexion";
             this.connexion.UseVisualStyleBackColor = false;
             this.connexion.Click += new System.EventHandler(this.connexion_Click);
@@ -223,15 +233,6 @@ namespace PT2
             this.label10.Size = new System.Drawing.Size(36, 13);
             this.label10.TabIndex = 21;
             this.label10.Text = "Pays :";
-            // 
-            // comboBoxPays
-            // 
-            this.comboBoxPays.FormattingEnabled = true;
-            this.comboBoxPays.Location = new System.Drawing.Point(182, 191);
-            this.comboBoxPays.Name = "comboBoxPays";
-            this.comboBoxPays.Size = new System.Drawing.Size(195, 21);
-            this.comboBoxPays.TabIndex = 22;
-            this.comboBoxPays.SelectedIndexChanged += new System.EventHandler(this.comboBoxPays_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -267,18 +268,19 @@ namespace PT2
         }
 
         #endregion
-        private System.Windows.Forms.Button ajouter;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox_cmdp;
         private System.Windows.Forms.TextBox textBox_nom;
         private System.Windows.Forms.TextBox textBox_prenom;
+        private System.Windows.Forms.ComboBox comboBoxPays;
         private System.Windows.Forms.TextBox textBox_login;
         private System.Windows.Forms.TextBox textBox_mdp;
+        private System.Windows.Forms.TextBox textBox_cmdp;
+        private System.Windows.Forms.Button ajouter;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox_mdpIn;
         private System.Windows.Forms.TextBox textBox_loginIn;
@@ -286,7 +288,6 @@ namespace PT2
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button connexion;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBoxPays;
     }
 }
 
