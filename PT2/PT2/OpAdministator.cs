@@ -76,14 +76,12 @@ namespace PT2
             var emprunts = (from j in musique.EMPRUNTER
                             select j).ToList();
             var albums  = (from j in musique.ALBUMS
-                           /*join p in musique.EMPRUNTER
-                           on j.CODE_ALBUM equals p.CODE_ALBUM*/
                            select j).ToList();
             foreach (EMPRUNTER e in emprunts)
             {
                 foreach(ALBUMS a in albums)
                 {
-                    if(DateTime.Now.Subtract(e.DATE_EMPRUNT).TotalDays >= 365 && e.CODE_ALBUM.Equals(a.CODE_ALBUM))
+                    if((DateTime.Now.Subtract(e.DATE_EMPRUNT).TotalDays >= 365 && e.CODE_ALBUM.Equals(a.CODE_ALBUM)) || !a.EMPRUNTER.Contains(e) && !albumsnonemprunte.Contains(a))
                     {
                         albumsnonemprunte.Add(a);
                     }
