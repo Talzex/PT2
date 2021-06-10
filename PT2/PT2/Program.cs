@@ -13,7 +13,7 @@ namespace PT2
         /// </summary>
         /// TEST
         [STAThread]
-        static void Main()
+        static void Main() 
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
