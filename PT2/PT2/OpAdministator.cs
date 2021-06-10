@@ -13,6 +13,8 @@ namespace PT2
         List<EMPRUNTER> empruntsNonRapportes;
         List<ALBUMS> albumsnonemprunte;
         List<String> topalbums;
+        Administrator ad;
+      
 
         public OpAdministator(MusiquePT2_MEntities musique)
         {
@@ -39,13 +41,14 @@ namespace PT2
             return empruntsprol;
         }
 
-        public void Purge()
+        public void Purge(decimal n)
         {
+            double date = Convert.ToDouble(n);
             var abo = from a in musique.ABONNÉS
                       select a;
             foreach (ABONNÉS a in abo)
             {
-                if (DateTime.Now.Subtract(dernierEmprunt(a)).TotalDays >= 365 && !aDesEmprunts(a))
+                if (DateTime.Now.Subtract(dernierEmprunt(a)).TotalDays >= date && !aDesEmprunts(a))
                 {
                     musique.ABONNÉS.Remove(a);
                 }
@@ -54,14 +57,15 @@ namespace PT2
             musique.SaveChanges();
         }
 
-        public List<EMPRUNTER> RetardEmprunt()
+        public List<EMPRUNTER> RetardEmprunt(decimal n)
         {
+            double date = Convert.ToDouble(n);
             empruntsNonRapportes = new List<EMPRUNTER>();
             var emprunts = (from j in musique.EMPRUNTER
                             select j).ToList();
             foreach (EMPRUNTER e in emprunts)
             {
-                if (e.DATE_RETOUR == null && DateTime.Now.Subtract(e.DATE_RETOUR_ATTENDUE).TotalDays >= 10)
+                if (e.DATE_RETOUR == null && DateTime.Now.Subtract(e.DATE_RETOUR_ATTENDUE).TotalDays >= date)
                 {
                     empruntsNonRapportes.Add(e);
                 }
@@ -69,8 +73,9 @@ namespace PT2
             return empruntsNonRapportes;
         }
 
-        public List<ALBUMS> AlbumsNonEmprunte()
+        public List<ALBUMS> AlbumsNonEmprunte(decimal n)
         {
+            double date = Convert.ToDouble(n);
             albumsnonemprunte = new List<ALBUMS>();
             
             var emprunts = (from j in musique.EMPRUNTER
@@ -83,7 +88,7 @@ namespace PT2
             {
                 foreach(ALBUMS a in albums)
                 {
-                    if(DateTime.Now.Subtract(e.DATE_EMPRUNT).TotalDays >= 365 && e.CODE_ALBUM.Equals(a.CODE_ALBUM))
+                    if(DateTime.Now.Subtract(e.DATE_EMPRUNT).TotalDays >= date && e.CODE_ALBUM.Equals(a.CODE_ALBUM))
                     {
                         albumsnonemprunte.Add(a);
                     }
