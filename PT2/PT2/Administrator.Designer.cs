@@ -79,7 +79,7 @@ namespace PT2
             this.RefreshRetards.Name = "RefreshRetards";
             this.RefreshRetards.Size = new System.Drawing.Size(112, 23);
             this.RefreshRetards.TabIndex = 13;
-            this.RefreshRetards.Text = "Actualiser Retards";
+            this.RefreshRetards.Text = "Retards Emprunts";
             this.RefreshRetards.UseVisualStyleBackColor = false;
             this.RefreshRetards.Click += new System.EventHandler(this.RetardsRetourEmprunt_Click);
             // 
