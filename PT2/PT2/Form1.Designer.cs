@@ -123,6 +123,7 @@ namespace PT2
             // 
             // comboBoxPays
             // 
+            this.comboBoxPays.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPays.FormattingEnabled = true;
             this.comboBoxPays.Location = new System.Drawing.Point(182, 191);
             this.comboBoxPays.Name = "comboBoxPays";
