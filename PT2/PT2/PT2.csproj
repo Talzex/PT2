@@ -100,6 +100,7 @@
     <Compile Include="myabonne.cs" />
     <Compile Include="myalbum.cs" />
     <Compile Include="myemprunt.cs" />
+    <Compile Include="myPays.cs" />
     <Compile Include="OpAbonne.cs" />
     <Compile Include="OpAdministator.cs" />
     <Compile Include="OpUSER.cs" />

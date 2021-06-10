@@ -162,7 +162,6 @@ namespace PT2
                                on a.CODE_GENRE equals g.CODE_GENRE
                                where g.LIBELLÉ_GENRE == nomGenre
                                where e.NOM_EDITEUR == nomEdit
-                               where a.ANNÉE_ALBUM == anneeAlb
                                select a);
 
                     foreach (ALBUMS a in sug)

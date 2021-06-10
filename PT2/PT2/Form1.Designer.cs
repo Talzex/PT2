@@ -47,12 +47,14 @@ namespace PT2
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.connexion = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBoxPays = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // ajouter
             // 
             this.ajouter.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ajouter.Location = new System.Drawing.Point(182, 335);
+            this.ajouter.Location = new System.Drawing.Point(182, 397);
             this.ajouter.Margin = new System.Windows.Forms.Padding(2);
             this.ajouter.Name = "ajouter";
             this.ajouter.Size = new System.Drawing.Size(70, 23);
@@ -91,7 +93,7 @@ namespace PT2
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 192);
+            this.label4.Location = new System.Drawing.Point(38, 254);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 7;
@@ -100,7 +102,7 @@ namespace PT2
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(38, 241);
+            this.label5.Location = new System.Drawing.Point(38, 303);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 13);
             this.label5.TabIndex = 8;
@@ -109,7 +111,7 @@ namespace PT2
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(38, 290);
+            this.label6.Location = new System.Drawing.Point(38, 352);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(138, 13);
             this.label6.TabIndex = 9;
@@ -117,8 +119,9 @@ namespace PT2
             // 
             // textBox_cmdp
             // 
-            this.textBox_cmdp.Location = new System.Drawing.Point(182, 287);
+            this.textBox_cmdp.Location = new System.Drawing.Point(182, 349);
             this.textBox_cmdp.Name = "textBox_cmdp";
+            this.textBox_cmdp.PasswordChar = '*';
             this.textBox_cmdp.Size = new System.Drawing.Size(195, 20);
             this.textBox_cmdp.TabIndex = 10;
             this.textBox_cmdp.TextChanged += new System.EventHandler(this.textBox_cmdp_TextChanged);
@@ -141,7 +144,7 @@ namespace PT2
             // 
             // textBox_login
             // 
-            this.textBox_login.Location = new System.Drawing.Point(182, 189);
+            this.textBox_login.Location = new System.Drawing.Point(182, 251);
             this.textBox_login.Name = "textBox_login";
             this.textBox_login.Size = new System.Drawing.Size(195, 20);
             this.textBox_login.TabIndex = 13;
@@ -149,8 +152,9 @@ namespace PT2
             // 
             // textBox_mdp
             // 
-            this.textBox_mdp.Location = new System.Drawing.Point(182, 238);
+            this.textBox_mdp.Location = new System.Drawing.Point(182, 300);
             this.textBox_mdp.Name = "textBox_mdp";
+            this.textBox_mdp.PasswordChar = '*';
             this.textBox_mdp.Size = new System.Drawing.Size(195, 20);
             this.textBox_mdp.TabIndex = 14;
             this.textBox_mdp.TextChanged += new System.EventHandler(this.textBox_mdp_TextChanged);
@@ -168,6 +172,7 @@ namespace PT2
             // 
             this.textBox_mdpIn.Location = new System.Drawing.Point(602, 191);
             this.textBox_mdpIn.Name = "textBox_mdpIn";
+            this.textBox_mdpIn.PasswordChar = '*';
             this.textBox_mdpIn.Size = new System.Drawing.Size(195, 20);
             this.textBox_mdpIn.TabIndex = 19;
             this.textBox_mdpIn.TextChanged += new System.EventHandler(this.textBox_mdpIn_TextChanged);
@@ -210,11 +215,31 @@ namespace PT2
             this.connexion.UseVisualStyleBackColor = false;
             this.connexion.Click += new System.EventHandler(this.connexion_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(34, 194);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(36, 13);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Pays :";
+            // 
+            // comboBoxPays
+            // 
+            this.comboBoxPays.FormattingEnabled = true;
+            this.comboBoxPays.Location = new System.Drawing.Point(182, 191);
+            this.comboBoxPays.Name = "comboBoxPays";
+            this.comboBoxPays.Size = new System.Drawing.Size(195, 21);
+            this.comboBoxPays.TabIndex = 22;
+            this.comboBoxPays.SelectedIndexChanged += new System.EventHandler(this.comboBoxPays_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 554);
+            this.Controls.Add(this.comboBoxPays);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.connexion);
             this.Controls.Add(this.textBox_mdpIn);
             this.Controls.Add(this.textBox_loginIn);
@@ -260,6 +285,8 @@ namespace PT2
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button connexion;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBoxPays;
     }
 }
 

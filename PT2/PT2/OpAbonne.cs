@@ -20,8 +20,9 @@ namespace PT2
         String ConfmdpAbonne;
         String loginIn;
         String mdpIn;
+        PAYS pays;
 
-        public OpAbonne(String nomAbonne, String prenomAbonne, String loginAbonne, String mdpAbonne, String ConfmdpAbonne, String loginIn, String mdpIn, MusiquePT2_MEntities musique)
+        public OpAbonne(String nomAbonne, String prenomAbonne, String loginAbonne, String mdpAbonne, String ConfmdpAbonne, String loginIn, String mdpIn, PAYS pays, MusiquePT2_MEntities musique)
         {
             this.nomAbonne = nomAbonne;
             this.prenomAbonne = prenomAbonne;
@@ -30,6 +31,7 @@ namespace PT2
             this.ConfmdpAbonne = ConfmdpAbonne;
             this.loginIn = loginIn;
             this.mdpIn = mdpIn;
+            this.pays = pays;
             this.musique = musique;
         }
 
@@ -44,12 +46,7 @@ namespace PT2
             {
                 foreach (ABONNÉS ab in abonne)
                 {
-                    if (mdpAbonne.Equals(ab.PASSWORD_ABONNÉ.Trim()) && unique)
-                    {
-                        unique = false;
-                        MessageBox.Show("erreur : ce mot de passe existe déjà, il appartient à " + ab.NOM_ABONNÉ + " " + ab.PRÉNOM_ABONNÉ);
-                    }
-                    else if (loginAbonne.Equals(ab.LOGIN_ABONNÉ.Trim()) && unique)
+                    if (loginAbonne.Equals(ab.LOGIN_ABONNÉ.Trim()) && unique)
                     {
                         unique = false;
                         MessageBox.Show("erreur : ce login existe déjà");
@@ -60,6 +57,10 @@ namespace PT2
                     a.NOM_ABONNÉ = nomAbonne;
                     a.PRÉNOM_ABONNÉ = prenomAbonne;
                     a.LOGIN_ABONNÉ = loginAbonne;
+                    if (pays != null)
+                    {
+                        a.PAYS = pays;
+                    }
                     if (mdpAbonne.Equals(ConfmdpAbonne))
                     {
                         a.PASSWORD_ABONNÉ = mdpAbonne;
