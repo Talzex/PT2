@@ -77,7 +77,7 @@ namespace PT2
 
         private void Purgeur_Click(object sender, EventArgs e)
         {
-            Opa.Purge();
+            Opa.Purge(n);
             //chargerListBoxAbonne();
             chargerDataGridViewEmprunts();
         }
@@ -87,7 +87,7 @@ namespace PT2
             //listEmprunt.Items.Clear();
             Emprunts.Rows.Clear();
 
-            if (Opa.RetardEmprunt().Count() != 0)
+            if (Opa.RetardEmprunt(n).Count() != 0)
             {
                 foreach (EMPRUNTER emp in Opa.RetardEmprunt(n))
                 {
@@ -110,7 +110,7 @@ namespace PT2
             //listEmprunt.Items.Clear();
             Emprunts.Rows.Clear();
 
-            if (Opa.AlbumsNonEmprunte().Count() != 0)
+            if (Opa.AlbumsNonEmprunte(n).Count() != 0)
             {
                 foreach (ALBUMS al in Opa.AlbumsNonEmprunte(n))
                 {
