@@ -20,35 +20,11 @@ namespace PT2
         {
             InitializeComponent();
             musique = new MusiquePT2_MEntities();
-            //chargerListBoxAbonne();
-            //chargerListBoxRetards();
             chargerDataGridViewEmprunts();
             Opa = new OpAdministator(musique);
             n = numericUpDown1.Value;
         }
 
-        //private void chargerListBoxRetards()
-        //{
-        //    var emprunt = (from emp in musique.EMPRUNTER
-        //                   select emp).ToList();
-        //    listEmprunt.Items.Clear();
-        //    foreach (EMPRUNTER p in emprunt)
-        //    {
-        //        listEmprunt.Items.Add(p.ToString());
-        //    }
-        //}
-
-        //private void chargerListBoxAbonne()
-        //{
-        //    Opa = new OpAdministator(musique);
-        //    var abo = (from p in musique.ABONNÉS
-        //               select p).ToList();
-        //    listAbonne.Items.Clear();
-        //    foreach (ABONNÉS p in abo)
-        //    {
-        //        listAbonne.Items.Add(p.ToString() + Opa.dernierEmprunt(p));
-        //    }
-        //}
         private void chargerDataGridViewEmprunts()
         {
             Opa = new OpAdministator(musique);
@@ -64,12 +40,10 @@ namespace PT2
 
         private void ConsulEmpProlongé_Click(object sender, EventArgs e)
         {
-            //listEmprunt.Items.Clear();
             Emprunts.Rows.Clear();
 
             foreach (EMPRUNTER emp in Opa.EmpruntProlonge())
             {
-                //listEmprunt.Items.Add(emp);
                 GridViewEmpruntAdd(emp);
 
             }
@@ -94,21 +68,18 @@ namespace PT2
 
         private void RetardsRetourEmprunt_Click(object sender, EventArgs e)
         {
-            //listEmprunt.Items.Clear();
             Emprunts.Rows.Clear();
 
             if (Opa.RetardEmprunt(n).Count() != 0)
             {
                 foreach (EMPRUNTER emp in Opa.RetardEmprunt(n))
                 {
-                    //listEmprunt.Items.Add(emp);
                     GridViewEmpruntAdd(emp);
                 }
             }
             else
             {
                 string none = "Aucun Emprunt en retard";
-                //listEmprunt.Items.Add(none);
                 MessageBox.Show(none);
                 colorRefresh();
             }
@@ -117,14 +88,12 @@ namespace PT2
 
         private void AlbumNonEmp_Click(object sender, EventArgs e)
         {
-            //listEmprunt.Items.Clear();
             Emprunts.Rows.Clear();
 
             if (Opa.AlbumsNonEmprunte(n).Count() != 0)
             {
                 foreach (ALBUMS al in Opa.AlbumsNonEmprunte(n))
                 {
-                    //listEmprunt.Items.Add(al);
                     var emprunter = from emp in musique.EMPRUNTER
                                     where al.CODE_ALBUM == emp.CODE_ALBUM
                                     select emp;
@@ -134,7 +103,6 @@ namespace PT2
             else
             {
                 string none = "Aucun Album ne figure dans la plage horaire";
-                //listEmprunt.Items.Add(none);
                 MessageBox.Show(none);
                 colorRefresh();
             }
@@ -142,14 +110,12 @@ namespace PT2
 
         private void TopAlbumEmp_Click(object sender, EventArgs e)
         {
-            //listEmprunt.Items.Clear();
             Emprunts.Rows.Clear();
 
             if (Opa.TopAlbums().Count() != 0)
             {
                 foreach (String al in Opa.TopAlbums())
                 {
-                    //listEmprunt.Items.Add(al);
                     Emprunts.Rows.Add(al);
                     colorRefresh();
                 }
@@ -157,7 +123,6 @@ namespace PT2
             else
             {
                 string none = "Aucun Album n'a été encore emprunté";
-                //listEmprunt.Items.Add(none);
                 MessageBox.Show(none);
                 colorRefresh();
             }
@@ -166,7 +131,7 @@ namespace PT2
 
         private void GridViewEmpruntAdd(EMPRUNTER e)
         {
-            Emprunts.Rows.Add(e.ALBUMS.TITRE_ALBUM, e.DATE_EMPRUNT, e.DATE_RETOUR_ATTENDUE, e.DATE_RETOUR, e.ABONNÉS.LOGIN_ABONNÉ, e.CODE_ABONNÉ, e.ABONNÉS.NOM_ABONNÉ, e.ABONNÉS.PRÉNOM_ABONNÉ,  Opa.dernierEmprunt(e.ABONNÉS));
+            Emprunts.Rows.Add(e.ALBUMS.TITRE_ALBUM, e.DATE_EMPRUNT, e.DATE_RETOUR_ATTENDUE, e.DATE_RETOUR, e.ABONNÉS.LOGIN_ABONNÉ,e.ABONNÉS.NOM_ABONNÉ, e.ABONNÉS.PRÉNOM_ABONNÉ,  Opa.dernierEmprunt(e.ABONNÉS));
             colorRefresh();
         }
 
