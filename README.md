@@ -95,8 +95,8 @@ Cas limite et détails:
 - [ ] US implémentée
 
 Cas limite et détails:
-- [ ] Vérifier que les albums qui n’ont jamais été empruntés apparaissent bien
-- [ ] On a demandé également de trier par date décroissante d’emprunt (les empruntés le plus récemment doivent apparaître en premier)
+- [X] Vérifier que les albums qui n’ont jamais été empruntés apparaissent bien
+- [X] On a demandé également de trier par date décroissante d’emprunt (les empruntés le plus récemment doivent apparaître en premier)
 
 ## US9: En tant qu’abonné, je souhaite prolonger l'emprunt de tous mes emprunts.
 - [X] US implémentée
