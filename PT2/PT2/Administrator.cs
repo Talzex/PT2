@@ -124,7 +124,7 @@ namespace PT2
         private void AlbumNonEmp_Click(object sender, EventArgs e)
         {
             Abonnés.Rows.Clear();
-
+            bool emprunté = false;
             if (Opa.AlbumsNonEmprunte(n).Count() != 0)
             {
                 foreach (ALBUMS al in Opa.AlbumsNonEmprunte(n))
@@ -132,11 +132,20 @@ namespace PT2
                     foreach (EMPRUNTER emp in al.EMPRUNTER)
                     {
                         ABONNÉS a = emp.ABONNÉS;
-
-                        Abonnés.Rows.Add(a.LOGIN_ABONNÉ, a.NOM_ABONNÉ, a.PRÉNOM_ABONNÉ, Opa.dernierEmprunt(a),
+                        if (!emprunté)
+                        {
+                               Abonnés.Rows.Add(a.LOGIN_ABONNÉ, a.NOM_ABONNÉ, a.PRÉNOM_ABONNÉ, Opa.dernierEmprunt(a),
                            emp.ALBUMS.TITRE_ALBUM, emp.DATE_EMPRUNT, emp.DATE_RETOUR_ATTENDUE, emp.DATE_RETOUR);
-
+                        }
+                        
+                        emprunté = true;
                     }
+                    if (!emprunté)
+                    {
+                        Abonnés.Rows.Add("nom emprunté", "", "", "",
+                          al.TITRE_ALBUM, "", "", "");
+                    }
+                    emprunté = false;
                 }
             }
             else
@@ -178,6 +187,11 @@ namespace PT2
             {
                 row.DefaultCellStyle.BackColor = Color.Azure;
             }
+        }
+
+        private void back_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

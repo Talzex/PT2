@@ -7,7 +7,7 @@ namespace PT2
     /*
      * La classe correspondant aux opérations effectué par l'abonné.
      */
-    class OpAbonne
+    public class OpAbonne
     {
         MusiquePT2_MEntities musique;
         string nomAbonne, prenomAbonne, loginAbonne, mdpAbonne, ConfmdpAbonne, loginIn, mdpIn;

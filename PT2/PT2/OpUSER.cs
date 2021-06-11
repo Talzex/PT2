@@ -7,7 +7,7 @@ namespace PT2
     /*
      * La classe correspondant aux opérations effectué par un utilisateur.
      */
-    class OpUSER
+    public class OpUSER
     {
         MusiquePT2_MEntities musique;
 

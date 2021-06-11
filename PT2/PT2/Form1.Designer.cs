@@ -231,7 +231,7 @@ namespace PT2
             this.connexion.Margin = new System.Windows.Forms.Padding(2);
             this.connexion.Name = "connexion";
             this.connexion.Size = new System.Drawing.Size(70, 23);
-            this.connexion.TabIndex = 9;
+            this.connexion.TabIndex = 10;
             this.connexion.Text = "Connexion";
             this.connexion.UseVisualStyleBackColor = false;
             this.connexion.Click += new System.EventHandler(this.connexion_Click);
