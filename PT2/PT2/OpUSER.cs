@@ -81,7 +81,7 @@ namespace PT2
         /*
          * Une méthode permettant de prolongé un emprunt.
          */
-        public void prolongation(EMPRUNTER e)
+        public bool prolongation(EMPRUNTER e)
         {
             if (!Prolonge(e) && e.DATE_RETOUR == null)
             {
