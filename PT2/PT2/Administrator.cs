@@ -21,18 +21,25 @@ namespace PT2
             InitializeComponent();
             musique = new MusiquePT2_MEntities();
             chargerListBoxAbonne();
-            chargerListBoxRetards();
+            chargerListBoxEmprunt();
             Opa = new OpAdministator(musique);
         }
 
-        private void chargerListBoxRetards()
+        private void chargerListBoxEmprunt()
         {
             var emprunt = (from emp in musique.EMPRUNTER
-                           select emp).ToList();
+                           join a in musique.ABONNÉS
+                           on emp.CODE_ABONNÉ equals a.CODE_ABONNÉ
+                           select new {
+                               emp,
+                               a.NOM_ABONNÉ
+                           }).ToList();
             listEmprunt.Items.Clear();
-            foreach (EMPRUNTER p in emprunt)
+            foreach (var p in emprunt)
             {
-                listEmprunt.Items.Add(p.ToString());
+                listEmprunt.Items.Add(p.NOM_ABONNÉ.ToString());
+                listEmprunt.Items.Add(p.emp.ToString());
+                listEmprunt.Items.Add("\n");
             }
         }
 
@@ -56,8 +63,6 @@ namespace PT2
                 listEmprunt.Items.Add(emp);
             }
         }
-
-
 
         private void Purgeur_Click(object sender, EventArgs e)
         {
