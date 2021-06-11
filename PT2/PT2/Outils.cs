@@ -11,13 +11,23 @@ namespace PT2
         public void suppAbo(ABONNÉS abo)
         {
             MusiquePT2_MEntities musique = new MusiquePT2_MEntities();
-            musique.ABONNÉS.Remove(abo);
+            
+            if(abo.EMPRUNTER.Count() != 0)
+            {
+                foreach(EMPRUNTER e in abo.EMPRUNTER)
+                {
+                    suppEmprunt(e,abo);
+                }
+            }
+
+            musique.Database.ExecuteSqlCommand("DELETE FROM ABONNÉS WHERE CODE_ABONNÉ=" + abo.CODE_ABONNÉ);
             musique.SaveChanges();
         }
 
-        public void suppEmprunt(EMPRUNTER emp)
+        public void suppEmprunt(EMPRUNTER emp, ABONNÉS abo)
         {
             MusiquePT2_MEntities musique = new MusiquePT2_MEntities();
+            abo.EMPRUNTER.Remove(emp);
             musique.EMPRUNTER.Remove(emp);
             musique.SaveChanges();
         }
