@@ -62,8 +62,17 @@ namespace PT2
 
         private void Purgeur_Click(object sender, EventArgs e)
         {
-            Opa.Purge(n);
-            chargerListBoxAbonne();
+            string message = "Êtes vous sur de vouloir purger ?";
+            string caption = "Error Detected in Input";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+            result = MessageBox.Show(message, caption, buttons);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                Opa.Purge(n);
+                chargerListBoxAbonne();
+            }
+          
 
         }
 
