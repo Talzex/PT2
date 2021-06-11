@@ -18,6 +18,14 @@
 Donner ici le nom et une description courte du projet avec un screenshot représentatif de l'application.
 Le logiciel DiscoWARE, permet à un utilisateur de gérer ses albums empruntés. L'administrateur de son côté, peut s'occuper des différentes tâches pour la maintenance de son stock.
 
+Pour accéder à l'interface administrateur, il faut renseigner dans les champs login et mdp, "admin."
+Si jamais on a recherché à l'aide de la barre de recherche, elle nous affiche donc les résultats de notre requête, pour revenir à nos emprunts, il faut vider cette barre, il n'y a pas de bouton.
+
+Lorsque vous serez dans l'interface administrateur si jamais vous appuyez sur un des boutons, penser à remplir le champ NumericUpDown afin d'afficher par exemple les retards en fonction de cette date. Pour revenir sur l'interface originelle d'administrateur, il faut appuyer sur le bouton purgeur et faire non, ou simplement fermer la fenêtre et se re-login.
+
+Une capture de l'écran d'accueil :
+![Alt text](PT2_1.PNG)
+
 
 
 # User Stories
