@@ -1,19 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PT2
 {
+    /*
+     * La classe correspondant aux opérations effectué par un utilisateur.
+     */
     class OpUSER
     {
         MusiquePT2_MEntities musique;
+
+        /*
+         * Le constructeur d'un utilisateur.
+         */
         public OpUSER(MusiquePT2_MEntities musique)
         {
             this.musique = musique;
         }
 
+        /*
+         * Une méthode permettant de retourner un album emprunté.
+         */
         public void retourner(EMPRUNTER titremprunt)
         {
             var emprunt = from a1 in musique.EMPRUNTER
@@ -23,6 +31,9 @@ namespace PT2
             musique.SaveChanges();
         }
 
+        /*
+         * Une méthode permettant d'emprunter un album.
+         */
         public bool emprunte(ALBUMS a, ABONNÉS abo )
         {
             EMPRUNTER emprunt = new EMPRUNTER();
@@ -67,7 +78,10 @@ namespace PT2
             return emprunté;
         }
 
-        public bool prolongation(EMPRUNTER e)
+        /*
+         * Une méthode permettant de prolongé un emprunt.
+         */
+        public void prolongation(EMPRUNTER e)
         {
             if (!Prolonge(e) && e.DATE_RETOUR == null)
             {
@@ -78,6 +92,9 @@ namespace PT2
             return false;
         }
 
+        /*
+         * Une méthode permettant de prolongé tous les emprunts.
+         */
         public void prolongationAll()
         {
             var emprunt = from emp in musique.EMPRUNTER
@@ -95,11 +112,17 @@ namespace PT2
             musique.SaveChanges();
         }
 
-        public bool Prolonge(EMPRUNTER j)
+        /*
+         * Une méthode permettant de déterminer si un emprunt à déjà été prolongé.
+         */
+        private bool Prolonge(EMPRUNTER j)
         {
             return j.DATE_EMPRUNT.Month + 1 == j.DATE_RETOUR_ATTENDUE.Month;
         }
 
+        /*
+         * Une méthode retournant une liste d'album correspondant à la recherche effectuée.
+         */
         public List<ALBUMS> RechercheAlbum(String textBox1)
         {
             List<ALBUMS> albumsR = new List<ALBUMS>();
@@ -114,13 +137,15 @@ namespace PT2
             return albumR;
         }
 
+        /*
+         * Une méthode retournant une liste d'album suggérés en fonction des emprunts précédent de l'utilisateur.
+         */
         public List<ALBUMS> Suggestions(ABONNÉS abo)
         {
             List<ALBUMS> suggestions = new List<ALBUMS>();
             List<String> ng = new List<String>();
             List<String> ne = new List<String>();
             List<int> aa = new List<int>();
-
             var albemp = (from emp in musique.EMPRUNTER
                          where emp.CODE_ABONNÉ == abo.CODE_ABONNÉ
                          select emp).ToList();
@@ -143,7 +168,6 @@ namespace PT2
                             ng.Add(s);
                         }
                     }
-
                     var editeur = from alb in musique.ALBUMS
                                   where e.CODE_ALBUM == alb.CODE_ALBUM
                                   select alb.CODE_EDITEUR;
@@ -157,7 +181,6 @@ namespace PT2
                             ne.Add(s);
                         }
                     }
-
                     var annee = from an in musique.ALBUMS
                                 where e.CODE_ALBUM == an.CODE_ALBUM
                                 select an.ANNÉE_ALBUM;
@@ -180,7 +203,6 @@ namespace PT2
                                where g.LIBELLÉ_GENRE == nomGenre
                                where e.NOM_EDITEUR == nomEdit
                                select a);
-
                     foreach (ALBUMS a in sug)
                     {
                         bool emprunté = false;
@@ -196,9 +218,7 @@ namespace PT2
                             suggestions.Add(a);
                             i++;
                         }
-                        
                     }
-
                 }
             }
             else
