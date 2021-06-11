@@ -67,13 +67,15 @@ namespace PT2
             return emprunté;
         }
 
-        public void prolongation(EMPRUNTER e)
+        public bool prolongation(EMPRUNTER e)
         {
             if (!Prolonge(e) && e.DATE_RETOUR == null)
             {
                 e.DATE_RETOUR_ATTENDUE = e.DATE_RETOUR_ATTENDUE.AddMonths(1);
                 musique.SaveChanges();
+                return true;
             }
+            return false;
         }
 
         public void prolongationAll()

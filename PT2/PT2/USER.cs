@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PT2
@@ -16,6 +13,8 @@ namespace PT2
         ABONNÉS abonne;
         OpUSER opu;
         int indexSelected;
+        int min;
+        int max;
         public USER(int code)
         {
             InitializeComponent();
@@ -30,47 +29,46 @@ namespace PT2
 
         private void chargerGridDisques()
         {
+            GridDisques.ColumnHeadersDefaultCellStyle.BackColor = Color.Cyan;
+            String estEmprunté;
             var disques = (from j in musique.ALBUMS
                            select j).ToList();
             var emprunt = (from j in musique.EMPRUNTER
                            where j.CODE_ABONNÉ == abonne.CODE_ABONNÉ
-                           /*where j.DATE_RETOUR == null
-                           orderby j.DATE_EMPRUNT ascending*/
                            select j).ToList();
-            /*var rendu = (from j in musique.EMPRUNTER
-                           where j.CODE_ABONNÉ == abonne.CODE_ABONNÉ
-                           where j.DATE_RETOUR != null
-                           orderby j.DATE_EMPRUNT ascending
-                           select j).ToList();*/
             GridDisques.Rows.Clear();
             foreach (EMPRUNTER j in emprunt)
             {
-                bool emprunté = false;
-                bool prolongé = false;
+                estEmprunté = "non";
+                String prolongé = "non";
                 if (j.DATE_RETOUR == null)
                 {
-                    emprunté = true;
+                    estEmprunté = "oui";
                 }
                 if (opu.Prolonge(j))
                 {
-                    prolongé = true;
+                    prolongé = "oui";
                 }
 
-                GridDisques.Rows.Add(j.ALBUMS.TITRE_ALBUM, j.ALBUMS.GENRES.LIBELLÉ_GENRE, j.ALBUMS.EDITEURS.NOM_EDITEUR , emprunté, prolongé, j.DATE_EMPRUNT, j.DATE_RETOUR_ATTENDUE, j.DATE_RETOUR);
+                int i = GridDisques.Rows.Add(j.ALBUMS.TITRE_ALBUM, j.ALBUMS.GENRES.LIBELLÉ_GENRE, j.ALBUMS.EDITEURS.NOM_EDITEUR, estEmprunté, prolongé, j.DATE_EMPRUNT, j.DATE_RETOUR_ATTENDUE, j.DATE_RETOUR);
+                GridDisques.Rows[i].DefaultCellStyle.BackColor = Color.Cyan;
             }
             foreach (ALBUMS a in disques)
             {
+                estEmprunté = "non";
                 bool emprunté = false;
                 foreach (EMPRUNTER emp in emprunt)
                 {
                     if (a.EMPRUNTER.Contains(emp))
                     {
                         emprunté = true;
+                        estEmprunté = "oui, par un autre abonné";
                     }
                 }
                 if (!emprunté)
                 {
-                    GridDisques.Rows.Add(a.TITRE_ALBUM, a.GENRES.LIBELLÉ_GENRE, a.EDITEURS.NOM_EDITEUR, emprunté);
+                    int i = GridDisques.Rows.Add(a.TITRE_ALBUM, a.GENRES.LIBELLÉ_GENRE, a.EDITEURS.NOM_EDITEUR, estEmprunté);
+                    GridDisques.Rows[i].DefaultCellStyle.BackColor = Color.Cyan;
                 }
             }
         }
@@ -81,8 +79,8 @@ namespace PT2
             {
                 EMPRUNTER emprunt = null;
                 var emprunts = (from j in musique.EMPRUNTER
-                               orderby j.DATE_EMPRUNT ascending
-                               select j).ToList();
+                                orderby j.DATE_EMPRUNT ascending
+                                select j).ToList();
                 String titremprunt = (String)GridDisques.Rows[indexSelected].Cells[0].Value;
                 foreach (EMPRUNTER emp in emprunts)
                 {
@@ -109,10 +107,10 @@ namespace PT2
             {
                 String titreAlbum = (String)GridDisques.Rows[indexSelected].Cells[0].Value;
                 var album = (from j in musique.ALBUMS
-                               where j.TITRE_ALBUM == titreAlbum
-                               select j);
+                             where j.TITRE_ALBUM == titreAlbum
+                             select j);
                 ALBUMS a = album.FirstOrDefault();
-                bool emprunté = opu.emprunte(a,abonne);
+                bool emprunté = opu.emprunte(a, abonne);
                 if (emprunté)
                 {
                     MessageBox.Show("erreur : vous avez déjà emprunté ce disque");
@@ -120,8 +118,8 @@ namespace PT2
                 else
                 {
                     MessageBox.Show("disque emprunté");
+                    chargerGridDisques();
                 }
-                chargerGridDisques();
             }
         }
 
@@ -145,35 +143,43 @@ namespace PT2
                 }
                 if (albumsEmprunte != null)
                 {
-                    opu.prolongation(albumsEmprunte);
-                    chargerGridDisques();
+                    bool prolongé = opu.prolongation(albumsEmprunte);
+                    if (prolongé)
+                    {
+                        MessageBox.Show("Emprunt prolongé");
+                        chargerGridDisques();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Emprunt déjà prolongé");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("erreur : Prolongation impossible");
+                    MessageBox.Show("erreur : Prolongation impossible : emprunt introuvable");
                 }
             }
             else
             {
-                MessageBox.Show("Prolongation Impossible");
+                MessageBox.Show("erreur : Prolongation Impossible : aucun album sélectionné");
             }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-   
             GridDisques.Rows.Clear();
-            if(textBox1.Text != "")
+            if (textBox1.Text != "")
             {
                 foreach (ALBUMS al in opu.RechercheAlbum(textBox1.Text))
                 {
                     GridDisques.Rows.Add(al);
                 }
-            } else
+            }
+            else
             {
                 chargerGridDisques();
             }
-            
+
         }
 
         private void ProlAllEmprunt_Click(object sender, EventArgs e)
@@ -196,12 +202,13 @@ namespace PT2
             else
             {
                 GridDisques.Rows.Add("Aucune suggestion disponible : aucun disque n'a été emprunté");
-            }  
+            }
         }
 
         private void GridDisques_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             indexSelected = e.RowIndex;
         }
+
     }
 }
