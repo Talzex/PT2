@@ -20,11 +20,6 @@ Le logiciel DiscoWARE, permet à un utilisateur de gérer ses albums empruntés.
 
 
 
-Vous pouvez également préciser ici quelques éléments qui pourraient nous aider à compiler/déployer ou tester votre application :
-- l'éventuelles bibliothèques externes à installer (donner la procédure)
-- des jeux de données à appliquer sur la base avant de lancer l'application ou les tests
-- ...
-
 # User Stories
 
 ## US1: En tant que futur client de la discothèque, je souhaite pouvoir être abonné afin de pouvoir emprunter des albums.
@@ -95,8 +90,8 @@ Cas limite et détails:
 - [ ] US implémentée
 
 Cas limite et détails:
-- [ ] Vérifier que les albums qui n’ont jamais été empruntés apparaissent bien
-- [ ] On a demandé également de trier par date décroissante d’emprunt (les empruntés le plus récemment doivent apparaître en premier)
+- [X] Vérifier que les albums qui n’ont jamais été empruntés apparaissent bien
+- [X] On a demandé également de trier par date décroissante d’emprunt (les empruntés le plus récemment doivent apparaître en premier)
 
 ## US9: En tant qu’abonné, je souhaite prolonger l'emprunt de tous mes emprunts.
 - [X] US implémentée
