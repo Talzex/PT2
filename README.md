@@ -63,7 +63,7 @@ Cas limite et détails:
 ## US11: En tant que client du projet, je souhaite une proposition de maquette d’IHM qui après validation pourra donner lieu à un développement.
 
 - [X] L'interface est fonctionnelle
-- [X] L'interface est ergonomique (UX)
+- [ ] L'interface est ergonomique (UX)
 - [ ] L'interface est esthétique (UI)
 
 ## US4: En tant qu’administrateur je souhaite connaître les emprunts qui ont été prolongés.
