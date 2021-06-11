@@ -87,11 +87,11 @@ namespace UnitTestProject1
                 Assert.IsTrue(emprunt[0].CODE_ALBUM.Equals(selectEmpruntAbo.First().CODE_ALBUM));
                 Assert.IsTrue(emprunt[1].CODE_ALBUM.Equals(selectEmprunt2.First().CODE_ALBUM));
 
-                foreach(EMPRUNTER e in selectEmpruntAbo)
+                /*foreach(EMPRUNTER e in selectEmpruntAbo)
                 {
                     outils.suppEmprunt(e);
                 }
-                outils.suppAbo(selectcréation.First());
+                outils.suppAbo(selectcréation.First());*/
             }
             
             
@@ -101,8 +101,9 @@ namespace UnitTestProject1
         public void ProlongeEmprunt()
         {
             OpUSER user = new OpUSER(musique);
+            OpAdministator admin = new OpAdministator(musique);
             Outils outils = new Outils();
-            List<EMPRUNTER> emprunt = new List<EMPRUNTER>();
+            List<EMPRUNTER> empruntsprol = new List<EMPRUNTER>();
             var selectnewAbo = (from abo in musique.ABONNÉS
                                 where abo.LOGIN_ABONNÉ == "testus4"
                                 select abo).ToList();
@@ -127,11 +128,20 @@ namespace UnitTestProject1
             var selectEmpruntAbo = (from emp in musique.EMPRUNTER
                                     where emp.CODE_ABONNÉ == selectcodeAbo.FirstOrDefault()
                                     select emp).ToList();
-            foreach (EMPRUNTER e in selectEmpruntAbo)
+            EMPRUNTER premieremprunt = user.emprunte(selectEmprunt.First(), selectcréation.First());
+            EMPRUNTER deuxpemprunt = user.emprunte(selectEmprunt2.First(), selectcréation.First());
+
+            user.prolongation(premieremprunt);
+            user.prolongation(deuxpemprunt);
+
+            empruntsprol = admin.EmpruntProlonge();
+            Assert.IsTrue(empruntsprol.Contains(premieremprunt) && empruntsprol.Contains(deuxpemprunt));
+            /*foreach (EMPRUNTER e in selectEmpruntAbo)
             {
                 outils.suppEmprunt(e);
             }
-            outils.suppAbo(selectcréation.First());
+            outils.suppAbo(selectcréation.First());*/
+
         }
 
 

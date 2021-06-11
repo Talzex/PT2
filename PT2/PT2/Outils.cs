@@ -8,15 +8,16 @@ namespace PT2
 {
     public class Outils
     {
-        MusiquePT2_MEntities musique = new MusiquePT2_MEntities();
         public void suppAbo(ABONNÉS abo)
         {
+            MusiquePT2_MEntities musique = new MusiquePT2_MEntities();
             musique.ABONNÉS.Remove(abo);
             musique.SaveChanges();
         }
 
         public void suppEmprunt(EMPRUNTER emp)
         {
+            MusiquePT2_MEntities musique = new MusiquePT2_MEntities();
             musique.EMPRUNTER.Remove(emp);
             musique.SaveChanges();
         }
