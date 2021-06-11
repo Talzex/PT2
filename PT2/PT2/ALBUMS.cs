@@ -29,7 +29,6 @@ namespace PT2
         public string ALLÉE_ALBUM { get; set; }
         public int CASIER_ALBUM { get; set; }
         public byte[] POCHETTE { get; set; }
-        public int cpt { get; set; }
     
         public virtual EDITEURS EDITEURS { get; set; }
         public virtual GENRES GENRES { get; set; }

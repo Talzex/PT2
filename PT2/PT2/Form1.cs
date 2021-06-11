@@ -74,6 +74,8 @@ namespace PT2
             prenomAbonne = textBox_prenom.Text.Trim();
         }
 
+        
+
         /*
          * Une méthode permettant de récupérer ce qui a été entrer dans la zone de texte correspondant au login du futur abonné.
          */
@@ -81,6 +83,8 @@ namespace PT2
         {
             loginAbonne = textBox_login.Text.Trim();
         }
+
+        
 
         /*
          * Une méthode permettant de récupérer ce qui a été entrer dans la zone de texte correspondant au mot de passe du futur abonné.
@@ -90,12 +94,38 @@ namespace PT2
             mdpAbonne = textBox_mdp.Text.Trim();
         }
 
+        
+
+        private void oeil1_Click(object sender, EventArgs e)
+        {
+            if (textBox_mdp.UseSystemPasswordChar)
+            {
+                textBox_mdp.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                textBox_mdp.UseSystemPasswordChar = true;
+            }
+        }
+
         /*
          * Une méthode permettant de récupérer ce qui a été entrer dans la zone de texte correspondant à la confirmation du mot de passe du futur abonné.
          */
         private void textBox_cmdp_TextChanged(object sender, EventArgs e)
         {
             ConfmdpAbonne = textBox_cmdp.Text.Trim();
+        }
+
+        private void oeil2_Click(object sender, EventArgs e)
+        {
+            if (textBox_cmdp.UseSystemPasswordChar)
+            {
+                textBox_cmdp.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                textBox_cmdp.UseSystemPasswordChar = true;
+            }
         }
 
         /*
@@ -114,6 +144,17 @@ namespace PT2
             mdpIn = textBox_mdpIn.Text.Trim();
         }
 
+        private void oeil3_Click(object sender, EventArgs e)
+        {
+            if (textBox_mdpIn.UseSystemPasswordChar)
+            {
+                textBox_mdpIn.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                textBox_mdpIn.UseSystemPasswordChar = true;
+            }
+        }
         /*
          * Une méthode permettant de récupérer ce qui a été sélectionner par l'utilisateur lors de la création de son compte correspondant à son pays.
          */
