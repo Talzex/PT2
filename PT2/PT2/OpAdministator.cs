@@ -77,18 +77,17 @@ namespace PT2
         {
             double date = Convert.ToDouble(n);
             albumsnonemprunte = new List<ALBUMS>();
-            
+
             var emprunts = (from j in musique.EMPRUNTER
+                            orderby j.DATE_EMPRUNT descending
                             select j).ToList();
-            var albums  = (from j in musique.ALBUMS
-                           /*join p in musique.EMPRUNTER
-                           on j.CODE_ALBUM equals p.CODE_ALBUM*/
-                           select j).ToList();
+            var albums = (from j in musique.ALBUMS
+                          select j).ToList();
             foreach (EMPRUNTER e in emprunts)
             {
-                foreach(ALBUMS a in albums)
+                foreach (ALBUMS a in albums)
                 {
-                    if(DateTime.Now.Subtract(e.DATE_EMPRUNT).TotalDays >= date && e.CODE_ALBUM.Equals(a.CODE_ALBUM))
+                    if ((DateTime.Now.Subtract(e.DATE_EMPRUNT).TotalDays >= 365 && e.CODE_ALBUM.Equals(a.CODE_ALBUM)) || !a.EMPRUNTER.Contains(e) && !albumsnonemprunte.Contains(a))
                     {
                         albumsnonemprunte.Add(a);
                     }
@@ -114,7 +113,7 @@ namespace PT2
             {
                 foreach (var p in topAlbum)
                 {
-                    topalbums.Add(p.Name);
+                    topalbums.Add(p.nb.ToString() + " " + p.Name);
                 }
             }
             return topalbums;
