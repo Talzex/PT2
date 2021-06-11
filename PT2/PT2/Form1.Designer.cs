@@ -57,7 +57,7 @@ namespace PT2
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(179, 27);
+            this.label1.Location = new System.Drawing.Point(168, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 4;
@@ -163,7 +163,7 @@ namespace PT2
             // ajouter
             // 
             this.ajouter.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ajouter.Location = new System.Drawing.Point(182, 397);
+            this.ajouter.Location = new System.Drawing.Point(193, 389);
             this.ajouter.Margin = new System.Windows.Forms.Padding(2);
             this.ajouter.Name = "ajouter";
             this.ajouter.Size = new System.Drawing.Size(70, 23);
@@ -175,7 +175,7 @@ namespace PT2
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(582, 27);
+            this.label7.Location = new System.Drawing.Point(624, 27);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(84, 13);
             this.label7.TabIndex = 15;
@@ -219,7 +219,7 @@ namespace PT2
             // connexion
             // 
             this.connexion.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.connexion.Location = new System.Drawing.Point(585, 335);
+            this.connexion.Location = new System.Drawing.Point(613, 231);
             this.connexion.Margin = new System.Windows.Forms.Padding(2);
             this.connexion.Name = "connexion";
             this.connexion.Size = new System.Drawing.Size(70, 23);
@@ -231,7 +231,7 @@ namespace PT2
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(34, 194);
+            this.label10.Location = new System.Drawing.Point(38, 194);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 13);
             this.label10.TabIndex = 21;
@@ -297,7 +297,7 @@ namespace PT2
             this.Controls.Add(this.ajouter);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Bienvenue sur la Base de Données de ";
             this.ResumeLayout(false);
             this.PerformLayout();
 
