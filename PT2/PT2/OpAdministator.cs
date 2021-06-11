@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PT2
 {
@@ -13,7 +14,6 @@ namespace PT2
         List<EMPRUNTER> empruntsNonRapportes;
         List<ALBUMS> albumsnonemprunte;
         List<String> topalbums;
-        Administrator ad;
       
 
         public OpAdministator(MusiquePT2_MEntities musique)

@@ -80,6 +80,18 @@ namespace PT2
             Opa.Purge(n);
             //chargerListBoxAbonne();
             chargerDataGridViewEmprunts();
+            string message = "Êtes vous sur de vouloir purger ?";
+            string caption = "Error Detected in Input";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+            result = MessageBox.Show(message, caption, buttons);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                Opa.Purge(n);
+                chargerListBoxAbonne();
+            }
+          
+
         }
 
         private void RetardsRetourEmprunt_Click(object sender, EventArgs e)
