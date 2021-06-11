@@ -15,7 +15,6 @@
 
 ## Projet
 
-Donner ici le nom et une description courte du projet avec un screenshot représentatif de l'application.
 Le logiciel DiscoWARE, permet à un utilisateur de gérer ses albums empruntés. L'administrateur de son côté, peut s'occuper des différentes tâches pour la maintenance de son stock.
 
 Pour accéder à l'interface administrateur, il faut renseigner dans les champs login et mdp, "admin."
