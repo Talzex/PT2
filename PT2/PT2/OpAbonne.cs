@@ -1,28 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace PT2
 {
+    /*
+     * La classe correspondant aux opérations effectué par l'abonné.
+     */
     class OpAbonne
     {
         MusiquePT2_MEntities musique;
-
-        String nomAbonne;
-        String prenomAbonne;
-        String loginAbonne;
-        String mdpAbonne;
-        String ConfmdpAbonne;
-        String loginIn;
-        String mdpIn;
+        string nomAbonne, prenomAbonne, loginAbonne, mdpAbonne, ConfmdpAbonne, loginIn, mdpIn;
         PAYS pays;
 
-        public OpAbonne(String nomAbonne, String prenomAbonne, String loginAbonne, String mdpAbonne, String ConfmdpAbonne, String loginIn, String mdpIn, PAYS pays, MusiquePT2_MEntities musique)
+        /*
+         * Constructeur d'un abonné avec les informations données lors de son inscription.
+         */
+        public OpAbonne(string nomAbonne, string prenomAbonne, string loginAbonne, string mdpAbonne, string ConfmdpAbonne, string loginIn, string mdpIn, PAYS pays, MusiquePT2_MEntities musique)
         {
             this.nomAbonne = nomAbonne;
             this.prenomAbonne = prenomAbonne;
@@ -35,6 +29,9 @@ namespace PT2
             this.musique = musique;
         }
 
+        /*
+         * Une méthode permettant d'ajouter l'abonné dans la base de données puis d'envoyer un message de confirmation si l'opération s'est effectuée.
+         */
         public void ajoutAbonne()
         {
             bool unique = true;
@@ -80,6 +77,9 @@ namespace PT2
             }
         }
 
+        /*
+         * Une méthode permettant la connection d'un abonné à l'application.
+         */
         public void connexion()
         {
             bool trouve = false;
