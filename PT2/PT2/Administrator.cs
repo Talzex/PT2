@@ -94,10 +94,8 @@ namespace PT2
             {
                 foreach (ALBUMS al in Opa.AlbumsNonEmprunte(n))
                 {
-                    var emprunter = from emp in musique.EMPRUNTER
-                                    where al.CODE_ALBUM == emp.CODE_ALBUM
-                                    select emp;
-                    GridViewEmpruntAdd(emprunter.First());    
+
+                    //GridViewEmpruntAdd();    
                 }
             }
             else

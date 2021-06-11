@@ -115,7 +115,7 @@ namespace PT2
         /*
          * Une méthode permettant de déterminer si un emprunt à déjà été prolongé.
          */
-        private bool Prolonge(EMPRUNTER j)
+        public bool Prolonge(EMPRUNTER j)
         {
             return j.DATE_EMPRUNT.Month + 1 == j.DATE_RETOUR_ATTENDUE.Month;
         }

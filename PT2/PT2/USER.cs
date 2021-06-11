@@ -13,8 +13,7 @@ namespace PT2
         ABONNÉS abonne;
         OpUSER opu;
         int indexSelected;
-        int min;
-        int max;
+
         public USER(int code)
         {
             InitializeComponent();
