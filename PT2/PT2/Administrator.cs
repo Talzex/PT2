@@ -77,8 +77,7 @@ namespace PT2
 
         private void Purgeur_Click(object sender, EventArgs e)
         {
-            Opa.Purge(n);
-            //chargerListBoxAbonne();
+
             chargerDataGridViewEmprunts();
             string message = "Êtes vous sur de vouloir purger ?";
             string caption = "Error Detected in Input";
@@ -88,7 +87,6 @@ namespace PT2
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 Opa.Purge(n);
-                chargerListBoxAbonne();
             }
           
 
