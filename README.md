@@ -8,7 +8,7 @@
 - Nom de la base de données : MusiquePT2_M
 - Composition de l'équipe :
   - CUGNO Evans
-  - DUTHIL Thomas
+  - DUTHIL Thomas (Bonification)
   - HALLEY Tristan
   - JEDDI Achraf
   - MOUSSIRON Nathan
