@@ -27,7 +27,7 @@ namespace PT2
         {
             InitializeComponent();
             musique = new MusiquePT2_MEntities();
-            chargerDataGridViewEmprunts();
+            chargerDataGridViewAbonnés();
             Opa = new OpAdministator(musique);
             n = numericUpDown1.Value;
         }
@@ -38,14 +38,26 @@ namespace PT2
         private void chargerDataGridViewEmprunts()
         {
             Opa = new OpAdministator(musique);
-            var emp = (from e in musique.EMPRUNTER
-                       select e).ToList();
-            Emprunts.Rows.Clear();
+            var abo = (from a in musique.ABONNÉS
+                       select a).ToList();
+            Abonnés.Rows.Clear();
 
-            foreach (EMPRUNTER e in emp)
+            foreach (ABONNÉS a in abo)
             {
-                GridViewEmpruntAdd(e);
+                if (!(a.EMPRUNTER.Count.Equals(0)))
+                {
+                    foreach (EMPRUNTER e in a.EMPRUNTER)
+                    {
+                        Abonnés.Rows.Add(a.LOGIN_ABONNÉ, a.NOM_ABONNÉ, a.PRÉNOM_ABONNÉ, Opa.dernierEmprunt(a),
+                            e.ALBUMS.TITRE_ALBUM, e.DATE_EMPRUNT, e.DATE_RETOUR_ATTENDUE, e.DATE_RETOUR);
+                    }
+                }
+                else
+                {
+                    Abonnés.Rows.Add(a.LOGIN_ABONNÉ, a.NOM_ABONNÉ, a.PRÉNOM_ABONNÉ);
+                }
             }
+            colorRefresh();
         }
 
         /*
@@ -53,13 +65,15 @@ namespace PT2
          */
         private void ConsulEmpProlongé_Click(object sender, EventArgs e)
         {
-            Emprunts.Rows.Clear();
+            Abonnés.Rows.Clear();
 
             foreach (EMPRUNTER emp in Opa.EmpruntProlonge())
             {
-                GridViewEmpruntAdd(emp);
-
+                ABONNÉS a = emp.ABONNÉS;
+                Abonnés.Rows.Add(a.LOGIN_ABONNÉ, a.NOM_ABONNÉ, a.PRÉNOM_ABONNÉ, Opa.dernierEmprunt(a),
+                    emp.ALBUMS.TITRE_ALBUM, emp.DATE_EMPRUNT, emp.DATE_RETOUR_ATTENDUE, emp.DATE_RETOUR);
             }
+            colorRefresh();
         }
 
         /*
@@ -68,7 +82,7 @@ namespace PT2
         private void Purgeur_Click(object sender, EventArgs e)
         {
 
-            chargerDataGridViewEmprunts();
+            chargerDataGridViewAbonnés();
             string message = "Êtes vous sur de vouloir purger ?";
             string caption = "Error Detected in Input";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -87,21 +101,23 @@ namespace PT2
          */
         private void RetardsRetourEmprunt_Click(object sender, EventArgs e)
         {
-            Emprunts.Rows.Clear();
+            Abonnés.Rows.Clear();
 
             if (Opa.RetardEmprunt(n).Count() != 0)
             {
                 foreach (EMPRUNTER emp in Opa.RetardEmprunt(n))
                 {
-                    GridViewEmpruntAdd(emp);
+                    ABONNÉS a = emp.ABONNÉS;
+                    Abonnés.Rows.Add(a.LOGIN_ABONNÉ, a.NOM_ABONNÉ, a.PRÉNOM_ABONNÉ, Opa.dernierEmprunt(a),
+                        emp.ALBUMS.TITRE_ALBUM, emp.DATE_EMPRUNT, emp.DATE_RETOUR_ATTENDUE, emp.DATE_RETOUR);
+                    
                 }
             }
             else
             {
-                string none = "Aucun Emprunt en retard";
-                MessageBox.Show(none);
-                colorRefresh();
+                MessageBox.Show("Aucun Emprunt en retard");          
             }
+            colorRefresh();
 
         }
 
@@ -110,22 +126,27 @@ namespace PT2
          */
         private void AlbumNonEmp_Click(object sender, EventArgs e)
         {
-            Emprunts.Rows.Clear();
+            Abonnés.Rows.Clear();
 
             if (Opa.AlbumsNonEmprunte(n).Count() != 0)
             {
                 foreach (ALBUMS al in Opa.AlbumsNonEmprunte(n))
                 {
+                    foreach (EMPRUNTER emp in al.EMPRUNTER)
+                    {
+                        ABONNÉS a = emp.ABONNÉS;
 
-                    //GridViewEmpruntAdd();    
+                        Abonnés.Rows.Add(a.LOGIN_ABONNÉ, a.NOM_ABONNÉ, a.PRÉNOM_ABONNÉ, Opa.dernierEmprunt(a),
+                           emp.ALBUMS.TITRE_ALBUM, emp.DATE_EMPRUNT, emp.DATE_RETOUR_ATTENDUE, emp.DATE_RETOUR);
+
+                    }
                 }
             }
             else
             {
-                string none = "Aucun Album ne figure dans la plage horaire";
-                MessageBox.Show(none);
-                colorRefresh();
+                MessageBox.Show("Aucun Album ne figure dans la plage horaire");
             }
+            colorRefresh();
         }
 
         /*
@@ -133,32 +154,22 @@ namespace PT2
          */
         private void TopAlbumEmp_Click(object sender, EventArgs e)
         {
-            Emprunts.Rows.Clear();
+            Abonnés.Rows.Clear();
 
             if (Opa.TopAlbums().Count() != 0)
             {
                 foreach (String al in Opa.TopAlbums())
                 {
-                    Emprunts.Rows.Add(al);
-                    colorRefresh();
+                    Abonnés.Rows.Add("", "", "", "", al);
                 }
             }
             else
             {
-                string none = "Aucun Album n'a été encore emprunté";
-                MessageBox.Show(none);
-                colorRefresh();
+                MessageBox.Show("Aucun Album n'a été encore emprunté");
             }
 
-        }
-
-        /*
-         * GridViewEmpruntAdd() permet d'ajouter les éléments par rapport aux noms de colonnes
-         */
-        private void GridViewEmpruntAdd(EMPRUNTER e)
-        {
-            Emprunts.Rows.Add(e.ALBUMS.TITRE_ALBUM, e.DATE_EMPRUNT, e.DATE_RETOUR_ATTENDUE, e.DATE_RETOUR, e.ABONNÉS.LOGIN_ABONNÉ,e.ABONNÉS.NOM_ABONNÉ, e.ABONNÉS.PRÉNOM_ABONNÉ,  Opa.dernierEmprunt(e.ABONNÉS));
             colorRefresh();
+
         }
 
         /*
@@ -166,11 +177,14 @@ namespace PT2
          */
         private void colorRefresh()
         {
-            foreach (DataGridViewRow row in Emprunts.Rows)
+            foreach (DataGridViewRow row in Abonnés.Rows)
             {
                 row.DefaultCellStyle.BackColor = Color.Azure;
             }
         }
 
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+        }
     }
 }

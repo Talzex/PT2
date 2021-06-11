@@ -34,19 +34,18 @@ namespace PT2
             this.RefreshRetards = new System.Windows.Forms.Button();
             this.AlbumNonEmp = new System.Windows.Forms.Button();
             this.TopAlbumEmp = new System.Windows.Forms.Button();
-            this.Emprunts = new System.Windows.Forms.DataGridView();
-            this.titre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emprunt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.retour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Abonnés = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.idname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
-            ((System.ComponentModel.ISupportInitialize)(this.Emprunts)).BeginInit();
+            this.titre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emprunt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.retour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.Abonnés)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,38 +66,38 @@ namespace PT2
             this.ConsulEmpProlongé.Location = new System.Drawing.Point(12, 546);
             this.ConsulEmpProlongé.Margin = new System.Windows.Forms.Padding(2);
             this.ConsulEmpProlongé.Name = "ConsulEmpProlongé";
-            this.ConsulEmpProlongé.Size = new System.Drawing.Size(145, 23);
+            this.ConsulEmpProlongé.Size = new System.Drawing.Size(111, 23);
             this.ConsulEmpProlongé.TabIndex = 12;
-            this.ConsulEmpProlongé.Text = "ConsulEmpruntProlongé";
+            this.ConsulEmpProlongé.Text = "Emprunts Prolongés";
             this.ConsulEmpProlongé.UseVisualStyleBackColor = false;
             this.ConsulEmpProlongé.Click += new System.EventHandler(this.ConsulEmpProlongé_Click);
             // 
             // RefreshRetards
             // 
             this.RefreshRetards.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.RefreshRetards.Location = new System.Drawing.Point(240, 547);
+            this.RefreshRetards.Location = new System.Drawing.Point(141, 546);
             this.RefreshRetards.Name = "RefreshRetards";
-            this.RefreshRetards.Size = new System.Drawing.Size(112, 23);
+            this.RefreshRetards.Size = new System.Drawing.Size(110, 23);
             this.RefreshRetards.TabIndex = 13;
-            this.RefreshRetards.Text = "Retards Emprunts";
+            this.RefreshRetards.Text = "Emprunts en Retard";
             this.RefreshRetards.UseVisualStyleBackColor = false;
             this.RefreshRetards.Click += new System.EventHandler(this.RetardsRetourEmprunt_Click);
             // 
             // AlbumNonEmp
             // 
             this.AlbumNonEmp.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.AlbumNonEmp.Location = new System.Drawing.Point(471, 546);
+            this.AlbumNonEmp.Location = new System.Drawing.Point(270, 546);
             this.AlbumNonEmp.Name = "AlbumNonEmp";
-            this.AlbumNonEmp.Size = new System.Drawing.Size(151, 23);
+            this.AlbumNonEmp.Size = new System.Drawing.Size(162, 23);
             this.AlbumNonEmp.TabIndex = 17;
-            this.AlbumNonEmp.Text = "AlbumNonEmpruntéDepuis";
+            this.AlbumNonEmp.Text = "Albums Non Empruntés Depuis";
             this.AlbumNonEmp.UseVisualStyleBackColor = false;
             this.AlbumNonEmp.Click += new System.EventHandler(this.AlbumNonEmp_Click);
             // 
             // TopAlbumEmp
             // 
             this.TopAlbumEmp.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.TopAlbumEmp.Location = new System.Drawing.Point(727, 547);
+            this.TopAlbumEmp.Location = new System.Drawing.Point(602, 547);
             this.TopAlbumEmp.Name = "TopAlbumEmp";
             this.TopAlbumEmp.Size = new System.Drawing.Size(124, 23);
             this.TopAlbumEmp.TabIndex = 18;
@@ -106,61 +105,42 @@ namespace PT2
             this.TopAlbumEmp.UseVisualStyleBackColor = false;
             this.TopAlbumEmp.Click += new System.EventHandler(this.TopAlbumEmp_Click);
             // 
-            // Emprunts
+            // Abonnés
             // 
-            this.Emprunts.BackgroundColor = System.Drawing.Color.LightSkyBlue;
-            this.Emprunts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Emprunts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.titre,
-            this.emprunt,
-            this.delai,
-            this.retour,
+            this.Abonnés.BackgroundColor = System.Drawing.Color.LightSkyBlue;
+            this.Abonnés.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Abonnés.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idname,
             this.nom,
             this.prenom,
-            this.date});
-            this.Emprunts.GridColor = System.Drawing.Color.DodgerBlue;
-            this.Emprunts.Location = new System.Drawing.Point(12, 12);
-            this.Emprunts.Name = "Emprunts";
-            this.Emprunts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.Emprunts.Size = new System.Drawing.Size(1247, 529);
-            this.Emprunts.TabIndex = 19;
+            this.date,
+            this.titre,
+            this.emprunt,
+            this.delai,
+            this.retour});
+            this.Abonnés.GridColor = System.Drawing.Color.DodgerBlue;
+            this.Abonnés.Location = new System.Drawing.Point(12, 12);
+            this.Abonnés.Name = "Abonnés";
+            this.Abonnés.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.Abonnés.Size = new System.Drawing.Size(1247, 529);
+            this.Abonnés.TabIndex = 19;
             // 
-            // titre
+            // label2
             // 
-            this.titre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.titre.HeaderText = "Titre";
-            this.titre.Name = "titre";
-            this.titre.ReadOnly = true;
-            this.titre.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.titre.Width = 53;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(556, 551);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "jours";
             // 
-            // emprunt
+            // numericUpDown1
             // 
-            this.emprunt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.emprunt.HeaderText = "Date d\'Emprunt";
-            this.emprunt.Name = "emprunt";
-            this.emprunt.ReadOnly = true;
-            this.emprunt.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.emprunt.Width = 96;
-            // 
-            // delai
-            // 
-            this.delai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.delai.HeaderText = "Date de Retour Attendue";
-            this.delai.Name = "delai";
-            this.delai.ReadOnly = true;
-            this.delai.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.delai.Width = 138;
-            // 
-            // retour
-            // 
-            this.retour.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.retour.HeaderText = "Date de Retour";
-            this.retour.Name = "retour";
-            this.retour.ReadOnly = true;
-            this.retour.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.retour.Width = 96;
+            this.numericUpDown1.Location = new System.Drawing.Point(438, 548);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(112, 20);
+            this.numericUpDown1.TabIndex = 23;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // idname
             // 
@@ -198,29 +178,41 @@ namespace PT2
             this.date.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.date.Width = 136;
             // 
-            // label2
+            // titre
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(323, 609);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "jours";
+            this.titre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.titre.HeaderText = "Titre";
+            this.titre.Name = "titre";
+            this.titre.ReadOnly = true;
+            this.titre.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.titre.Width = 53;
             // 
-            // numericUpDown1
+            // emprunt
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(197, 607);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 23;
+            this.emprunt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.emprunt.HeaderText = "Date d\'Emprunt";
+            this.emprunt.Name = "emprunt";
+            this.emprunt.ReadOnly = true;
+            this.emprunt.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.emprunt.Width = 96;
             // 
-            // entityCommand1
+            // delai
             // 
-            this.entityCommand1.CommandTimeout = 0;
-            this.entityCommand1.CommandTree = null;
-            this.entityCommand1.Connection = null;
-            this.entityCommand1.EnablePlanCaching = true;
-            this.entityCommand1.Transaction = null;
+            this.delai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.delai.HeaderText = "Date de Retour Attendue";
+            this.delai.Name = "delai";
+            this.delai.ReadOnly = true;
+            this.delai.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.delai.Width = 138;
+            // 
+            // retour
+            // 
+            this.retour.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.retour.HeaderText = "Date de Retour";
+            this.retour.Name = "retour";
+            this.retour.ReadOnly = true;
+            this.retour.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.retour.Width = 96;
             // 
             // Administrator
             // 
@@ -229,7 +221,7 @@ namespace PT2
             this.ClientSize = new System.Drawing.Size(1271, 651);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Emprunts);
+            this.Controls.Add(this.Abonnés);
             this.Controls.Add(this.TopAlbumEmp);
             this.Controls.Add(this.AlbumNonEmp);
             this.Controls.Add(this.Purgeur);
@@ -237,7 +229,7 @@ namespace PT2
             this.Controls.Add(this.RefreshRetards);
             this.Name = "Administrator";
             this.Text = "Administrator";
-            ((System.ComponentModel.ISupportInitialize)(this.Emprunts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Abonnés)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -253,15 +245,14 @@ namespace PT2
         private System.Windows.Forms.Button TopAlbumEmp;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.DataGridView Emprunts;
-        private System.Windows.Forms.DataGridViewTextBoxColumn titre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emprunt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn delai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn retour;
+        private System.Windows.Forms.DataGridView Abonnés;
         private System.Windows.Forms.DataGridViewTextBoxColumn idname;
         private System.Windows.Forms.DataGridViewTextBoxColumn nom;
         private System.Windows.Forms.DataGridViewTextBoxColumn prenom;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
-        private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emprunt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn delai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn retour;
     }
 }
