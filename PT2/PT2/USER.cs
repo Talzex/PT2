@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace PT2
 {
+    /*
+     * Classe Utilisateur
+     */
     public partial class USER : Form
     {
         MusiquePT2_MEntities musique;
         ABONNÉS abonne;
         OpUSER opu;
+
+        /*
+         * Constructeur de USER
+         */
         public USER(int code)
         {
             InitializeComponent();
@@ -28,6 +35,9 @@ namespace PT2
             opu = new OpUSER(musique);
         }
 
+        /*
+         * chargerListBoxEmprunter() permet d'afficher sous forme de liste les emprunts
+         */
         private void chargerListBoxEmprunter()
         {
             var emprunt = (from j in musique.EMPRUNTER
@@ -56,6 +66,9 @@ namespace PT2
             }
         }
 
+        /*
+         * chargerListBoxDisques() permet de charger la liste des albums 
+         */
         private void chargerListBoxDisques()
         {
             var disques = (from j in musique.ALBUMS
@@ -67,6 +80,9 @@ namespace PT2
             }
         }
 
+        /*
+         * retourne_Click() permet de retourner un emprunt
+         */
         private void retourne_Click(object sender, EventArgs e)
         {
             if (listEmprunt.SelectedItem != null)
@@ -77,6 +93,9 @@ namespace PT2
             }
         }
 
+        /*
+         * emprunt_Click() permet à l'utilisateur de pouvoir emprunter
+         */
         private void emprunt_Click(object sender, EventArgs e)
         {
             if (ListeDisques.SelectedItem != null)
@@ -95,6 +114,9 @@ namespace PT2
             }
         }
 
+        /*
+         * Prolongation_Click() Permet à l'utilisateur de pouvoir prolonger un emprunt
+         */
         private void Prolongation_Click(object sender, EventArgs e)
         {
             if (listEmprunt.SelectedItem != null)
@@ -108,6 +130,9 @@ namespace PT2
             }
         }
 
+        /*
+         * textBox1_TextChanged() permet de rechercher un album
+         */
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
    
@@ -125,12 +150,18 @@ namespace PT2
             
         }
 
+        /*
+         * ProlAllEmprunt_Click() permet à l'utilisateur de prolonger tout ses emprunts d'un coup
+         */
         private void ProlAllEmprunt_Click(object sender, EventArgs e)
         {
             opu.prolongationAll();
             chargerListBoxEmprunter();
         }
 
+        /*
+         * Suggestions_Click() permet à l'utlisateur d'obtenir une suggestion d'albums
+         */
         private void Suggestions_Click(object sender, EventArgs e)
         {
             ListeDisques.Items.Clear();

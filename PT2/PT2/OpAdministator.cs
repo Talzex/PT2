@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace PT2
 {
+    /*
+     * Classe administrateur contenant les différentes méthodes
+     */
     class OpAdministator
     {
         MusiquePT2_MEntities musique;
@@ -15,16 +18,25 @@ namespace PT2
         List<ALBUMS> albumsnonemprunte;
         List<String> topalbums;
       
-
+        /*
+         * Constructeur OpAdministator 
+         */
         public OpAdministator(MusiquePT2_MEntities musique)
         {
             this.musique = musique;
         }
+
+        /*
+         * Prolonge() qui permet de prolonger, return la date d'emprunt prolongé
+         */
         private bool Prolonge(EMPRUNTER j)
         {
             return j.DATE_EMPRUNT.AddDays(j.ALBUMS.GENRES.DÉLAI)!= j.DATE_RETOUR_ATTENDUE;
         }
 
+        /*
+         * EmpruntProlonge() qui permet de connaitre les emprunts qui ont été prolongés, return empruntsprol : liste des emprunts prolongés
+         */
         public List<EMPRUNTER> EmpruntProlonge()
         {
              empruntsprol = new List<EMPRUNTER>();
@@ -41,6 +53,9 @@ namespace PT2
             return empruntsprol;
         }
 
+        /*
+         * Purge() permet de supprimer les abonnés n'ayant pas emprunté depuis "n"
+         */
         public void Purge(decimal n)
         {
             double date = Convert.ToDouble(n);
@@ -57,6 +72,9 @@ namespace PT2
             musique.SaveChanges();
         }
 
+        /*
+         * RetardEmprunt() permet de lister les abonnés ayant des emprunts non rapportés en retard de "n", return empruntsNonRapportes : liste des emprunts en retard
+         */
         public List<EMPRUNTER> RetardEmprunt(decimal n)
         {
             double date = Convert.ToDouble(n);
@@ -73,6 +91,9 @@ namespace PT2
             return empruntsNonRapportes;
         }
 
+        /*
+         * AlbumsNonEmprunte() permet de connaitre les albums qui n'ont pas été empruntés depuis "n", return albumsnonemprunte : liste des albums non emprunté
+         */
         public List<ALBUMS> AlbumsNonEmprunte(decimal n)
         {
             double date = Convert.ToDouble(n);
@@ -96,6 +117,9 @@ namespace PT2
             return albumsnonemprunte;
         }
 
+        /*
+         * TopAlbums() permet de connaitre les 10 albums les plus empruntés dans l'année, return topalbums : liste des 10 albums
+         */
         public List<String> TopAlbums()
         {
             topalbums = new List<String>();
@@ -119,6 +143,9 @@ namespace PT2
             return topalbums;
         }
 
+        /*
+         * dernierEmprunt() retourne la date du dernier emprunt 
+         */
         public DateTime dernierEmprunt(ABONNÉS abo)
         {
             DateTime lastEmprunt = new DateTime();
@@ -135,6 +162,9 @@ namespace PT2
             return lastEmprunt;
         }
 
+        /*
+         * aDesEmprunts() permet de vérifier si un abonné à des emprunts en cours 
+         */
         public bool aDesEmprunts(ABONNÉS abo)
         {
             bool emprunts = false;
