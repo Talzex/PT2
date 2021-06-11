@@ -35,6 +35,8 @@ namespace PT2
             this.AlbumNonEmp = new System.Windows.Forms.Button();
             this.TopAlbumEmp = new System.Windows.Forms.Button();
             this.Abonnés = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.idname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,8 +45,6 @@ namespace PT2
             this.emprunt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.retour = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.Abonnés)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -107,41 +107,40 @@ namespace PT2
             // 
             // Abonnés
             // 
-            this.Emprunts.BackgroundColor = System.Drawing.Color.LightSkyBlue;
-            this.Emprunts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Emprunts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.titre,
-            this.emprunt,
-            this.delai,
-            this.retour,
+            this.Abonnés.BackgroundColor = System.Drawing.Color.LightSkyBlue;
+            this.Abonnés.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Abonnés.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idname,
             this.nom,
             this.prenom,
-            this.date});
-            this.Emprunts.GridColor = System.Drawing.Color.DodgerBlue;
-            this.Emprunts.Location = new System.Drawing.Point(12, 12);
-            this.Emprunts.Name = "Emprunts";
-            this.Emprunts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.Emprunts.Size = new System.Drawing.Size(1247, 529);
-            this.Emprunts.TabIndex = 19;
+            this.date,
+            this.titre,
+            this.emprunt,
+            this.delai,
+            this.retour});
+            this.Abonnés.GridColor = System.Drawing.Color.DodgerBlue;
+            this.Abonnés.Location = new System.Drawing.Point(12, 12);
+            this.Abonnés.Name = "Abonnés";
+            this.Abonnés.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.Abonnés.Size = new System.Drawing.Size(1247, 529);
+            this.Abonnés.TabIndex = 19;
             // 
             // idname
             // 
-            this.idname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.idname.HeaderText = "Identifiant";
-            this.idname.Name = "idname";
-            this.idname.ReadOnly = true;
-            this.idname.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.idname.Width = 78;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(556, 551);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "jours";
             // 
-            // nom
+            // date
             // 
-            this.nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.nom.HeaderText = "Nom";
-            this.nom.Name = "nom";
-            this.nom.ReadOnly = true;
-            this.nom.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.nom.Width = 54;
+            this.numericUpDown1.Location = new System.Drawing.Point(438, 548);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(112, 20);
+            this.numericUpDown1.TabIndex = 23;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // idname
             // 
@@ -214,22 +213,6 @@ namespace PT2
             this.retour.ReadOnly = true;
             this.retour.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.retour.Width = 96;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(556, 551);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "jours";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(438, 548);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(112, 20);
-            this.numericUpDown1.TabIndex = 23;
             // 
             // Administrator
             // 
