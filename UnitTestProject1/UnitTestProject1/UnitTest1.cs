@@ -16,6 +16,9 @@ namespace UnitTestProject1
         [TestMethod]
         public void InscriptionEmprunte()
         {
+            var selectPays = (from pays in musique.PAYS
+                              where pays.CODE_PAYS == 1
+                              select pays);
             OpUSER user = new OpUSER(musique);
             Outils outils = new Outils();
             var selectnewAbo =( from abo in musique.ABONNÉS
@@ -23,7 +26,7 @@ namespace UnitTestProject1
                                select abo).ToList();
             if(selectnewAbo.Count() == 0)
             {
-                opu = new OpAbonne("TESTUS1", "TESTUS1", "testus1", "123456789", "123456789", "", "", musique);
+                opu = new OpAbonne("TESTUS1", "TESTUS1", "testus1", "123456789", "123456789", "", "",selectPays.First(), musique);
                 opu.ajoutAbonne();
                 musique.SaveChanges();
                 
@@ -46,7 +49,6 @@ namespace UnitTestProject1
                                         where emp.CODE_ABONNÉ == selectcodeAbo.FirstOrDefault()
                                         select emp).ToList();
                 Assert.IsTrue(selectEmpruntAbo.First().DATE_EMPRUNT != null);
-                //outils.suppAbo(selectcréation.First());
             }
 
         }
@@ -54,15 +56,19 @@ namespace UnitTestProject1
         [TestMethod]
         public void VoirEmprunt()
         {
+            var selectPays = (from pays in musique.PAYS
+                              where pays.CODE_PAYS == 1
+                              select pays);
             OpUSER user = new OpUSER(musique);
             Outils outils = new Outils();
-            List<EMPRUNTER> emprunt = new List<EMPRUNTER>();
+            bool emprunt1;
+            bool emprunt2;
             var selectnewAbo = (from abo in musique.ABONNÉS
                                 where abo.LOGIN_ABONNÉ == "testus2"
                                 select abo).ToList();
             if (selectnewAbo.Count() == 0)
             {
-                opu = new OpAbonne("TESTUS2", "TESTUS2", "testus2", "123", "123", "", "", musique);
+                opu = new OpAbonne("TESTUS2", "TESTUS2", "testus2", "123", "123", "", "", selectPays.First(),musique);
                 opu.ajoutAbonne();
 
             }
@@ -70,30 +76,25 @@ namespace UnitTestProject1
                                   where abo.LOGIN_ABONNÉ == "testus2"
                                   select abo).ToList();
             var selectEmprunt = (from al in musique.ALBUMS
-                                 where al.TITRE_ALBUM == "Bach J-C: Sinfonien"
+                                 where al.TITRE_ALBUM == "Bach, CPE: Concertos pour violoncelle"
                                  select al).ToList();
             var selectEmprunt2 = (from al in musique.ALBUMS
-                                 where al.TITRE_ALBUM == "Bach: Symphonien"
+                                 where al.TITRE_ALBUM == "Bach: 6 Sonaten für Violine und Cembalo"
                                   select al).ToList();
             
             if (selectEmprunt.Count() != 0 && selectEmprunt2.Count() != 0)
             {
-                emprunt.Add(user.emprunte(selectEmprunt.First(), selectcréation.First()));
-                emprunt.Add(user.emprunte(selectEmprunt2.First(), selectcréation.First()));
+                emprunt1 = user.emprunte(selectEmprunt.First(), selectcréation.First());
+                emprunt2 = user.emprunte(selectEmprunt2.First(), selectcréation.First());
                 var selectcodeAbo = (from abo in musique.ABONNÉS
                                      where abo.LOGIN_ABONNÉ == "testus2"
                                      select abo.CODE_ABONNÉ).ToList();
                 var selectEmpruntAbo = (from emp in musique.EMPRUNTER
                                         where emp.CODE_ABONNÉ == selectcodeAbo.FirstOrDefault()
                                         select emp).ToList();
-                Assert.IsTrue(emprunt[0].CODE_ALBUM.Equals(selectEmpruntAbo.First().CODE_ALBUM));
-                Assert.IsTrue(emprunt[1].CODE_ALBUM.Equals(selectEmprunt2.First().CODE_ALBUM));
+                Assert.IsTrue(emprunt1);
+                Assert.IsTrue(emprunt2);
 
-                /*foreach(EMPRUNTER e in selectEmpruntAbo)
-                {
-                    outils.suppEmprunt(e, selectcréation.First());
-                }
-                outils.suppAbo(selectcréation.First());*/
             }
         }
     }
