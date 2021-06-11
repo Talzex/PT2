@@ -34,8 +34,6 @@ namespace PT2
             this.emprunt = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.suivant = new System.Windows.Forms.Button();
-            this.precedent = new System.Windows.Forms.Button();
             this.ProlAllEmprunt = new System.Windows.Forms.Button();
             this.Suggestions = new System.Windows.Forms.Button();
             this.GridDisques = new System.Windows.Forms.DataGridView();
@@ -53,7 +51,7 @@ namespace PT2
             // Prolongation
             // 
             this.Prolongation.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.Prolongation.Location = new System.Drawing.Point(1067, 345);
+            this.Prolongation.Location = new System.Drawing.Point(785, 344);
             this.Prolongation.Margin = new System.Windows.Forms.Padding(2);
             this.Prolongation.Name = "Prolongation";
             this.Prolongation.Size = new System.Drawing.Size(152, 23);
@@ -65,7 +63,7 @@ namespace PT2
             // retourne
             // 
             this.retourne.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.retourne.Location = new System.Drawing.Point(640, 345);
+            this.retourne.Location = new System.Drawing.Point(463, 344);
             this.retourne.Margin = new System.Windows.Forms.Padding(2);
             this.retourne.Name = "retourne";
             this.retourne.Size = new System.Drawing.Size(142, 23);
@@ -77,7 +75,7 @@ namespace PT2
             // emprunt
             // 
             this.emprunt.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.emprunt.Location = new System.Drawing.Point(165, 399);
+            this.emprunt.Location = new System.Drawing.Point(534, 397);
             this.emprunt.Margin = new System.Windows.Forms.Padding(2);
             this.emprunt.Name = "emprunt";
             this.emprunt.Size = new System.Drawing.Size(153, 23);
@@ -89,7 +87,7 @@ namespace PT2
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 377);
+            this.label1.Location = new System.Drawing.Point(370, 375);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 14;
@@ -97,34 +95,16 @@ namespace PT2
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(99, 374);
+            this.textBox1.Location = new System.Drawing.Point(445, 372);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(359, 20);
             this.textBox1.TabIndex = 15;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // suivant
-            // 
-            this.suivant.Location = new System.Drawing.Point(333, 345);
-            this.suivant.Name = "suivant";
-            this.suivant.Size = new System.Drawing.Size(125, 23);
-            this.suivant.TabIndex = 16;
-            this.suivant.Text = "Suivant";
-            this.suivant.UseVisualStyleBackColor = true;
-            // 
-            // precedent
-            // 
-            this.precedent.Location = new System.Drawing.Point(12, 345);
-            this.precedent.Name = "precedent";
-            this.precedent.Size = new System.Drawing.Size(134, 23);
-            this.precedent.TabIndex = 17;
-            this.precedent.Text = "Précédent";
-            this.precedent.UseVisualStyleBackColor = true;
-            // 
             // ProlAllEmprunt
             // 
             this.ProlAllEmprunt.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ProlAllEmprunt.Location = new System.Drawing.Point(832, 345);
+            this.ProlAllEmprunt.Location = new System.Drawing.Point(609, 344);
             this.ProlAllEmprunt.Margin = new System.Windows.Forms.Padding(2);
             this.ProlAllEmprunt.Name = "ProlAllEmprunt";
             this.ProlAllEmprunt.Size = new System.Drawing.Size(172, 23);
@@ -135,7 +115,7 @@ namespace PT2
             // 
             // Suggestions
             // 
-            this.Suggestions.Location = new System.Drawing.Point(165, 345);
+            this.Suggestions.Location = new System.Drawing.Point(305, 344);
             this.Suggestions.Name = "Suggestions";
             this.Suggestions.Size = new System.Drawing.Size(153, 23);
             this.Suggestions.TabIndex = 19;
@@ -148,6 +128,7 @@ namespace PT2
             this.GridDisques.AllowUserToAddRows = false;
             this.GridDisques.AllowUserToDeleteRows = false;
             this.GridDisques.AllowUserToOrderColumns = true;
+            this.GridDisques.BackgroundColor = System.Drawing.Color.RoyalBlue;
             this.GridDisques.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridDisques.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Titre_Album,
@@ -158,8 +139,11 @@ namespace PT2
             this.Date_emprunt,
             this.Date_retour_attendue,
             this.Date_retour});
+            this.GridDisques.GridColor = System.Drawing.Color.RoyalBlue;
             this.GridDisques.Location = new System.Drawing.Point(12, 12);
+            this.GridDisques.MultiSelect = false;
             this.GridDisques.Name = "GridDisques";
+            this.GridDisques.ReadOnly = true;
             this.GridDisques.Size = new System.Drawing.Size(1207, 327);
             this.GridDisques.TabIndex = 20;
             this.GridDisques.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridDisques_CellContentClick);
@@ -234,8 +218,6 @@ namespace PT2
             this.Controls.Add(this.GridDisques);
             this.Controls.Add(this.Suggestions);
             this.Controls.Add(this.ProlAllEmprunt);
-            this.Controls.Add(this.precedent);
-            this.Controls.Add(this.suivant);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Prolongation);
@@ -256,8 +238,6 @@ namespace PT2
         private System.Windows.Forms.Button emprunt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button suivant;
-        private System.Windows.Forms.Button precedent;
         private System.Windows.Forms.Button ProlAllEmprunt;
         private System.Windows.Forms.Button Suggestions;
         private System.Windows.Forms.DataGridView GridDisques;
