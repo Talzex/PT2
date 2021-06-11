@@ -52,6 +52,7 @@ namespace PT2
             this.oeil1 = new System.Windows.Forms.Button();
             this.oeil2 = new System.Windows.Forms.Button();
             this.oeil3 = new System.Windows.Forms.Button();
+            this.textBoxPays = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -84,7 +85,7 @@ namespace PT2
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 254);
+            this.label4.Location = new System.Drawing.Point(38, 249);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 7;
@@ -93,7 +94,7 @@ namespace PT2
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(38, 303);
+            this.label5.Location = new System.Drawing.Point(38, 298);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 13);
             this.label5.TabIndex = 8;
@@ -102,7 +103,7 @@ namespace PT2
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(38, 352);
+            this.label6.Location = new System.Drawing.Point(38, 347);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(138, 13);
             this.label6.TabIndex = 9;
@@ -111,6 +112,7 @@ namespace PT2
             // textBox_nom
             // 
             this.textBox_nom.Location = new System.Drawing.Point(182, 95);
+            this.textBox_nom.MaxLength = 32;
             this.textBox_nom.Name = "textBox_nom";
             this.textBox_nom.Size = new System.Drawing.Size(195, 20);
             this.textBox_nom.TabIndex = 0;
@@ -119,6 +121,7 @@ namespace PT2
             // textBox_prenom
             // 
             this.textBox_prenom.Location = new System.Drawing.Point(182, 142);
+            this.textBox_prenom.MaxLength = 32;
             this.textBox_prenom.Name = "textBox_prenom";
             this.textBox_prenom.Size = new System.Drawing.Size(195, 20);
             this.textBox_prenom.TabIndex = 1;
@@ -128,42 +131,45 @@ namespace PT2
             // 
             this.comboBoxPays.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPays.FormattingEnabled = true;
-            this.comboBoxPays.Location = new System.Drawing.Point(182, 191);
+            this.comboBoxPays.Location = new System.Drawing.Point(182, 204);
             this.comboBoxPays.Name = "comboBoxPays";
             this.comboBoxPays.Size = new System.Drawing.Size(195, 21);
-            this.comboBoxPays.TabIndex = 2;
+            this.comboBoxPays.TabIndex = 3;
             this.comboBoxPays.SelectedIndexChanged += new System.EventHandler(this.comboBoxPays_SelectedIndexChanged);
             // 
             // textBox_login
             // 
-            this.textBox_login.Location = new System.Drawing.Point(182, 251);
+            this.textBox_login.Location = new System.Drawing.Point(182, 246);
+            this.textBox_login.MaxLength = 32;
             this.textBox_login.Name = "textBox_login";
             this.textBox_login.Size = new System.Drawing.Size(195, 20);
-            this.textBox_login.TabIndex = 3;
+            this.textBox_login.TabIndex = 4;
             this.textBox_login.TextChanged += new System.EventHandler(this.textBox_login_TextChanged);
             // 
             // textBox_mdp
             // 
-            this.textBox_mdp.Location = new System.Drawing.Point(182, 300);
+            this.textBox_mdp.Location = new System.Drawing.Point(182, 295);
+            this.textBox_mdp.MaxLength = 32;
             this.textBox_mdp.Name = "textBox_mdp";
             this.textBox_mdp.Size = new System.Drawing.Size(195, 20);
-            this.textBox_mdp.TabIndex = 4;
+            this.textBox_mdp.TabIndex = 5;
             this.textBox_mdp.UseSystemPasswordChar = true;
             this.textBox_mdp.TextChanged += new System.EventHandler(this.textBox_mdp_TextChanged);
             // 
             // textBox_cmdp
             // 
-            this.textBox_cmdp.Location = new System.Drawing.Point(182, 349);
+            this.textBox_cmdp.Location = new System.Drawing.Point(182, 344);
+            this.textBox_cmdp.MaxLength = 32;
             this.textBox_cmdp.Name = "textBox_cmdp";
             this.textBox_cmdp.Size = new System.Drawing.Size(195, 20);
-            this.textBox_cmdp.TabIndex = 5;
+            this.textBox_cmdp.TabIndex = 6;
             this.textBox_cmdp.UseSystemPasswordChar = true;
             this.textBox_cmdp.TextChanged += new System.EventHandler(this.textBox_cmdp_TextChanged);
             // 
             // ajouter
             // 
             this.ajouter.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ajouter.Location = new System.Drawing.Point(193, 389);
+            this.ajouter.Location = new System.Drawing.Point(193, 384);
             this.ajouter.Margin = new System.Windows.Forms.Padding(2);
             this.ajouter.Name = "ajouter";
             this.ajouter.Size = new System.Drawing.Size(70, 23);
@@ -184,18 +190,20 @@ namespace PT2
             // textBox_mdpIn
             // 
             this.textBox_mdpIn.Location = new System.Drawing.Point(602, 191);
+            this.textBox_mdpIn.MaxLength = 32;
             this.textBox_mdpIn.Name = "textBox_mdpIn";
             this.textBox_mdpIn.Size = new System.Drawing.Size(195, 20);
-            this.textBox_mdpIn.TabIndex = 8;
+            this.textBox_mdpIn.TabIndex = 9;
             this.textBox_mdpIn.UseSystemPasswordChar = true;
             this.textBox_mdpIn.TextChanged += new System.EventHandler(this.textBox_mdpIn_TextChanged);
             // 
             // textBox_loginIn
             // 
             this.textBox_loginIn.Location = new System.Drawing.Point(602, 138);
+            this.textBox_loginIn.MaxLength = 32;
             this.textBox_loginIn.Name = "textBox_loginIn";
             this.textBox_loginIn.Size = new System.Drawing.Size(195, 20);
-            this.textBox_loginIn.TabIndex = 7;
+            this.textBox_loginIn.TabIndex = 8;
             this.textBox_loginIn.TextChanged += new System.EventHandler(this.textBox_loginIn_TextChanged);
             // 
             // label8
@@ -231,7 +239,7 @@ namespace PT2
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(38, 194);
+            this.label10.Location = new System.Drawing.Point(41, 181);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 13);
             this.label10.TabIndex = 21;
@@ -239,7 +247,7 @@ namespace PT2
             // 
             // oeil1
             // 
-            this.oeil1.Location = new System.Drawing.Point(399, 300);
+            this.oeil1.Location = new System.Drawing.Point(399, 295);
             this.oeil1.Name = "oeil1";
             this.oeil1.Size = new System.Drawing.Size(33, 21);
             this.oeil1.TabIndex = 23;
@@ -249,7 +257,7 @@ namespace PT2
             // 
             // oeil2
             // 
-            this.oeil2.Location = new System.Drawing.Point(399, 348);
+            this.oeil2.Location = new System.Drawing.Point(399, 343);
             this.oeil2.Name = "oeil2";
             this.oeil2.Size = new System.Drawing.Size(33, 21);
             this.oeil2.TabIndex = 24;
@@ -267,11 +275,21 @@ namespace PT2
             this.oeil3.UseVisualStyleBackColor = true;
             this.oeil3.Click += new System.EventHandler(this.oeil3_Click);
             // 
+            // textBoxPays
+            // 
+            this.textBoxPays.Location = new System.Drawing.Point(182, 178);
+            this.textBoxPays.MaxLength = 32;
+            this.textBoxPays.Name = "textBoxPays";
+            this.textBoxPays.Size = new System.Drawing.Size(195, 20);
+            this.textBoxPays.TabIndex = 2;
+            this.textBoxPays.TextChanged += new System.EventHandler(this.textBoxPays_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 554);
+            this.Controls.Add(this.textBoxPays);
             this.Controls.Add(this.oeil3);
             this.Controls.Add(this.oeil2);
             this.Controls.Add(this.oeil1);
@@ -327,6 +345,7 @@ namespace PT2
         private System.Windows.Forms.Button oeil1;
         private System.Windows.Forms.Button oeil2;
         private System.Windows.Forms.Button oeil3;
+        private System.Windows.Forms.TextBox textBoxPays;
     }
 }
 

@@ -108,6 +108,14 @@ namespace PT2
             }
         }
 
+        private void textBoxPays_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxPays.Text.Trim().Equals(""))
+            {
+                pays = null;
+            }
+        }
+
         /*
          * Une méthode permettant de récupérer ce qui a été entrer dans la zone de texte correspondant à la confirmation du mot de passe du futur abonné.
          */
@@ -160,6 +168,7 @@ namespace PT2
          */
         private void comboBoxPays_SelectedIndexChanged(object sender, EventArgs e)
         {
+            textBoxPays.Text = comboBoxPays.SelectedItem.ToString();
             pays = (PAYS)comboBoxPays.SelectedItem;
         }
     }
