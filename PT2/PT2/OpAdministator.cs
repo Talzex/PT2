@@ -108,7 +108,7 @@ namespace PT2
             {
                 foreach (ALBUMS a in albums)
                 {
-                    if (((DateTime.Now.Subtract(e.DATE_EMPRUNT)).TotalDays >= date) && ((e.CODE_ALBUM.Equals(a.CODE_ALBUM)) || !(a.EMPRUNTER.Contains(e)) && !albumsnonemprunte.Contains(a)))
+                    if ((DateTime.Now.Subtract(e.DATE_EMPRUNT).TotalDays >= date && e.CODE_ALBUM.Equals(a.CODE_ALBUM)) || !a.EMPRUNTER.Contains(e) && !albumsnonemprunte.Contains(a))
                     {
                         albumsnonemprunte.Add(a);
                     }
