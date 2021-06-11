@@ -29,7 +29,6 @@ namespace PT2
 
         private void chargerGridDisques()
         {
-            GridDisques.ColumnHeadersDefaultCellStyle.BackColor = Color.Cyan;
             String estEmprunté;
             var disques = (from j in musique.ALBUMS
                            select j).ToList();
@@ -51,7 +50,7 @@ namespace PT2
                 }
 
                 int i = GridDisques.Rows.Add(j.ALBUMS.TITRE_ALBUM, j.ALBUMS.GENRES.LIBELLÉ_GENRE, j.ALBUMS.EDITEURS.NOM_EDITEUR, estEmprunté, prolongé, j.DATE_EMPRUNT, j.DATE_RETOUR_ATTENDUE, j.DATE_RETOUR);
-                GridDisques.Rows[i].DefaultCellStyle.BackColor = Color.Cyan;
+                GridDisques.Rows[i].DefaultCellStyle.BackColor = Color.Azure;
             }
             foreach (ALBUMS a in disques)
             {
@@ -68,7 +67,7 @@ namespace PT2
                 if (!emprunté)
                 {
                     int i = GridDisques.Rows.Add(a.TITRE_ALBUM, a.GENRES.LIBELLÉ_GENRE, a.EDITEURS.NOM_EDITEUR, estEmprunté);
-                    GridDisques.Rows[i].DefaultCellStyle.BackColor = Color.Cyan;
+                    GridDisques.Rows[i].DefaultCellStyle.BackColor = Color.Azure;
                 }
             }
         }
