@@ -182,9 +182,5 @@ namespace PT2
                 row.DefaultCellStyle.BackColor = Color.Azure;
             }
         }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-        }
     }
 }

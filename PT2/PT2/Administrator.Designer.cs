@@ -35,8 +35,6 @@ namespace PT2
             this.AlbumNonEmp = new System.Windows.Forms.Button();
             this.TopAlbumEmp = new System.Windows.Forms.Button();
             this.Abonnés = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.idname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +43,8 @@ namespace PT2
             this.emprunt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.retour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.Abonnés)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -125,23 +125,6 @@ namespace PT2
             this.Abonnés.Size = new System.Drawing.Size(1247, 529);
             this.Abonnés.TabIndex = 19;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(556, 551);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "jours";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(438, 548);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(112, 20);
-            this.numericUpDown1.TabIndex = 23;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
-            // 
             // idname
             // 
             this.idname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -213,6 +196,22 @@ namespace PT2
             this.retour.ReadOnly = true;
             this.retour.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.retour.Width = 96;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(556, 551);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "jours";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(438, 548);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(112, 20);
+            this.numericUpDown1.TabIndex = 23;
             // 
             // Administrator
             // 
