@@ -49,6 +49,9 @@ namespace PT2
             this.label9 = new System.Windows.Forms.Label();
             this.connexion = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
+            this.oeil1 = new System.Windows.Forms.Button();
+            this.oeil2 = new System.Windows.Forms.Button();
+            this.oeil3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -143,18 +146,18 @@ namespace PT2
             // 
             this.textBox_mdp.Location = new System.Drawing.Point(182, 300);
             this.textBox_mdp.Name = "textBox_mdp";
-            this.textBox_mdp.PasswordChar = '*';
             this.textBox_mdp.Size = new System.Drawing.Size(195, 20);
             this.textBox_mdp.TabIndex = 4;
+            this.textBox_mdp.UseSystemPasswordChar = true;
             this.textBox_mdp.TextChanged += new System.EventHandler(this.textBox_mdp_TextChanged);
             // 
             // textBox_cmdp
             // 
             this.textBox_cmdp.Location = new System.Drawing.Point(182, 349);
             this.textBox_cmdp.Name = "textBox_cmdp";
-            this.textBox_cmdp.PasswordChar = '*';
             this.textBox_cmdp.Size = new System.Drawing.Size(195, 20);
             this.textBox_cmdp.TabIndex = 5;
+            this.textBox_cmdp.UseSystemPasswordChar = true;
             this.textBox_cmdp.TextChanged += new System.EventHandler(this.textBox_cmdp_TextChanged);
             // 
             // ajouter
@@ -182,9 +185,9 @@ namespace PT2
             // 
             this.textBox_mdpIn.Location = new System.Drawing.Point(602, 191);
             this.textBox_mdpIn.Name = "textBox_mdpIn";
-            this.textBox_mdpIn.PasswordChar = '*';
             this.textBox_mdpIn.Size = new System.Drawing.Size(195, 20);
             this.textBox_mdpIn.TabIndex = 8;
+            this.textBox_mdpIn.UseSystemPasswordChar = true;
             this.textBox_mdpIn.TextChanged += new System.EventHandler(this.textBox_mdpIn_TextChanged);
             // 
             // textBox_loginIn
@@ -234,11 +237,44 @@ namespace PT2
             this.label10.TabIndex = 21;
             this.label10.Text = "Pays :";
             // 
+            // oeil1
+            // 
+            this.oeil1.Location = new System.Drawing.Point(399, 300);
+            this.oeil1.Name = "oeil1";
+            this.oeil1.Size = new System.Drawing.Size(33, 21);
+            this.oeil1.TabIndex = 23;
+            this.oeil1.Text = "👁";
+            this.oeil1.UseVisualStyleBackColor = true;
+            this.oeil1.Click += new System.EventHandler(this.oeil1_Click);
+            // 
+            // oeil2
+            // 
+            this.oeil2.Location = new System.Drawing.Point(399, 348);
+            this.oeil2.Name = "oeil2";
+            this.oeil2.Size = new System.Drawing.Size(33, 21);
+            this.oeil2.TabIndex = 24;
+            this.oeil2.Text = "👁";
+            this.oeil2.UseVisualStyleBackColor = true;
+            this.oeil2.Click += new System.EventHandler(this.oeil2_Click);
+            // 
+            // oeil3
+            // 
+            this.oeil3.Location = new System.Drawing.Point(803, 191);
+            this.oeil3.Name = "oeil3";
+            this.oeil3.Size = new System.Drawing.Size(33, 21);
+            this.oeil3.TabIndex = 25;
+            this.oeil3.Text = "👁";
+            this.oeil3.UseVisualStyleBackColor = true;
+            this.oeil3.Click += new System.EventHandler(this.oeil3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 554);
+            this.Controls.Add(this.oeil3);
+            this.Controls.Add(this.oeil2);
+            this.Controls.Add(this.oeil1);
             this.Controls.Add(this.comboBoxPays);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.connexion);
@@ -288,6 +324,9 @@ namespace PT2
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button connexion;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button oeil1;
+        private System.Windows.Forms.Button oeil2;
+        private System.Windows.Forms.Button oeil3;
     }
 }
 
