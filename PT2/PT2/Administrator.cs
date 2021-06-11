@@ -32,10 +32,7 @@ namespace PT2
             n = numericUpDown1.Value;
         }
 
-        /*
-         * chargerDataGridViewEmprunts() permet d'afficher sous forme de grille une liste 
-         */
-        private void chargerDataGridViewEmprunts()
+        private void chargerDataGridViewAbonnés()
         {
             Opa = new OpAdministator(musique);
             var abo = (from a in musique.ABONNÉS
