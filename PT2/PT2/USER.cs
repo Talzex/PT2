@@ -130,6 +130,7 @@ namespace PT2
                 {
                     MessageBox.Show("disque emprunté");
                     chargerGridDisques();
+                    indexSelected = 0;
                 }
             }
         }
@@ -189,7 +190,7 @@ namespace PT2
             {
                 foreach (ALBUMS al in opu.RechercheAlbum(textBox1.Text))
                 {
-                    GridDisques.Rows.Add(al);
+                    GridDisques.Rows.Add(al.TITRE_ALBUM, al.GENRES.LIBELLÉ_GENRE, al.EDITEURS.NOM_EDITEUR);
                 }
             }
             else

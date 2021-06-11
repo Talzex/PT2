@@ -146,6 +146,7 @@ namespace PT2
             this.GridDisques.ReadOnly = true;
             this.GridDisques.Size = new System.Drawing.Size(1207, 327);
             this.GridDisques.TabIndex = 20;
+            this.GridDisques.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridDisques_CellContentClick);
             this.GridDisques.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridDisques_CellContentClick);
             // 
             // Titre_Album
