@@ -1,5 +1,5 @@
 # Informations générales
-
+Projet réalisé lors de la fin de la 1re année de la formation du DUT Informatique.
 ## Equipe
 
 - Composition de l'équipe :
